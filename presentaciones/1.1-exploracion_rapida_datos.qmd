@@ -35,7 +35,7 @@ execute:
 -   Identificar problemas de forma y contenido
 
 ::: notes
-A idéia dessa aula é importar dados e olhar pra eles, os pacotes usados aqui são para ajudar a olhar conjuntos de dados grandes
+A idéia dessa aula é importar dados e olhar pra eles, os pacotes usados aqui são para ayudar a olhar conjuntos de dados grandes
 :::
 
 ## Paquetes
@@ -45,6 +45,7 @@ Vamos a utilizar los siguientes paquetes de R
 -   `skimr`
 -   `janitor`
 -   `report`
+-   `visdat`
 
 ------------------------------------------------------------------------
 
@@ -52,7 +53,7 @@ Vamos a utilizar los siguientes paquetes de R
 
 ![](imgs//meme_data.jpg){fig-align="center"}
 
-## Pasos para la exploración de datos
+## Exploración de datos
 
 -   El primer paso es importar los datos en R.
 -   Antes de analizar los datos, hay que prepararlos y limpiarlos
@@ -63,8 +64,8 @@ Vamos a utilizar los siguientes paquetes de R
 ## En R
 
 -   R identifica de manera automática las diferencias entre los tipos de datos
--   Números, caracteres, factores, vacíos...
--   Importante visualizar rápidamente la existencia de posibles problemas/errores
+-   Números, caracteres, factores, faltantes, etc.
+-   Importante visualizar rápidamente la existencia de posibles problemas
 
 # Funciones de visualización de datos
 
@@ -76,9 +77,8 @@ Vamos a utilizar los siguientes paquetes de R
 :::
 
 ::: {.column width="80%"}
--   Es un paquete con una única función `skim()`
--   La función `skim()` es útil para resumir conjuntos de datos, especialmente grandes conjuntos sin necesidad de exploralos con detalle (e.g., toda la tabla, línea por línea)
--   Es un combo de algunas funciones del R base, como `str()`, `class()`, `summary()`
+-   Paquete con una única función `skim()`, útil para resumir conjuntos de datos sin necesidad de exploralos con detalle (e.g., toda la tabla, línea por línea)
+-   Combina algunas funciones de R base, como `str()`, `class()`, `summary()`
 -   Documentación [aquí](https://cran.r-project.org/web/packages/skimr/vignettes/skimr.html) y [aquí](https://docs.ropensci.org/skimr/articles/extending_skimr.html)
 :::
 
@@ -156,7 +156,7 @@ library(skimr)
 #| eval: true
 #| echo: true
 
-library(tidyverse)
+library(readr)
 birds <-  read_csv(file = here::here("dados/birds.csv"))
 ```
 
@@ -392,113 +392,78 @@ library(janitor)
 
 ## 
 
-:::{.big-code}
+
 ```{r}
 #| eval: true
 #| echo: true
 
 table(pambol$goles, useNA = "always")
 ```
-:::
+
 
 ## QUIZ:
 
 -   Use la función `tabyl()` para saber cuál es la especie de ave con más interacciones
 
-## Algunas funciones derivadas útiles
+# Herramientas visuales y casos complejos
 
--   `adorn_totals()`
--   `adorn_percentages()`
--   `adorn_rounding(digits=1)`
+## `visdat`: Visualización de tipos y faltantes
 
-::: notes
-Aqui tem um problema. Eu uso os pipes pela primeira vez...não sei como mostrar o código abaixo sem pipes. Pode ser um bom momento para mostrar aos alunos que os pipes existem
-:::
-
-## `adorn_totals()`
+- A veces, ver resúmenes numéricos no es suficiente para captar la estructura de los datos.
+- El paquete `visdat` crea visualizaciones que muestran de un vistazo la clase de cada columna y dónde están los `NA`.
 
 ```{r}
-#| eval: true
+#| eval: false
 #| echo: true
+# install.packages("visdat")
+library(visdat)
 
-pambol %>%
-  filter(nacionalidad == "ARG") %>%
-  tabyl(goles) %>%
-  adorn_totals()
-
+# Visualizar tipos de datos
+vis_dat(pambol)
 ```
 
-## Tablas con dos variables
+## Identificando vacíos visualmente
+
+- `vis_miss()` es ideal para ver si los datos faltantes siguen algún patrón (e.g., si todas las columnas de una fila están vacías).
 
 ```{r}
-#| eval: true
+#| eval: false
 #| echo: true
-
-pambol %>%
-  filter(nacionalidad == "ARG") %>%
-  tabyl(goles,partidos) %>%
-  adorn_percentages()
+vis_miss(birds)
 ```
 
-## QUIZ
 
-> Al usar la función `adorn_percentages()`, ¿qué porcentajes se están calculando? Hay un argumento llamado *denominator = c("all", "row", "col")* en la función `adorn_percentages()`. ¿Cuál es la diferencia de usar cada una de las opciones?
-
-## No confundir:
-
--   `adorn_percentages()` - calcular porcentajes
--   `adorn_pct_formatting()` - formatear los valores calculados
--   ambas funciones pueden ser usadas una después de la otra
+# Ejercicio: Vuelos de Nueva York
 
 ## 
 
+- Utilizaremos el paquete `nycflights13`, que contiene datos de 336,776 vuelos.
+- Es un dataset perfecto para practicar exploración rápida por su tamaño y diversidad.
+
 ```{r}
-#| eval: true
+#| eval: false
 #| echo: true
-
-pambol %>%
-  filter(nacionalidad == "ARG") %>%
-  tabyl(goles,partidos) %>%
-  adorn_percentages() %>%
-  adorn_pct_formatting()
-
+# install.packages("nycflights13")
+library(nycflights13)
+data(flights)
 ```
 
-## Función adicional: `adorn_ns()`
+## Reto de exploración
 
-```{r}
-#| eval: true
-#| echo: true
+1. Use `glimpse()` para tener una idea general de las 19 columnas.
+2. Use `skim()` para identificar:
+    - ¿Qué variables tienen más valores faltantes?
+    - ¿Cuál es la media del retraso de salida (`dep_delay`)?
 
-pambol %>%
-  filter(nacionalidad == "ARG") %>%
-  tabyl(goles,partidos) %>%
-  adorn_percentages() %>%
-  adorn_pct_formatting() %>%
-  adorn_ns()
+## Reto de exploración
 
-```
+3. Use `tabyl()` para encontrar:
+    - ¿Cuántos vuelos salieron de cada aeropuerto de origen (`origin`)?
+    - ¿Qué aerolínea (`carrier`) domina los cielos de NYC? (Use `adorn_percentages()`).
+4. **Opcional:** Use `vis_miss()` sobre una muestra de 1000 filas para ver el patrón de NAs.
 
-## función bonus `top_levels()`
+# Data Explorer de Positron
 
--   Sirve para obtener la tabla de frecuencias de un vector de factores (niveles)
--   Separa los factores en 3 grupos *bajo*, *medio*, *alto*
--   La función `top_levels()` te devuelve un data.frame
-
-## 
-
-```{r}
-#| eval: true
-#| echo: true
-
-fac <- as.factor(c("muy fuerte","muy fuerte","muy fuerte","fuerte","débil","débil","muy débil","muy débil"))
-```
-
-. . .
-
-```{r}
-top_levels(fac,n=1) # n es el numero de niveles en las categorías *bajo* y *alto*
-```
-
+Luis
 
 # Fin

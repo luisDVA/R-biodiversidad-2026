@@ -8,7 +8,7 @@ Página oficial con todos los recursos (materiales prácticos y presentaciones) 
 
 ::: columns
 ::: {.column width="40%"}
-![](presentaciones/imgs/flyercurso.jpeg){width="90%"}
+![](presentaciones/imgs/flyercurso.jpg){width="90%"}
 :::
 
 ::: {.column width="60%"}
@@ -21,14 +21,13 @@ Dr. Fabricio Villalobos Camacho
 
 Dr. Luis D. Verde Arregoitia  
 Dr. Fabricio Villalobos Camacho  
-M. en C. Juliana Herrera Pérez  
 M. en C. Gerardo Dirzo Uribe  
-M. en C. Daniel Valencia Rodríguez
+M. en C. Diana Ochoa Sanz
 
 
-<span class='code'>📆 &ensp; 26-30 de mayo, 2025</span>\
+<span class='code'>📆 &ensp; 25-29 de mayo, 2026</span>\
 <span class='code'>⏰ &ensp;09:00 - 17:00</span>\
-<span class='code'>🏨 &ensp;Aula Híbrida, Edificio E</span>\
+<span class='code'>🏨 &ensp;Aula 2 (planta baja), Edificio E, Campus I</span>\
 
 :::
 :::

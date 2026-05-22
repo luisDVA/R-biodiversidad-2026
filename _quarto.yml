@@ -21,14 +21,14 @@ website:
   
   page-footer:
     left: "Página creada con [Quarto](https://quarto.org/)."
-    right: "Luis D. Verde Arregoitia - 2025"
+    right: "Luis D. Verde Arregoitia - 2026"
 
 
 
 format:
   html:
     theme: 
-      light: [flatly, web_styles.scss]
+      light: [yeti, web_styles.scss]
     toc: true
     mainfont: "Inclusive Sans"
     

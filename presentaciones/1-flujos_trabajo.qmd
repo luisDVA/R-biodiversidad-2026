@@ -2,27 +2,24 @@
 title: "Flujos de trabajo y análisis"
 author: Luis D. Verde Arregoitia
 format:
-  revealjs:
+  live-revealjs:
     theme: curso_styles.scss
     transition: fade
     progress: true
     preview-links: true
     hide-inactive-cursor: true
-    highlight-style: vim-dark
+    highlight-style: a11y
     pause: true
-editor: source
-knitr:
-  opts_chunk:
-    dev: "ragg_png"
-    retina: 3
-    dpi: 200
-execute:
-  freeze: auto
-  cache: true
-  echo: true
-  fig-width: 5
-  fig-height: 6
+webr:
+  packages:
+    - fs
+    - here
+    - fontawesome
+engine: knitr
 ---
+
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+
 
 ```{r packages setup}
 #| echo: false
@@ -30,6 +27,43 @@ execute:
 library(fontawesome)
 
 ```
+
+
+# Introducciones
+
+##
+
+### Pizarrón
+
+
+-  ¿Para qué tareas ya usas R?
+ - ¿Qué te gustaría aprender a hacer con R?
+
+# Ejercicio
+
+## Asteráceas de México 
+
+# Bienvenida
+
+## Este curso
+
+- Materiales en línea
+- Instalaciones locales
+- RStudio (o Positron si se animan)
+- Dialecto `tidyverse`
+- Pipes
+
+## Mi sistema
+
+-   R v4.6.0
+
+-   RStudio 2025.05.0
+
+-  Positron 2026.05.2
+
+-   Sin personalizaciones visuales
+
+-   Linux Mint 22.3
 
 ## Temas de este bloque
 
@@ -71,23 +105,6 @@ library(fontawesome)
 :::
 :::
 
-## Este curso
-
-
-- Instalaciones locales
-- RStudio
-- Dialecto `tidyverse`
-- Pipes
-
-## Mi sistema
-
--   R v4.5.0
-
--   RStudio 2025.05.0
-
--   Sin personalizaciones visuales
-
--   Linux Mint 22.1
 
 ## `r fontawesome::fa(name = "r-project")` no es RStudio
 
@@ -110,10 +127,20 @@ Herramientas para facilitar el uso de un lenguaje de programación
 
 
 - Positron  
+- Eclipse + StatET (https://www.eclipse.org/statet/)\
 - Emacs + ESS (https://ess.r-project.org)\
 - vim + Nvim-R: ([Turn Vim Into an IDE for R](https://medium.com/free-code-camp/turning-vim-into-an-r-ide-cd9602e8c217))\
 - Visual Studio + [RTVS](https://docs.microsoft.com/en-us/visualstudio/rtvs)
 - Cualquier editor de [texto](https://web.archive.org/web/20151108031733/http://www.sciviews.org/_rgui/projects/Editors.html) (enviando líneas o selecciones a una instancia de R)
+
+## Positron
+
+- IDE de código abierto desarrollado por Posit (antes RStudio)
+- Construido sobre Code OSS
+- Multilenguaje y diseñado para Ciencia de Datos
+- Menos clics, más teclado
+- 'Mercado' de extensiones muy amplio
+
 
 ## 
 
@@ -177,7 +204,7 @@ Paquetes 'recomendados' (se instalan con R pero no se cargan automáticamente)
 
 ## 📦 Paquetes Adicionales
 
--   22,422 en [CRAN](https://cran.r-project.org/) (The Comprehensive R Archive Network)
+-   23,696  en [CRAN](https://cran.r-project.org/) (The Comprehensive R Archive Network) (19 de mayo de 2026)
 
 -   muchos más en GitHub, GitLab, R-universe, Bioconductor, etc.
 
@@ -188,6 +215,11 @@ Se instalan desde R con:
 
 `install.packages()` para paquetes de CRAN\
 `📦 remotes` o `pak` para todos los demás repositorios
+
+## Paquetes instalados
+
+- Administrar desde el panel de paquetes del IDE
+- `installed.packages()` para imprimir una tabla de los paquetes instalados
 
 ## Visita guiada por R y RStudio{background-color="#ffd6ff"}
 
@@ -207,6 +239,11 @@ install.packages("tidyr")
 install.packages("fs")
 install.packages("here")
 ```
+
+## Demo Positron {background-color="#ffd6ff"}
+
+
+![](https://positron.posit.co/images/user-interface-for-rstudio-migration.jpeg)
 
 ## Sistemas de archivos
 
@@ -388,9 +425,16 @@ Maëlle Salmon (2021)\
 :::
 :::
 
+## Proyectos en Positron
+
+-  Instancia de R dedicada
+-  Navegador apuntando al directorio del proyecto
+-  No trabaja con archivos `.Rproj`, solo con carpetas y una heurística interna para determinar la raíz del proyecto y su 'proyectidud'
+
+
 ## Ejercicio{background-color="#ffd6ff"}
 
-Crear un proyecto para el curso en RStudio 
+Crear un proyecto para el curso
 
 </br>
 
@@ -402,6 +446,25 @@ Crear un proyecto para el curso en RStudio
 ## 
 
 ![](imgs/ubereats.png){fig-align="center"}
+
+## Proyectos en la era de IA
+
+::: columns
+::: {.column width="35%"}
+![](imgs/clutter.jpg)
+:::
+
+::: {.column width="65%"}
+- Las integraciones de IDE+IA trabajan dentro de carpetas 
+  - \$ por leer archivos que no son relevantes
+  - consideraciones de privacidad y seguridad
+  - límites en ventanas de contexto
+  - operaciones multiarchivo
+
+:::
+:::
+
+
 
 ## 📦 `fs`
 
@@ -436,6 +499,7 @@ library(fs)
 
 ```{r}
 #| eval: false
+#| echo: true
 dir_create("R")
 dir_create("datos")
 dir_create("salida")
@@ -479,6 +543,8 @@ Jenny Bryan (2018)\
 
 - No se carga el espacio de trabajo desde un archivo _.Rdata_ al arrancar R
 
+- Predeterminado en Positron
+
 :::
 
 ::: {.column width="40%"}
@@ -488,15 +554,20 @@ Jenny Bryan (2018)\
 :::
 :::
 
-
-
-## Reiniciar R
+## ¿Reiniciar R?
 
 ### `Ctrl+Shift+F10`
 (Windows y Linux)
 
 ### `Command+Shift+F10`    
 (Mac)
+
+## Rutas de archivo
+
+Al compartir código y datos solamente 1 de cada 3 es reproducible^[https://blogs.worldbank.org/en/impactevaluations/how-make-sure-your-research-paper-reproducible-evidence-55-papers-guest-blog-post,https://www.nature.com/articles/d41586-018-02108-9].  
+
+* Lo primero que se rompe casi siempre son las rutas 
+* `here` para ejercicios del curso aún cuando trabajar en proyectos lo haga redundante
 
 ## 📦 `here` y rutas relativas
 
@@ -506,7 +577,7 @@ Trabajemos en relación a la raíz del proyecto con la función `here()`
 
 -   resuelve cuál es la raíz del proyecto
 -   construye rutas portátiles
--   genera rutas absolutas (comienzan con `/`, `C:\` o `\\`)
+
 
 ::::{.rightref}
 :::{.refbox}
@@ -550,6 +621,8 @@ Construir rutas:
 
 :::{.big-code}
 ```{r}
+#| eval: true
+#| echo: true
 library(here)
 here("carpeta ficticia","subcarpeta","tesis-terminada.doc")
 ```
@@ -597,9 +670,7 @@ Paquetes adicionales para importar datos rectangulares desde archivos de texto y
 
 -   Funciones adicionales para limpiar los valores en las columnas
 
-## Ejercicio{background-color="#ffd6ff"}
 
-Importar una tabla a R desde un archivo
 
 ## Hojas de cálculo
 
@@ -685,6 +756,8 @@ Números
 
 :::{.big-code}
 ```{r}
+#| eval: true
+#| echo: true
 c(1,2,3,4)
 ```
 :::
@@ -692,6 +765,9 @@ c(1,2,3,4)
 
 :::{.big-code}
 ```{r}
+#| eval: true
+#| echo: true
+
 c(22.1,0.006,4.1)
 ```
 :::
@@ -702,6 +778,8 @@ Caracteres
 
 :::{.big-code}
 ```{r}
+#| eval: true
+#| echo: true
 c("perro","gato","rata","B")
 ```
 :::
@@ -712,6 +790,8 @@ Lógicos (verdadero/falso)
 
 :::{.big-code}
 ```{r}
+#| eval: true
+#| echo: true
 c(TRUE,FALSE,FALSE,FALSE,TRUE)
 ```
 :::
@@ -725,27 +805,21 @@ c(TRUE,FALSE,FALSE,FALSE,TRUE)
 
 ## Creando objetos
 
-:::{.big-code}
-```{r}
+```{webr}
+#| edit: true
 x <- c(1, 2, 3)
+x
 ```
-:::
 
 Función `c()` para juntar elementos en un vector
 
-:::{.med-code}
-```{r}
+```{webr}
+#| edit: true
 x <- c(1,2,3)
 y <- c("a","G","h")
-```
-:::
-
-:::{.med-code}
-```{r}
 x
 y
 ```
-:::
 
 
 ## Los objetos tienen clases
@@ -754,6 +828,8 @@ y
 ```{r}
 #| echo: true
 #| eval: true
+x <- c(1,2,3)
+y <- c("a","G","h")
 class(x)
 class(y)
 ```
@@ -763,7 +839,8 @@ class(y)
 ## Los vectores solo pueden tener objetos de la misma clase
 
 :::{.big-code}
-```{r}
+```{webr}
+#| edit: true
 c(1,"a",2)
 ```
 :::
@@ -824,29 +901,14 @@ factor(c("perro","gato","ave","ninguno",
 
 Se crean importando un archivo tabular o con `data.frame()`
 
-:::{.med-code}
-```{r}
-#| eval: true
-#| echo: true
+```{webr}
+#| edit: true
 mi_tabla <- 
 data.frame(id=c("rana","pez","nutria","gusano"),
            ind_g=c(12,15,13,10),
            listo=c(TRUE,TRUE,FALSE,TRUE))
-
-```
-:::
-
--   cada vector es una columna
--   nombres de columnas sin comillas
--   mismo largo para todos los vectores
-
-## 
-:::{.big-code}
-```{r}
-#| eval: true
-#| echo: true
 mi_tabla
 ```
-:::
+
 
 # ¿Dudas?

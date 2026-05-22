@@ -1,0 +1,137 @@
+---
+title: "Asteraceae de México"
+subtitle: "Ejercicios pŕacticos"
+format: 
+  revealjs:
+    theme: sky
+    scrollable: true
+    code-line-numbers: true
+execute:
+  echo: true
+---
+
+## Introducción
+
+En esta práctica utilizaremos dos conjuntos de datos relacionados con las Asteráceas de México:
+
+Fuente: CONABIO - [Las Asteráceas de México](http://ipttest.conabio.gob.mx/iptconabiotest/resource?r=SNIB-GE022)
+
+1.  `archivos-ej/asteraceaMX.csv`: Datos de ocurrencias (colecciones).
+2.  `archivos-ej/asteraceaTaxonomia.csv`: Información taxonómica de las especies.
+
+**Objetivo**: Unir las tablas y realizar análisis exploratorios.
+
+## Preparación
+
+Carguemos las librerías y los datos iniciales.
+
+```{r setup}
+#| message: false
+library(tidyverse)
+library(lubridate)
+
+occ <- read_csv("../archivos-ej/asteraceaMX.csv")
+tax <- read_csv("../archivos-ej/asteraceaTaxonomia.csv")
+```
+
+---
+
+## Ejercicio 1: Unir las tablas
+
+**Tarea**: Une la tabla de ocurrencias con la tabla de taxonomía usando la columna `scientificName`. Como la tabla de taxonomía tiene filas repetidas para los mismos nombres, asegúrate de usar solo registros únicos de taxonomía antes de unir, o nota cómo cambia el número de filas.
+
+**Solución**:
+
+```{r ej1}
+# Primero limpiamos la tabla de taxonomía para tener registros únicos por especie
+tax_unique <- tax %>% distinct(scientificName, .keep_all = TRUE)
+
+# Unimos con left_join
+asteracea <- occ %>% 
+  left_join(tax_unique, by = "scientificName")
+
+# Verificamos dimensiones
+dim(asteracea)
+```
+
+---
+
+## Ejercicio 2: ¿Qué género tiene más registros?
+
+**Tarea**: Extrae el género de la columna `scientificName` (es la primera palabra) y cuenta cuántos registros hay por género. Muestra los 10 géneros con más colectas.
+
+**Solución**:
+
+```{r ej2}
+asteracea %>%
+  mutate(genus = str_extract(scientificName, "^\\w+")) %>%
+  count(genus, sort = TRUE) %>%
+  head(10)
+```
+
+---
+
+## Ejercicio 3: Elevación por subfamilia
+
+**Tarea**: ¿Cuál es el promedio de elevación mínima (`minimumElevationInMeters`) para cada subfamilia? Ignora los valores `NA`.
+
+**Solución**:
+
+```{r ej3}
+asteracea %>%
+  group_by(subfamily) %>%
+  summarise(
+    elev_promedio = mean(minimumElevationInMeters, na.rm = TRUE),
+    n = n()
+  ) %>%
+  arrange(desc(elev_promedio))
+```
+
+---
+
+## Ejercicio 4: Riqueza de especies por estado
+
+**Tarea**: ¿Qué estado tiene la mayor cantidad de **especies diferentes** (riqueza)? 
+
+**Solución**:
+
+```{r ej4}
+asteracea %>%
+  group_by(stateProvince) %>%
+  summarise(riqueza = n_distinct(scientificName)) %>%
+  arrange(desc(riqueza)) %>%
+  head(10)
+```
+
+---
+
+## Ejercicio 5: Colectas en los años 80
+
+**Tarea**: Filtra los datos para obtener solo los registros colectados entre 1980 y 1989. 
+*Nota: La columna `eventDate` tiene formatos variables (DD-MM-YYYY o MM-YYYY).*
+
+**Solución**:
+
+```{r ej5}
+# Una forma es extraer el año con regex si el formato es consistente al final
+asteracea_80s <- asteracea %>%
+  mutate(year = as.numeric(str_extract(eventDate, "\\d{4}$"))) %>%
+  filter(year >= 1980 & year <= 1989)
+
+# ¿Cuántos registros encontramos?
+nrow(asteracea_80s)
+```
+
+---
+
+## Ejercicio 6: Estados con "Lepidonia"
+
+**Tarea**: Encuentra en qué estados se ha recolectado el género *Lepidonia* y cuántos registros hay en cada uno.
+
+**Solución**:
+
+```{r ej6}
+asteracea %>%
+  filter(str_detect(scientificName, "^Lepidonia")) %>%
+  count(stateProvince, sort = TRUE)
+```

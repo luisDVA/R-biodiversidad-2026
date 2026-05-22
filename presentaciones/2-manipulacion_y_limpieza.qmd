@@ -1,5 +1,5 @@
 ---
-title: "Manipulación y limpieza de datos"
+title: "Preparación y limpieza de datos"
 author: Luis D. Verde Arregoitia
 format:
   revealjs:
@@ -33,6 +33,7 @@ library(stringr)
 library(dplyr)
 library(datos)
 library(gt)
+library(palmerpenguins)
 ```
 
 ## Temas del bloque:
@@ -188,6 +189,34 @@ notas |>
 `RHS(LHS, argument = 12)`
 :::
 
+## Encadenando operaciones
+
+
+```{r}
+#| echo: true
+#| output-location: slide
+pinguinos |> 
+  filter(especie != "Papúa") |> 
+  select(especie, isla, starts_with("largo")) |> 
+  mutate(proporcion_pico = largo_pico_mm / largo_aleta_mm) |> 
+  head()
+```
+
+## Agregando información
+
+
+```{r}
+#| echo: true
+#| output-location: slide
+
+pinguinos |> 
+  filter(!is.na(sexo)) |> 
+  group_by(especie, isla) |> 
+  summarize(masa_promedio = mean(masa_corporal_g, na.rm = TRUE),
+            .groups = "drop") |> 
+  arrange(desc(masa_promedio))
+```
+
 ## tidyverse
 
 ::: columns
@@ -264,7 +293,6 @@ Objeto rectangular común para todos los paquetes del `tidyverse`
 
 Para menos ambigüedad:
 
-. . .
 
 ::: incremental
 -   No asignan nombres a las filas
@@ -300,7 +328,7 @@ Para no saturar la consola, los métodos de impresión para *tibbles* muestran:
 
 ```{r}
 #| echo: false
-tibble::tribble(
+viajes <- tibble::tribble(
          ~Nombre, ~Periodo,      ~TipoViaje, ~PropositoViaje, ~Costo, ~Pais,
      "Miguel J.",    2022L,      "Nacional",  "Salida campo",  1000L,  "MX",
      "Miguel J.",    2022L,      "Nacional",  "Salida campo",  1000L,  "MX",
@@ -309,7 +337,9 @@ tibble::tribble(
      "Miguel J.",    2022L, "Internacional",      "Congreso",  2000L, "EUA",
   "Alejandra M.",    2022L,              NA,              NA,     NA,    NA,
        "Raul S.",    2022L,      "Nacional",  "Salida campo",  1000L,  "MX"
-  ) %>% gt() %>%
+  ) 
+
+viajes %>% gt() %>%
     tab_style(
     cell_text(size = "29px"),
     locations = list(
@@ -318,8 +348,34 @@ tibble::tribble(
       cells_title()
     )
   )
+```
 
+## 
 
+### ¿Cuánto se gastó en total?
+
+```{r}
+viajes %>% 
+  summarize(Total = sum(Costo, na.rm = TRUE))
+```
+
+## 
+
+### ¿Cuántos viajes hizo cada persona?
+
+```{r}
+viajes %>% 
+  count(Nombre)
+```
+
+##
+
+### ¿Cuál fue el costo promedio por tipo de viaje?
+
+```{r}
+viajes %>% 
+  group_by(TipoViaje) %>% 
+  summarize(Promedio = mean(Costo, na.rm = TRUE))
 ```
 
 ## Datos bien organizados
@@ -962,15 +1018,15 @@ paises_m %>%
 
 ## 
 
-:::{.med-code}
+
 
 ```{r}
-paises_convenio <- tibble::tibble(pais=c("Peru","China","Indonesia"),
-               desde=c(2014,2011,2013))
+paises_convenio <- tibble::tibble(
+  pais=c("Peru","China","Indonesia"),
+  desde=c(2014,2011,2013))
 
 ```
 
-:::
 
 ##
 
@@ -1056,13 +1112,11 @@ data("nba_players_19")
 
 -   Cargar el objeto `pinguinos`, se instala con el paquete `datos`
 
-> Por ahora los datos de este paquete no se cargan con `data()`
-
-## Ejercicio - manipulación de datos {background-color="#ffd6ff"}
-
 -   Crear un subconjunto de datos que solo incluya `especie`, `isla`, y `largo_aleta_mm`
 
 -   ¿Cuántos individuos tienen aletas \> a 195 mm?
+
+-   Excluye a la especie "Adelia" usando `filter_out()`
 
 -   Crea una nueva columna con el largo de aleta en pulgadas
 
@@ -1410,6 +1464,87 @@ colonias_largo %>%
 
 -   Transforma los datos de ancho a largo y de regreso a ancho.
 
+# Novedades en `dplyr` 1.2.0
+
+## `filter_out()`
+
+#### El complemento de `filter()`
+
+Para descartar filas. A diferencia de `filter(!condicion)`, **`filter_out()`** conserva los `NA`.
+
+::: med-code
+```{r}
+#| eval: false
+#| echo: true
+paises_m %>% 
+  filter_out(region == "Asia")
+```
+:::
+
+Evita el error común de perder datos faltantes cuando queremos excluir valores específicos.
+
+## `when_any()` y `when_all()`
+
+
+Ayudan a manejar múltiples condiciones dentro de `filter()` o `filter_out()` de forma más legible, reemplazando cadenas largas de `|` o `&`.
+
+::: med-code
+```{r}
+#| eval: false
+#| echo: true
+paises_m %>%
+  filter(
+    when_any(
+      (region == "Asia" & amenazadas > 100),
+      (region == "America" & amenazadas > 50)
+    )
+  )
+```
+:::
+
+## `recode_values()`
+
+#### Fórmulas para modificar valores
+
+Nueva sintaxis `valor_viejo ~ valor_nuevo` para crear o modificar columnas. 
+
+::: med-code
+```{r}
+#| eval: false
+#| echo: true
+paises_m %>%
+  mutate(
+    region_abrev = region %>% 
+      recode_values(
+        "Asia" ~ "AS",
+        "America" ~ "AM",
+        "Africa" ~ "AF",
+        unmatched = "otro"
+      )
+  )
+```
+:::
+
+## `replace_values()` y `replace_when()`
+
+#### Reemplazos precisos
+
+`replace_values()` para valores específicos y `replace_when()` para condiciones lógicas
+
+```{r}
+#| eval: false
+#| echo: true
+# replace_values para cambios puntuales
+paises_m %>% 
+  mutate(pais = 
+    replace_values(pais, "Congo" ~ "Rep. Dem. del Congo"))
+
+# replace_when para topes o rangos
+paises_m %>%
+  mutate(amenazadas = 
+  replace_when(amenazadas, amenazadas > 100 ~ 100))
+```
+
 # Otras funciones útiles
 
 ## 
@@ -1590,590 +1725,95 @@ carbon_mamiferos %>%
 
 ## ¿Expresiones regulares?
 
-. . .
-
--   Conocidas como *regex*, R.E., E.R., o *regexp* (singular)
-
--   Lenguaje conciso para describir patrones de texto
-
-</br>
-
-### Cadenas (🧶strings) de caracteres codificadas especificamente para empatar patrones en otras cadenas de texto
-
-## Expresiones regulares
-
-En la práctica, un lenguaje de programación con su propia sintaxis y terminología
-
-</br>
-
-**entrada:** una cadena de texto que se compila en un mini programa construido específicamente para identificar un patrón
-
-</br> Pueden usarse para empatar, buscar, reemplazar, o partir texto
-
-## Cadenas de texto (🧶Strings)
-
-Un conjunto de caracteres que componen un elemento de un vector:
-
-
-```{r}
-cadena_de_texto <- "Esta oración es una cadena"
-```
-
-
-Podemos almacenar varias cadenas en un vector de texto:
-
-
-```{r}
-
-mascotas <-  c("perro","gato","loro","perro")
-```
-
-## Cadenas de texto
-
-::: columns
-::: {.column width="50%"}
-Los nombres de variables, objetos, y los valores en un data frame también pueden ser cadenas de texto:
-
-```{r}
-#| eval: true
-#| include: false
-
-library(gt)
-library(tibble)
-library(magrittr)
-bebidas_df <- tibble(bebida=c("café","té","jugo"),precio=c(3.50,2.99,3.20))
-```
-:::
-
-::: {.column width="50%"}
-```{r}
-#| eval: true
-#| echo: false
-
-bebidas_df %>%
-  gt() %>%
-  tab_style(
-    style = list(
-      cell_fill(color = "yellow"),
-       cell_text(size = '35px')
-    ),
-    locations = cells_body(
-      columns = vars(bebida)
-    )
-  ) %>%
-  tab_options(column_labels.background.color = "yellow")
-```
-:::
-:::
-
-## R distingue entre mayúsculas y minúsculas
-
-La misma letra en mayúscula y minúscula se trata como un carácter diferente
-
-::: big-code
-```{r}
-#| eval: true
-#| echo: true
-"rata"=="RATA"
-```
-
-```{r}
-#| echo: true
-"rata"=="raTa"
-```
-:::
-
-## Por defecto las expresionas regulares también distinguen entre mayúsculas y mínusculas
-
-Podemos:
-
--   Construir expresiones que no distingan
--   'Ignorar' esta distinción al momento de empatar caracteres
-
-## ¿Para qué aprender a escribir expresiones regulares?
+-   Conocidas como *regex* o *regexp*
+-   Lenguaje para describir patrones de texto
+-   Sirven para buscar, reemplazar o extraer partes de una cadena (🧶*string*)
 
 . . .
 
-::: incremental
--   Ahorrar tiempo al buscar patrones, transformar texto, describir patrones, extraer partes de palabras, etc.
+### OJO: R distingue entre mayúsculas y minúsculas
+`"Rata" == "rata"` es `FALSE`. Por defecto, regex también distingue.
 
--   Una sola expresión regular puede reemplazar decenas de líneas de código
+## Conceptos básicos: Literales y Metacharacteres
 
--   Sirven en prácticamente cualquier lenguaje de programación o aplicación de línea de comandos
-:::
+-   **Literales:** Caracteres que se buscan a sí mismos (ej. `gato` busca "gato").
+-   **Metacharacteres:** Tienen significados especiales: `[] ^ $ . | ? * + ( ) \`
 
-## Primeros pasos con regex
 
-::: columns
-::: {.column width="33%"}
-### Expresión regular
+## Comodines y conjuntos
+-   `.` : Cualquier carácter (excepto salto de línea).
+-   `[abc]` : Cualquiera de estos caracteres (a, b, o c).
+-   `[^abc]` : Cualquier carácter EXCEPTO a, b, o c.
+-   `[a-z]` o `[0-9]` : Rangos de caracteres o números.
 
-</br> gato
-:::
+## Anclas y Cuantificadores
 
-::: {.column width="33%"}
-### Entrada
+**Anclas (Posición):**
 
-</br></br> "Ese gato feo"
-:::
+-   `^` : Inicio de la cadena.  
+-   `$` : Final de la cadena.  
 
-::: {.column width="33%"}
-### Resultado
+**Cuantificadores (Repetición):**
 
-</br></br> Ese [gato]{style="color: orange"} feo
-:::
-:::
+-   `?` : Cero o una vez.  
+-   `+` : Una o más veces.  
+-   `*` : Cero o más veces.  
+-   `{n}` : Exactamente *n* veces.  
 
-La expresión regular para encontrar una secuencia fija de caracteres es esa misma secuencia
+## Alternancia, Escapes y Clases
 
-> busca una **g** seguida de una **a** luego **t** y **o** (todos estos caracteres juntos y en ese orden de izq. a der.)
+-   `|` : Alternancia (OR). Ej: `Bra(s|z)il`
+-   `\\` : Escape para buscar metacharacteres literalmente (ej: `\\?`). *En R se usa doble diagonal.*
 
-## Probando regex
+. . .
 
-¿Está funcionando mi expresión?
+**Clases abreviadas:**
 
--   [rubular](https://rubular.com/) - Michael Lovitt
+-   `\\d` : Dígitos  
+-   `\\w` : Caracteres de palabra (letras, números, `_`)  
+-   `\\s` : Espacios  
+-   `\\b` : Límite de palabra  
 
--   [regex101](https://regex101.com/) - Firas Dib
+## 📦 `stringr` para manipular texto
 
--   [regexr](https://regexr.com/) - Grant Skinner
+Funciones con prefijo `str_`:
 
--   [regexpal](https://www.regexpal.com/) - Dan's Developer Tools
+-   `str_detect(string, pattern)`: ¿Hay coincidencia? (T/F)
+-   `str_replace(string, pattern, replacement)`: Reemplazar.
+-   `str_extract(string, pattern)`: Extraer el patrón.
 
-## Ejercicio {background-color="#ffd6ff"}
 
-Abrir [rubular](https://rubular.com/), [regex101](https://regex101.com/), [regexr](https://regexr.com/), o [regexpal](https://www.regexpal.com/)
-
-Probemos el primer ejemplo *gato* y "ese gato feo"
-
-## Caracteres literales y metacaracteres
-
-Tanto las cadenas de texto como las expresiones regulares se componen por caracteres
-
-</br>
-
-Podemos agrupar a los caracteres dependiendo de su comportamiento
-
-## Literales
-
-Si la entrada es **"pato"** y la E.R. es [pato]{style="color: orange"}
-
-</br>
-
-Habrá coincidencia cuando los caracteres [p]{style="color: orange"}, [a]{style="color: orange"}, [t]{style="color: orange"} y [o]{style="color: orange"} aparezcan consecutivamente en el texto de entrada
-
-## Caracteres literales
-
-[p]{style="color: orange"}, [a]{style="color: orange"}, [t]{style="color: orange"} y [o]{style="color: orange"} serían ejemplos de caracteres literales
-
-</br> Se encuentran a sí mismos
-
-## 
-
-::: callout-note
-## 
-
-El poder y la flexibilidad de las expresiones regulares viene de su capacidad de describir patrones complejos
-:::
-
-</br> Si un patrón de texto se puede describir verbalmente, seguramente se puede codificar en una expresión regular
-
-## Patrones posibles
-
--   "rata" pero no "bata"
-
--   "pollo" pero solo si el esta secuencia está al principio de la cadena de texto
-
--   números (0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
-
--   Variantes ortográficas "Brasil" o "Brazil"
-
--   Palabras con terminaciones específicas (DAE, NAE, etc.)
-
--   Fechas
-
--   Correos electrónicos
-
-## Más posibilidades
-
--   Códigos postales
-
--   Números entre paréntesis
-
--   Usuarios de Twitter/X (comienzan con \@, sin espacios ni símbolos, \<16 caracteres)
-
--   Palabras en MAYÚSCULA
-
-## Metacaracteres
-
-Un pequeño subconjunto de caracteres nos ayudan a describir patrones más complejos porque tienen comportamientos especiales y no se buscan solo a sí mismos.
-
-Cuando aparecen en una E.R., se interpretan de una manera especial.
-
-Incluyen: [\[\]\^\$.\|?\*+()]{style="color: orange"}, que están apartados para fines especiales
-
-## Comodines
-
-Para empatar caracteres desconocidos
-
-**`.`** empata cualquier caracter una vez
-
-</br> [m..l]{style="color: orange"} empata "[miel]{style="background-color: yellow"}" pero no "miguel"
-
-## Conjuntos de caracteres
-
-Empatan uno o más caracteres especificados con corchetes
-
-`[ ]` para buscar conjuntos de caracteres
-
-</br>
-
-[\[mr\]ata]{style="color: orange"} empata "[mata]{style="background-color: yellow"}", y "[rata]{style="background-color: yellow"}", pero no "bata"
-
-## Negando conjuntos de caracteres
-
-[\[\^\]]{style="color: orange"}    excluye conjuntos de caracteres
-
-> `^` va al principio del conjunto
-
-</br>
-
-[\[\^aoeiou\]]{style="color: orange"} solo empata consonantes
-
-[\[\^R\]]{style="color: orange"} todo excepto R mayúscula
-
-## Intervalos de caracteres
-
-Indican una serie de caracteres contiguos dentro de un conjunto de caracteres
-
-El guión [-]{style="color: orange"} dentro de un conjunto de caracteres sirve para abreviar secuencias alfabéticas o numéricas
-
-[\[A-D\]]{style="color: orange"} cualquier letra mayúscula entre A y D
-
-[\[5-8\]]{style="color: orange"} cualquier dígito entre 5 y 8
-
-[\[A-Za-z\]]{style="color: orange"} cualquier letra
-
-## Aserciones de tipo límite (anchors)
-
-Especifican la posición relativa del patrón que estamos buscando
-
-[ \^ ]{style="color: orange"}    comienza con\
-[ \$ ]{style="color: orange"}    termina con\
-
-</br>
-
-[  \^mil]{style="color: orange"} empata "[mil]{style="background-color: yellow"}itar" pero no "familia"
-
-[ing\$]{style="color: orange"} empata "Bo[ing]{style="background-color: yellow"}" pero no "ingeniero"
-
-## Ejercicio {background-color="#ffd6ff"}
-
--   ¿Cómo podemos empatar **mano**, **milo**, **malo**, y **mito**?
-
--   ¿Cómo podemos empatar Cristian, Kristian, y Crystian usando conjuntos de caracteres?
-
-## Práctica {background-color="#ffd6ff"}
-
--   ¿Cuál de estas E.R. empata **`mila`** al principio de una cadena de texto?
-
-::: columns
-::: {.column width="25"}
-a)  \^mila
-:::
-
-::: {.column width="25"}
-b)  mila
-:::
-
-::: {.column width="25"}
-c)  \$mila
-:::
-
-::: {.column width="25"}
-d)  mila\^
-:::
-:::
-
-## Cuantificadores
-
-Indican el número de caracteres o expresiones que deben coincidir
-
-[ ? ]{style="color: orange"}   Cero o una\
-[ \* ]{style="color: orange"}   Cero o más\
-[ + ]{style="color: orange"}   Una o más\
-[ {}]{style="color: orange"}    *n* veces
-
-> los cuantificadores aplican al caracter que tienen a su izquierda
-
-## Cuantificadores
-
-[Isabell?a]{style="color: orange; font-weight: bold"} coincide con "[Isabella]{style="background-color: yellow"}" y con "[Isabela]{style="background-color: yellow"}"
-
-> 0 o 1
-
-[go\*l!]{style="color: orange; font-weight: bold"} coincide con: "[gl!]{style="background-color: yellow"}", "[gol!]{style="background-color: yellow"}", "[gooool!]{style="background-color: yellow"}", "[goooooooool!]{style="background-color: yellow"}", etc.
-
-> 0 o más
-
-## Cuantificadores
-
-[no+]{style="color: orange; font-weight: bold"} empata "[no]{style="background-color: yellow"}", "[nooo]{style="background-color: yellow"}", "[noooooo]{style="background-color: yellow"}", etc, pero no "n"
-
-> una o más
-
-[a{2}]{style="color: orange; font-weight: bold"} empata "port[aa]{style="background-color: yellow"}viones" pero no "portaviones"
-
-> n veces
-
-## Ejercicio {background-color="#ffd6ff"}
-
--   Empatar **mira**, **miiiiiiiiiira**, y **miiira**
-
--   Empatar Computador, computadora, computador, y Computadora (usar juegos de caracteres y cuantificadores)
-
-## Coincidencias alternativas
-
-Separa alternativas de búsqueda
-
-[ \| ]{style="color: orange; font-weight: bold"}    una u otra opción
-
-</br>
-
-[Bra(s\|z)il]{style="color: orange; font-weight: bold"} encuentra Brasil y Brazil.
-
-> las dos alternativas van entre paréntesis
-
-## Construcciones especiales y escapes
-
-[ \\ ]{style="color: orange; font-weight: bold"}    indica una construcción especial abreviada o sirve para poder usar caracteres especiales como literales
-
-## Escapes
-
-[qué\\\\?]{style="color: orange; font-weight: bold"} para poder buscar el signo de interrogación literalmente
-
-> en R la diagonal también se tiene que escapar
-
-*Los metacaracteres dentro de conjuntos de caracteres se vuelven literales*
-
-## Construcciones especiales
-
-Para abreviar conjuntos de caracteres
-
-[\\w]{style="color: orange; font-weight: bold"}  letras, guión bajo, y números
-
-[\\d]{style="color: orange; font-weight: bold"}  dígitos
-
-[\\t]{style="color: orange; font-weight: bold"}  tabulación
-
-[\\n]{style="color: orange; font-weight: bold"}   saltos de línea
-
-[\\s]{style="color: orange; font-weight: bold"}  espacio
-
-[\\b]{style="color: orange; font-weight: bold"}  límite de palabra
-
-## Límites de palabra
-
-[\\b]{style="color: orange; font-weight: bold"}
-
-Marca la posición en la que un caracter de palabra (letras, números, guión bajo) no va seguido o precedido por otro caracter de palabra (espacios o el inicio o fin de la cadena)
-
-El límite de una palabra encontrada no se incluye en el resultado
-
-## Límites de palabra
-
-**Antes de**
-
-[\\bmila]{style="color: orange; font-weight: bold"} encuentra "la [mila]{style="background-color: yellow"}nesa" pero no "Camila"
-
-**Después de**
-
-[arte\\b]{style="color: orange; font-weight: bold"} encuentra "salud[arte]{style="background-color: yellow"} hoy" pero no "artesanal"
-
-## Ejercicio {background-color="#ffd6ff"}
-
--   Con la entrada "Los tacos de canasta en Tabasco se abarrotaron"
-
-Expliquemos qué pasa cuando usamos estas tres E.R.
-
-a)  ta\
-b)  \\bta\
-c)  ta\\b
-
-## Combinaciones
-
-[\^can.\*]{style="color: orange; font-weight: bold"} empata "[can]{style="background-color: yellow"}", "[can]{style="background-color: yellow"}ino", "[can]{style="background-color: yellow"}asta", y "[can]{style="background-color: yellow"}adiense"
-
-[A.\*n]{style="color: orange; font-weight: bold"} cualquier cadena de texto que empiece con "**A**" y termine con "**n**"
-
-[\^\[a-z\]+\$]{style="color: orange; font-weight: bold"} solo minúsculas
-
-[\\w+\\b\$]{style="color: orange; font-weight: bold"} la última palabra en una cadena
-
-"12 de [marzo]{style="background-color: yellow"}"\
-"Liomys [pictus]{style="background-color: yellow"}"
-
-[\^\\w+\\b]{style="color: orange; font-weight: bold"} primera palabra "[12]{style="background-color: yellow"} de marzo"\
-"[Liomys]{style="background-color: yellow"} pictus"
-
-## Ejercicio {background-color="#ffd6ff"}
-
-Empatemos:
-
-1.  Oraciones que terminen con un punto
-2.  Cuatro dígitos
-3.  Cadenas sin la letra ***s***
-
-# Expresiones regulares en R
-
-## 
-
-Podemos crear subconjuntos de filas y columnas mediante coincidencias entre expresiones regulares y nombres de variables o con sus valores
-
-## 
-
-![](imgs/regexsubconjuntos.png){fig-align="center"}
-
-## 📦 `stringr`
-
-Funciones para manipular cadenas de texto
-
--   Los nombres de las funciones tienen el prefijo **`str_`**
-
--   El primer argumento de sus funciones es la cadena de texto de interés
-
--   Función **`regex()`** para modificar el comportamiento de búsqueda
-
-`ignore_case=TRUE` para dejar de distinguir entre mayúsculas y minúsculas
-
-## `stringr` - ejemplos
-
-**¿Coincidencias?**
-
+##
 ```{r}
-#| output-location: slide
-str_detect(string = c("catalogo", "aguacate",
-"pera"),
- pattern = "cat")
+especies <- c("anthonyi", "daviesi", "jonesi")
+# Reemplazar 'i' final por 'ii'
+stringr::str_replace(especies, "i$", "ii")
 ```
 
-Regresa un vector V/F de la misma longitud que la entrada
+## Regex con `dplyr`
 
-## `stringr` - más ejemplos
-
-**¿Cuáles elementos coinciden?**
-
-```{r}
-#| output-location: slide
-str_which(string = c("catalogo", "aguacate", "pera"), pattern = "cat")
-```
-
-Regresa el índice de los elementos con coincidencias
-
-## `stringr` - reemplazar coincidencias
+-   `matches()`: Seleccionar columnas cuyo nombre coincida con un patrón.
+-   `filter()` + `str_detect()`: Filtrar filas por contenido de texto.
 
 ```{r}
-
-str_replace(string = c("anthonyi", "daviesi", "jonesi"),
-            pattern = "i$",
-            replacement = "ii")
-```
-
-## `stringr` - función `regex()`
-
-**Sin distinción entre MAYUSCULAS y minúsculas**
-
-```{r}
-
-
-str_replace(string = c("anthonyI", "daviesi", "jonesi"),
-            pattern = regex("i$",ignore_case = TRUE),
-            replacement = "ii")
-```
-
-## Ejercicio - `stringr` {background-color="#ffd6ff"}
-
-Probemos estas expresiones contra este vector usando `str_detect`. Explicar las coincidencias.
-
-E. regulares
-
-1.  \^ave\
-2.  \^\[a-z\]+\$\
-3.  \\d
-
-```{r}
-#| echo: true
 #| eval: false
+# Columnas que contienen 'largo'
+pinguinos %>% select(matches("largo"))
 
-vec_texto <- c("Aves y reptiles","hamburguesa",
-                 "34","(34)","rAta","avenida",
-                 "2011_julio","inecol","INECOL")
+# Países que contienen 'z'
+paises %>% filter(stringr::str_detect(pais, "z"))
 ```
 
-## Manipulando datos con expresiones regulares
+## Recursos y Práctica {background-color="#ffd6ff"}
 
-</br>
+-   Probar en: [regex101.com](https://regex101.com/) o [rubular.com](https://rubular.com/)
 
-Elegir/descartar filas y columnas
+**Ejercicio rápido:**
 
-Reemplazar o modificar valores
+1. ¿Cómo empatamos cualquier palabra que empiece con "A"?  
+2. ¿Cómo encontramos un número de exactamente 4 dígitos?  
+3. ¿Cómo detectamos si una cadena termina en punto?  
 
-Extraer o borrar partes de cadenas de texto
-
-## Expresiones regulares y 📦 `dplyr`
-
-</br>
-
-La función auxiliar **`matches()`** acepta expresiones regulares para seleccionar variables que contengan coincidencias
-
-## Seleccionando variables
-
-Datos de pingüinos `pinguinos` de 📦 `datos`
-
-::: med-code
-```{r}
-library(datos)
-names(pinguinos)
-```
-:::
-
-## 
-
-::: med-code
-```{r}
-pinguinos %>% 
-  select(especie, matches("larg")) %>% 
-  sample_n(3)
-```
-:::
-
-## Filtrando filas
-
-Datos de países del paquete 📦 `datos`
-
-```{r, eval=FALSE}
-library(datos)
-data(paises)
-```
-
-::: med-code
-```{r}
-paises %>% select(pais,continente) %>% 
-  sample_n(4)
-```
-:::
-
-## Coincidencias en filas
-
-Países con "z" en su nombre
-
-```{r}
-#| eval: true
-#| echo: true
-paises %>% select(pais,continente) %>% 
-  filter(str_detect(pais,"z")) %>% 
-  distinct()
-```
 
 # Información repetida
 

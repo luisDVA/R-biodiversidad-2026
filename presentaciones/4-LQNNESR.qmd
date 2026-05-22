@@ -63,39 +63,6 @@ library(ggplot2)
 
 -   Disposición de los paneles
 
-## Personalizando el arranque en R
-
-El archivo `.Rprofile` file contiene código que se ejecuta cada que arrancamos R.
-
-</br> [`.Rprofile` generalmente vive en nuestro directorio de inicio]{style="text-align: center;"}  
-
-Podemos modificarlo con `usethis::edit_r_profile()`
-
-*Usar con precaución para no perder reproducibilidad*
-
-:::{.rightref}
-:::{.refbox}
-R Startup\
-[What they forgot to teach you about R](https://rstats.wtf/r-startup.html%5D)
-:::
-:::
-
-## Arranque
-
-- Saludos o recordatorios con `cowsay`
-
-```{r}
-#| eval: false
-#| echo: true
-
-#>  ----- 
-#> No olviden tomar mucha agua 
-#>  ------ 
-#>     \   
-#>      \
-#>   ><((((º>  ><((((º>  ><((((º>  ><((((º>  ><((((º>
-#>       
-```
 
 
 # Iteración 
