@@ -46,21 +46,21 @@
     "href": "materiales.html",
     "title": "Materiales del curso",
     "section": "",
-    "text": "Descargar todos los archivos (datos y scripts) para los ejercicios y ejemplos del curso:\nArchivos para el curso\nDatos automatización"
+    "text": "Descargar todos los archivos (datos y scripts) para los ejercicios y ejemplos del curso:\nArchivos para el curso"
   },
   {
     "objectID": "materiales.html#datos",
     "href": "materiales.html#datos",
     "title": "Materiales del curso",
     "section": "",
-    "text": "Descargar todos los archivos (datos y scripts) para los ejercicios y ejemplos del curso:\nArchivos para el curso\nDatos automatización"
+    "text": "Descargar todos los archivos (datos y scripts) para los ejercicios y ejemplos del curso:\nArchivos para el curso"
   },
   {
     "objectID": "materiales.html#presentaciones",
     "href": "materiales.html#presentaciones",
     "title": "Materiales del curso",
     "section": "Presentaciones",
-    "text": "Presentaciones\nEstas presentaciones en formato web cuentan con un índice de contenidos interactivo (botón en la esquina inferior izquierda).\n\nLunes\nFlujos de Trabajo y Organización de Proyectos\nExploración de datos\nManipulación y Limpieza de datos - I\n\n\nMartes\nManipulación y Limpieza de datos - II\n\n\nMiércoles\nVisualización de Datos\n\n\nJueves\nLo que Nunca nos Enseñaron sobre R\nAutomatización y funciones\n\n\n\nViernes\nDistribuciones Geográficas\nRiqueza de Especies\nMapas Bivariados\nFilogenias"
+    "text": "Presentaciones\nEstas presentaciones en formato web cuentan con un índice de contenidos interactivo (botón en la esquina inferior izquierda).\n\nLunes\nFlujos de Trabajo y Organización de Proyectos\nEjercicio de arranque\nExploración de datos\nManipulación y Limpieza de datos - I\n\n\nMartes\nManipulación y Limpieza de datos - II\n\n\nMiércoles\n\n\n\nJueves\n\n\n\n\n\nViernes"
   },
   {
     "objectID": "presentaciones/5-gradiente_riqueza.html",
@@ -1264,7 +1264,7 @@
     "href": "presentaciones/1-flujos_trabajo.html#qué-es",
     "title": "Flujos de trabajo y análisis",
     "section": "¿Qué es ?",
-    "text": "¿Qué es ?\n✍️Software\n. . .\n¿Dialecto de S?\n¿Paquete estadístico?\n¿RStudio?\n¿Empresa?\n¿Lenguaje de programación?\n¿Dispositivo gráfico?"
+    "text": "¿Qué es ?\n✍️Software\n\n¿Dialecto de S?\n¿Paquete estadístico?\n¿RStudio?\n¿Empresa?\n¿Lenguaje de programación?\n¿Dispositivo gráfico?"
   },
   {
     "objectID": "presentaciones/1-flujos_trabajo.html#section-1",
@@ -1383,28 +1383,28 @@
     "href": "presentaciones/1-flujos_trabajo.html#nombres-1",
     "title": "Flujos de trabajo y análisis",
     "section": "Nombres",
-    "text": "Nombres\n\n\n\nOK\nmax_temp \n prec_min_usd\ntemp_mensual\n\n\n\nNo tanto\ntemperatura_maximaC2014\nmax\ntemp\n'Precio Mínimo ($) USD'\n'Temperatura/Mes (°F)'\n\n\n\n\n\n\nJenny Bryan (2015)\nNaming Things"
+    "text": "Nombres\n\n\nOK\nmax_temp \n prec_min_usd\ntemp_mensual\n\nNo tanto\ntemperatura_maximaC2014\nmax\ntemp\n'Precio Mínimo ($) USD'\n'Temperatura/Mes (°F)'\n\n\n\n\nJenny Bryan (2015)\nNaming Things"
   },
   {
     "objectID": "presentaciones/1-flujos_trabajo.html#nombres-2",
     "href": "presentaciones/1-flujos_trabajo.html#nombres-2",
     "title": "Flujos de trabajo y análisis",
     "section": "Nombres",
-    "text": "Nombres\n\n\n\nOK\n01_factura-marzo2023.pdf\n02_factura-julio2023.pdf\nms_helechos_20210412.docx\n\n\n\nNo tanto\ndescarga5462.pdf\njuliocompraluis.pdf\nborrador.docx\n\n\n\n\nEn R los nombres válidos solo pueden llevar letras, números, puntos, y guiones; no pueden comenzar con números"
+    "text": "Nombres\n\n\nOK\n01_factura-marzo2023.pdf\n02_factura-julio2023.pdf\nms_helechos_20210412.docx\n\nNo tanto\ndescarga5462.pdf\njuliocompraluis.pdf\nborrador.docx\n\n\nEn R los nombres válidos solo pueden llevar letras, números, puntos, y guiones; no pueden comenzar con números"
   },
   {
     "objectID": "presentaciones/1-flujos_trabajo.html#esquemas-de-mayúsculasminúsculas-y-espacios",
     "href": "presentaciones/1-flujos_trabajo.html#esquemas-de-mayúsculasminúsculas-y-espacios",
     "title": "Flujos de trabajo y análisis",
     "section": "Esquemas de mayúsculas/minúsculas y espacios",
-    "text": "Esquemas de mayúsculas/minúsculas y espacios\n\ncamelCase - la segunda palabra en adelante con mayúscula, sin espacios\nsnake_case - solo minúsculas, guión bajo entre palabras\nslug-case - solo minúsculas, guión entre palabras\n\n Title Case - Mayúsculas excepto en artículos, con espacios\nSentence case - Primera palabra con mayúsculas, con espacios   Podemos transformar cadenas de texto de un esquema a otro con el paquete 📦snakecase"
+    "text": "Esquemas de mayúsculas/minúsculas y espacios\n\ncamelCase - la segunda palabra en adelante con mayúscula, sin espacios\nsnake_case - solo minúsculas, guión bajo entre palabras\nslug-case - solo minúsculas, guión entre palabras"
   },
   {
     "objectID": "presentaciones/1-flujos_trabajo.html#organización-de-proyectos",
     "href": "presentaciones/1-flujos_trabajo.html#organización-de-proyectos",
     "title": "Flujos de trabajo y análisis",
     "section": "Organización de proyectos",
-    "text": "Organización de proyectos\nProyecto: Directorio con todo los archivos relevantes para algún trabajo\n\nSeparar:\n📁 Datos (o código para cargarlos desde fuentes remotas)\n📁 Scripts de análisis y/o visualización\n📁 Salidas (figuras, informes, datos intermedios, etc.)\n\n\n\n\n\n\nJenny Bryan (2017)\nProject-oriented workflow\n\nMaëlle Salmon (2021)\nDraw me a project"
+    "text": "Organización de proyectos\nProyecto: Directorio con todo los archivos relevantes para algún trabajo\nSeparar:\n📁 Datos (o código para cargarlos desde fuentes remotas)\n📁 Scripts de análisis y/o visualización\n📁 Salidas (figuras, informes, datos intermedios, etc.)\n\n\n\n\n\n\nJenny Bryan (2017)\nProject-oriented workflow\n\nMaëlle Salmon (2021)\nDraw me a project"
   },
   {
     "objectID": "presentaciones/1-flujos_trabajo.html#proyectos-en-rstudio",
@@ -1460,7 +1460,7 @@
     "href": "presentaciones/1-flujos_trabajo.html#reiniciar-r",
     "title": "Flujos de trabajo y análisis",
     "section": "¿Reiniciar R?",
-    "text": "¿Reiniciar R?\n\nCtrl+Shift+F10\n(Windows y Linux)\n\n\nCommand+Shift+F10\n(Mac)"
+    "text": "¿Reiniciar R?\nCtrl+Shift+F10\n(Windows y Linux)\nCommand+Shift+F10\n(Mac)"
   },
   {
     "objectID": "presentaciones/1-flujos_trabajo.html#here-y-rutas-relativas",
@@ -1481,7 +1481,7 @@
     "href": "presentaciones/1-flujos_trabajo.html#section-9",
     "title": "Flujos de trabajo y análisis",
     "section": "",
-    "text": "Si la raíz del proyecto es mi-proyecto\n\nhere(\"analisis\",\"script1.R\")\n\nconstruye:\nF:\\PC de Luis\\ruta\\que\\solo\\tengo\\mi-proyecto\\analisis\\script1.R\n\n\nhere() no cambia el directorio de trabajo, solo construye rutas\n here() resuelve cuál es la raíz de un proyecto (i.e. dónde está el archivo .Rproj?) y las rutas son relativas a ésto\n\n\n\nHow to use the here package (2018)"
+    "text": "Si la raíz del proyecto es mi-proyecto\n\nhere(\"analisis\",\"script1.R\")\n\nconstruye:\nF:\\PC de Luis\\ruta\\que\\solo\\tengo\\mi-proyecto\\analisis\\script1.R"
   },
   {
     "objectID": "presentaciones/1-flujos_trabajo.html#importando-archivos-tablas",
@@ -1502,7 +1502,7 @@
     "href": "presentaciones/1-flujos_trabajo.html#section-10",
     "title": "Flujos de trabajo y análisis",
     "section": "",
-    "text": "Construir rutas:\n\n\nlibrary(here)\n\nhere() starts at /home/luisd/Dropbox/darcyDB/PDRF/curso2026\n\nhere(\"carpeta ficticia\",\"subcarpeta\",\"tesis-terminada.doc\")\n\n[1] \"/home/luisd/Dropbox/darcyDB/PDRF/curso2026/carpeta ficticia/subcarpeta/tesis-terminada.doc\""
+    "text": "Construir rutas:\n\n\nlibrary(here)\nhere(\"carpeta ficticia\",\"subcarpeta\",\"tesis-terminada.doc\")\n\n[1] \"/home/luisd/Dropbox/darcyDB/PDRF/curso2026/carpeta ficticia/subcarpeta/tesis-terminada.doc\""
   },
   {
     "objectID": "presentaciones/1-flujos_trabajo.html#readr-y-readxl",
@@ -1516,21 +1516,21 @@
     "href": "presentaciones/1-flujos_trabajo.html#ejercicio-2",
     "title": "Flujos de trabajo y análisis",
     "section": "Ejercicio",
-    "text": "Ejercicio\n\nCrear nuevas carpetas en el directorio del proyecto\n\ndatos\nsalida\nR\n\n\n\nLos paquetes ya instalados se cargan con la función library()\n\nlibrary(fs)"
+    "text": "Ejercicio\n\nCrear nuevas carpetas en el directorio del proyecto\n\ndatos\nsalida\nR\n\n\nLos paquetes ya instalados se cargan con la función library()\n\nlibrary(fs)"
   },
   {
     "objectID": "presentaciones/1-flujos_trabajo.html#hojas-de-cálculo",
     "href": "presentaciones/1-flujos_trabajo.html#hojas-de-cálculo",
     "title": "Flujos de trabajo y análisis",
     "section": "Hojas de cálculo",
-    "text": "Hojas de cálculo\n\n~ 1000,000,000 usuarios a nivel mundial\nFormatos xlsx, xls, ods y en línea (Google Sheets)\n\n\n\n\n\n\nRegistro de préstamos 1593\n\n\n\n\n\n\nVisiCalc\n\n\n\n\n\nPodemos trabajar en R con todos estos formatos"
+    "text": "Hojas de cálculo\n\n~ 1000,000,000 usuarios a nivel mundial\nFormatos xlsx, xls, ods y en línea (Google Sheets)\n\n\n\n\n\n\nRegistro de préstamos 1593\n\n\n\n\n\n\nVisiCalc\n\n\n\n\nPodemos trabajar en R con todos estos formatos"
   },
   {
     "objectID": "presentaciones/1-flujos_trabajo.html#ejercicio-3",
     "href": "presentaciones/1-flujos_trabajo.html#ejercicio-3",
     "title": "Flujos de trabajo y análisis",
     "section": "Ejercicio",
-    "text": "Ejercicio\nCon readxl:\nImportar las hojas del archivo mascoteria.xlsx\n\nArgumentos útiles\n\npath\nsheet\nskip"
+    "text": "Ejercicio\nCon readxl:\nImportar las hojas del archivo mascoteria.xlsx\nArgumentos útiles\n\npath\nsheet\nskip"
   },
   {
     "objectID": "presentaciones/1-flujos_trabajo.html#principios-de-programación-en-r",
@@ -1579,7 +1579,7 @@
     "href": "presentaciones/1-flujos_trabajo.html#creando-objetos",
     "title": "Flujos de trabajo y análisis",
     "section": "Creando objetos",
-    "text": "Creando objetos\n\n#| edit: true\nx &lt;- c(1, 2, 3)\nx\n\nFunción c() para juntar elementos en un vector\n\n#| edit: true\nx &lt;- c(1,2,3)\ny &lt;- c(\"a\",\"G\",\"h\")\nx\ny"
+    "text": "Creando objetos\n\n\n\n\n\n\n\n\nFunción c() para juntar elementos en un vector"
   },
   {
     "objectID": "presentaciones/1-flujos_trabajo.html#los-objetos-tienen-clases",
@@ -1593,7 +1593,7 @@
     "href": "presentaciones/1-flujos_trabajo.html#los-vectores-solo-pueden-tener-objetos-de-la-misma-clase",
     "title": "Flujos de trabajo y análisis",
     "section": "Los vectores solo pueden tener objetos de la misma clase",
-    "text": "Los vectores solo pueden tener objetos de la misma clase\n\n\n#| edit: true\nc(1,\"a\",2)\n\n\nAl combinar caracteres y números hay conversión automática"
+    "text": "Los vectores solo pueden tener objetos de la misma clase\n\n\n\n\n\n\n\n\n\n\nAl combinar caracteres y números hay conversión automática"
   },
   {
     "objectID": "presentaciones/1-flujos_trabajo.html#factores",
@@ -1614,21 +1614,21 @@
     "href": "presentaciones/1-flujos_trabajo.html#dos-o-más-vectores-del-mismo-largo",
     "title": "Flujos de trabajo y análisis",
     "section": "Dos o más vectores del mismo largo…",
-    "text": "Dos o más vectores del mismo largo…\n\n\n\n\n\n\n¡Data frame!\n\nObjeto tabular con filas y columnas\nPuede almacenar objetos de distintas clases en las columnas\nNombres para cada columna"
+    "text": "Dos o más vectores del mismo largo…\n\n\n\n\n\n¡Data frame!\n\nObjeto tabular con filas y columnas\nPuede almacenar objetos de distintas clases en las columnas\nNombres para cada columna"
   },
   {
     "objectID": "presentaciones/1-flujos_trabajo.html#data-frames",
     "href": "presentaciones/1-flujos_trabajo.html#data-frames",
     "title": "Flujos de trabajo y análisis",
     "section": "Data frames",
-    "text": "Data frames\nSe crean importando un archivo tabular o con data.frame()\n\n#| edit: true\nmi_tabla &lt;- \ndata.frame(id=c(\"rana\",\"pez\",\"nutria\",\"gusano\"),\n           ind_g=c(12,15,13,10),\n           listo=c(TRUE,TRUE,FALSE,TRUE))\nmi_tabla"
+    "text": "Data frames\nSe crean importando un archivo tabular o con data.frame()"
   },
   {
     "objectID": "presentaciones/1-flujos_trabajo.html#section-12",
     "href": "presentaciones/1-flujos_trabajo.html#section-12",
     "title": "Flujos de trabajo y análisis",
     "section": "",
-    "text": "Vectores\n\n\n\nListas\n\n\n\n\nTablas"
+    "text": "Vectores\n\nListas\n\n\nTablas"
   },
   {
     "objectID": "presentaciones/2-manipulacion_y_limpieza.html#stringr---ejemplos-output",
@@ -1887,7 +1887,7 @@
     "href": "presentaciones/1.1-exploracion_rapida_datos.html#section-8",
     "title": "Exploración rápida de datos",
     "section": "",
-    "text": "Utilizaremos el paquete nycflights13, que contiene datos de 336,776 vuelos.\nEs un dataset perfecto para practicar exploración rápida por su tamaño y diversidad.\n\n\n# install.packages(\"nycflights13\")\nlibrary(nycflights13)\ndata(flights)"
+    "text": "library(visdat)\nvis_dat(penguins)"
   },
   {
     "objectID": "presentaciones/1.1-exploracion_rapida_datos.html#función-adicional-adorn_ns",
@@ -4449,7 +4449,7 @@
     "href": "presentaciones/1-flujos_trabajo.html#rutas-de-archivo",
     "title": "Flujos de trabajo y análisis",
     "section": "Rutas de archivo",
-    "text": "Rutas de archivo\nAl compartir código y datos solamente 1 de cada 3 es reproducible1.\n\nLo primero que se rompe casi siempre son las rutas\nhere para ejercicios del curso aún cuando trabajar en proyectos lo haga redundante"
+    "text": "Rutas de archivo\nAl compartir código y datos solamente 1 de cada 3 es reproducible1.\n\nLo primero que se rompe casi siempre son las rutas\nhere para ejercicios del curso aún cuando trabajar en proyectos lo haga redundante\n\nhttps://blogs.worldbank.org/en/impactevaluations/how-make-sure-your-research-paper-reproducible-evidence-55-papers-guest-blog-post,https://www.nature.com/articles/d41586-018-02108-9"
   },
   {
     "objectID": "presentaciones/2-manipulacion_y_limpieza.html#filter_out",
@@ -4575,14 +4575,14 @@
     "href": "presentaciones/ejercicios_wrangling_asteracea.html#introducción",
     "title": "Asteraceae de México",
     "section": "Introducción",
-    "text": "Introducción\nEn esta práctica utilizaremos dos conjuntos de datos relacionados con las Asteráceas de México:\nFuente: CONABIO - Las Asteráceas de México\n\narchivos-ej/asteraceaMX.csv: Datos de ocurrencias (colecciones).\narchivos-ej/asteraceaTaxonomia.csv: Información taxonómica de las especies.\n\nObjetivo: Unir las tablas y realizar análisis exploratorios."
+    "text": "Introducción\nDatos reales de biodiversidad, del proyecto de CONABIO La familia Asteraceae en México\nDos archivos en la carpeta archivos-ej/:\n\nasteraceaMX.csv: Registros de colecta (ocurrencias).\nasteraceaTaxonomia.csv: Información taxonómica.\n\nDinámica: Discutir cada reto, proponer soluciones"
   },
   {
     "objectID": "presentaciones/ejercicios_wrangling_asteracea.html#preparación",
     "href": "presentaciones/ejercicios_wrangling_asteracea.html#preparación",
     "title": "Asteraceae de México",
     "section": "Preparación",
-    "text": "Preparación\nCarguemos las librerías y los datos iniciales.\n\nlibrary(tidyverse)\nlibrary(lubridate)\n\nocc &lt;- read_csv(\"../archivos-ej/asteraceaMX.csv\")\ntax &lt;- read_csv(\"../archivos-ej/asteraceaTaxonomia.csv\")"
+    "text": "Preparación\n\nExplorar los archivos"
   },
   {
     "objectID": "presentaciones/ejercicios_wrangling_asteracea.html#ejercicio-1-unir-las-tablas",
@@ -4666,7 +4666,7 @@
     "href": "presentaciones/1.1-exploracion_rapida_datos.html#reto-de-exploración-1",
     "title": "Exploración rápida de datos",
     "section": "Reto de exploración",
-    "text": "Reto de exploración\n\nUse tabyl() para encontrar:\n\n¿Cuántos vuelos salieron de cada aeropuerto de origen (origin)?\n¿Qué aerolínea (carrier) domina los cielos de NYC? (Use adorn_percentages()).\n\nOpcional: Use vis_miss() sobre una muestra de 1000 filas para ver el patrón de NAs."
+    "text": "Reto de exploración\n\nUse tabyl() para encontrar:\n\n¿Cuántos vuelos salieron de cada aeropuerto de origen (origin)?\n¿Qué aerolínea (carrier) domina los cielos de NYC?.\n\nOpcional: Use vis_miss() sobre una muestra de 1000 filas para ver el patrón de NAs."
   },
   {
     "objectID": "presentaciones/1.1-exploracion_rapida_datos.html#exploración-de-datos-1",
@@ -4701,7 +4701,7 @@
     "href": "presentaciones/1-flujos_trabajo.html#section",
     "title": "Flujos de trabajo y análisis",
     "section": "",
-    "text": "¿Para qué tareas ya usas R?\n¿Qué te gustaría aprender a hacer con R?"
+    "text": "Pizarrón\n\n¿Para qué tareas ya usas R?\n¿Cuáles paquetes o herramientas usas más seguido?\n¿Qué te gustaría aprender a hacer con R?"
   },
   {
     "objectID": "presentaciones/1-flujos_trabajo.html#asteráceas-de-méxico",
@@ -4751,5 +4751,180 @@
     "title": "Práctica: Automatización",
     "section": "",
     "text": "Permite facilitar y optimizar diversas tareas internas\n\nResumir código\nProductividad\nEvitar errores\nCompartir código"
+  },
+  {
+    "objectID": "presentaciones/ejercicios_wrangling_asteracea.html#reto-1-integración-de-datos",
+    "href": "presentaciones/ejercicios_wrangling_asteracea.html#reto-1-integración-de-datos",
+    "title": "Asteraceae de México",
+    "section": "Reto 1: Integración de datos",
+    "text": "Reto 1: Integración de datos\n¿Cómo podemos tener toda la información en una sola tabla?\nNecesitamos unir las ocurrencias con su información taxonómica.\n\n¿Qué columna tienen en común?\n¡Cuidado! ¿Hay nombres repetidos en la tabla de taxonomía?\n¿Qué tipo de join es el más adecuado para no perder registros de colecta?"
+  },
+  {
+    "objectID": "presentaciones/ejercicios_wrangling_asteracea.html#reto-2-el-género-dominante",
+    "href": "presentaciones/ejercicios_wrangling_asteracea.html#reto-2-el-género-dominante",
+    "title": "Asteraceae de México",
+    "section": "Reto 2: El género dominante",
+    "text": "Reto 2: El género dominante\n¿Cuáles son los grupos más frecuentes en las colecciones?\nA partir del nombre científico (ej. Lepidonia mexicana), necesitamos extraer solo el género.\n\n¿Qué función de stringr nos sirve para obtener la primera palabra?\nUna vez extraído, ¿cómo contamos la frecuencia de cada uno?\nMuestra el “Top 10”."
+  },
+  {
+    "objectID": "presentaciones/ejercicios_wrangling_asteracea.html#reto-3-gradientes-de-elevación",
+    "href": "presentaciones/ejercicios_wrangling_asteracea.html#reto-3-gradientes-de-elevación",
+    "title": "Asteraceae de México",
+    "section": "Reto 3: Gradientes de elevación",
+    "text": "Reto 3: Gradientes de elevación\n¿A qué altura viven las diferentes subfamilias?\nQueremos conocer el promedio de la elevación mínima (minimumElevationInMeters) para cada subfamilia de Asteráceas.\n\n¿Cómo agrupamos los datos?\n¿Qué hacemos con los valores faltantes (NA)?\n¿Cuál es la subfamilia que alcanza mayores altitudes en promedio?"
+  },
+  {
+    "objectID": "presentaciones/ejercicios_wrangling_asteracea.html#reto-4-geografía-de-la-riqueza",
+    "href": "presentaciones/ejercicios_wrangling_asteracea.html#reto-4-geografía-de-la-riqueza",
+    "title": "Asteraceae de México",
+    "section": "Reto 4: Geografía de la riqueza",
+    "text": "Reto 4: Geografía de la riqueza\n¿Dónde se concentra la diversidad?\nCalcula cuántas especies diferentes hay en cada estado (stateProvince).\n\n¿Cuál es la diferencia entre contar registros (n()) y contar especies (n_distinct())?\nOrdena los estados de mayor a menor riqueza."
+  },
+  {
+    "objectID": "presentaciones/ejercicios_wrangling_asteracea.html#reto-5-arqueología-de-datos-años-80",
+    "href": "presentaciones/ejercicios_wrangling_asteracea.html#reto-5-arqueología-de-datos-años-80",
+    "title": "Asteraceae de México",
+    "section": "Reto 5: Arqueología de datos (años 80)",
+    "text": "Reto 5: Arqueología de datos (años 80)\n¿Qué se colectaba durante la década de los 80?\nFiltra la base de datos para quedarnos solo con los registros de 1980 a 1989.\n\nObserva la columna eventDate: ¿tiene un formato amigable?\n¿Cómo podemos extraer el año si los datos vienen como “DD-MM-YYYY”?\n¿Cuántos registros logramos rescatar de esa década?"
+  },
+  {
+    "objectID": "presentaciones/ejercicios_wrangling_asteracea.html#reto-6-búsqueda-específica",
+    "href": "presentaciones/ejercicios_wrangling_asteracea.html#reto-6-búsqueda-específica",
+    "title": "Asteraceae de México",
+    "section": "Reto 6: Búsqueda específica",
+    "text": "Reto 6: Búsqueda específica\nExplorando el género Lepidonia\nImagina que eres especialista en este género y quieres saber dónde buscarlo.\n\nFiltra todos los registros cuyo nombre científico empiece con “Lepidonia”.\n¿En qué estados de la república se ha encontrado?\n¿En cuál es más abundante según las colecciones?"
+  },
+  {
+    "objectID": "presentaciones/ejercicios_wrangling_asteracea.html#a-resolver",
+    "href": "presentaciones/ejercicios_wrangling_asteracea.html#a-resolver",
+    "title": "Asteraceae de México",
+    "section": "¡A resolver!",
+    "text": "¡A resolver!\nVamos a trabajar en estas soluciones. Al finalizar, ejecutaremos el script archivos-ej/R/soluciones_asteracea.R para comparar resultados."
+  },
+  {
+    "objectID": "presentaciones/ejercicios_wrangling_asteracea.html#integración-de-datos",
+    "href": "presentaciones/ejercicios_wrangling_asteracea.html#integración-de-datos",
+    "title": "Asteraceae de México",
+    "section": "1: Integración de datos",
+    "text": "1: Integración de datos\n** ¿Necesitamos toda la información en una sola tabla?**\n\n¿Qué columna tienen en común?\n¿Hay filas repetidas en la tabla de taxonomía?"
+  },
+  {
+    "objectID": "presentaciones/ejercicios_wrangling_asteracea.html#género-dominante",
+    "href": "presentaciones/ejercicios_wrangling_asteracea.html#género-dominante",
+    "title": "Asteraceae de México",
+    "section": "2: Género dominante",
+    "text": "2: Género dominante\n¿Cuáles géneros de estas plantas aparecen más en estos datos?\n\nextraer solo el género a partir del nombre científico\nUna vez extraído, ¿cómo contamos la frecuencia de cada uno?\nReportemos el “Top 10”."
+  },
+  {
+    "objectID": "presentaciones/ejercicios_wrangling_asteracea.html#gradientes-de-elevación",
+    "href": "presentaciones/ejercicios_wrangling_asteracea.html#gradientes-de-elevación",
+    "title": "Asteraceae de México",
+    "section": "3: Gradientes de elevación",
+    "text": "3: Gradientes de elevación\n¿A qué elevación viven las diferentes subfamilias?\nNos interesa el promedio de la elevación mínima (minimumElevationInMeters) para cada subfamilia de Asteraceae.\n\n¿Cómo agrupamos los datos?\n¿Qué hacemos con los valores faltantes?\n¿Cuál es la subfamilia que alcanza mayores altitudes en promedio?"
+  },
+  {
+    "objectID": "presentaciones/ejercicios_wrangling_asteracea.html#geografía-y-riqueza",
+    "href": "presentaciones/ejercicios_wrangling_asteracea.html#geografía-y-riqueza",
+    "title": "Asteraceae de México",
+    "section": "4: Geografía y riqueza",
+    "text": "4: Geografía y riqueza\n¿Dónde se concentra la diversidad?\nCalcular la riqueza de especies de cada estado (stateProvince)\n\n¿Cuál es la diferencia entre contar registros y contar especies?\nCrear una tabla ordenando los estados de mayor a menor riqueza."
+  },
+  {
+    "objectID": "presentaciones/ejercicios_wrangling_asteracea.html#dimensión-temporal",
+    "href": "presentaciones/ejercicios_wrangling_asteracea.html#dimensión-temporal",
+    "title": "Asteraceae de México",
+    "section": "5: Dimensión temporal",
+    "text": "5: Dimensión temporal\nFiltrar la base de datos para quedarnos solo con los registros con fecha de colecta entre 1980 y 1989. Columna eventDate\n\n¿Cómo podemos extraer el año si los datos vienen como “DD-MM-YYYY”?\n¿Cuántos registros logramos rescatar de esta década?"
+  },
+  {
+    "objectID": "presentaciones/ejercicios_wrangling_asteracea.html#género-lepidonia",
+    "href": "presentaciones/ejercicios_wrangling_asteracea.html#género-lepidonia",
+    "title": "Asteraceae de México",
+    "section": "6: Género Lepidonia",
+    "text": "6: Género Lepidonia\nPreparandpo salidas a campo:\n\nFiltrar todos los registros cuyo nombre científico empiece con “Lepidonia”.\n¿En qué estados de la república se ha encontrado?\n¿En cuál es hay mas registros?"
+  },
+  {
+    "objectID": "presentaciones/ejercicios_wrangling_asteracea.html#soluciones",
+    "href": "presentaciones/ejercicios_wrangling_asteracea.html#soluciones",
+    "title": "Asteraceae de México",
+    "section": "Soluciones",
+    "text": "Soluciones\nEl script archivos-ej/R/soluciones_asteracea.R tiene algunas soluciones."
+  },
+  {
+    "objectID": "presentaciones/1.01-ejercicios_asteraceae.html",
+    "href": "presentaciones/1.01-ejercicios_asteraceae.html",
+    "title": "Asteraceae de México",
+    "section": "",
+    "text": "Datos reales de biodiversidad, del proyecto de CONABIO La familia Asteraceae en México\nDos archivos en la carpeta archivos-ej/:\n\nasteraceaMX.csv: Registros de colecta (ocurrencias).\nasteraceaTaxonomia.csv: Información taxonómica.\n\nDinámica: Discutir cada reto, proponer soluciones"
+  },
+  {
+    "objectID": "presentaciones/1.01-ejercicios_asteraceae.html#introducción",
+    "href": "presentaciones/1.01-ejercicios_asteraceae.html#introducción",
+    "title": "Asteraceae de México",
+    "section": "Introducción",
+    "text": "Introducción\nDatos reales de biodiversidad, del proyecto de CONABIO La familia Asteraceae en México\nDos archivos en la carpeta archivos-ej/:\n\nasteraceaMX.csv: Registros de colecta (ocurrencias).\nasteraceaTaxonomia.csv: Información taxonómica.\n\nDinámica: Discutir cada reto, proponer soluciones"
+  },
+  {
+    "objectID": "presentaciones/1.01-ejercicios_asteraceae.html#preparación",
+    "href": "presentaciones/1.01-ejercicios_asteraceae.html#preparación",
+    "title": "Asteraceae de México",
+    "section": "Preparación",
+    "text": "Preparación\n\nExplorar los archivos"
+  },
+  {
+    "objectID": "presentaciones/1.01-ejercicios_asteraceae.html#integración-de-datos",
+    "href": "presentaciones/1.01-ejercicios_asteraceae.html#integración-de-datos",
+    "title": "Asteraceae de México",
+    "section": "1: Integración de datos",
+    "text": "1: Integración de datos\n¿Necesitamos toda la información en una sola tabla?\n\n¿Qué columna tienen en común?\n¿Hay filas repetidas en la tabla de taxonomía?"
+  },
+  {
+    "objectID": "presentaciones/1.01-ejercicios_asteraceae.html#género-dominante",
+    "href": "presentaciones/1.01-ejercicios_asteraceae.html#género-dominante",
+    "title": "Asteraceae de México",
+    "section": "2: Género dominante",
+    "text": "2: Género dominante\n¿Cuáles géneros de estas plantas aparecen más en estos datos?\n\nExtraer solo el género a partir del nombre científico\nUna vez extraído, ¿cómo contamos la frecuencia de cada uno?\nReportemos el “Top 10”."
+  },
+  {
+    "objectID": "presentaciones/1.01-ejercicios_asteraceae.html#gradientes-de-elevación",
+    "href": "presentaciones/1.01-ejercicios_asteraceae.html#gradientes-de-elevación",
+    "title": "Asteraceae de México",
+    "section": "3: Gradientes de elevación",
+    "text": "3: Gradientes de elevación\n¿A qué elevación viven las diferentes subfamilias?\nNos interesa el promedio de la elevación mínima (minimumElevationInMeters) para cada subfamilia de Asteraceae.\n\n¿Cómo agrupamos los datos?\n¿Qué hacemos con los valores faltantes?\n¿Cuál es la subfamilia que alcanza mayores altitudes en promedio?"
+  },
+  {
+    "objectID": "presentaciones/1.01-ejercicios_asteraceae.html#geografía-y-riqueza",
+    "href": "presentaciones/1.01-ejercicios_asteraceae.html#geografía-y-riqueza",
+    "title": "Asteraceae de México",
+    "section": "4: Geografía y riqueza",
+    "text": "4: Geografía y riqueza\n¿Dónde se concentra la diversidad?\nCalcular la riqueza de especies de cada estado (stateProvince)\n\n¿Cuál es la diferencia entre contar registros y contar especies?\nCrear una tabla ordenando los estados de mayor a menor riqueza."
+  },
+  {
+    "objectID": "presentaciones/1.01-ejercicios_asteraceae.html#dimensión-temporal",
+    "href": "presentaciones/1.01-ejercicios_asteraceae.html#dimensión-temporal",
+    "title": "Asteraceae de México",
+    "section": "5: Dimensión temporal",
+    "text": "5: Dimensión temporal\nFiltrar la base de datos para quedarnos solo con los registros con fecha de colecta entre 1980 y 1989. Columna eventDate\n\n¿Cómo podemos extraer el año si los datos vienen como “DD-MM-YYYY”?\n¿Cuántos registros logramos rescatar de esta década?"
+  },
+  {
+    "objectID": "presentaciones/1.01-ejercicios_asteraceae.html#género-lepidonia",
+    "href": "presentaciones/1.01-ejercicios_asteraceae.html#género-lepidonia",
+    "title": "Asteraceae de México",
+    "section": "6: Género Lepidonia",
+    "text": "6: Género Lepidonia\nPreparando salidas a campo:\n\nFiltrar todos los registros cuyo nombre científico empiece con “Lepidonia”.\n¿En qué estados de la república se ha encontrado?\n¿En cuál es hay mas registros?"
+  },
+  {
+    "objectID": "presentaciones/1.01-ejercicios_asteraceae.html#soluciones",
+    "href": "presentaciones/1.01-ejercicios_asteraceae.html#soluciones",
+    "title": "Asteraceae de México",
+    "section": "Soluciones",
+    "text": "Soluciones\nEl script archivos-ej/R/soluciones_asteracea.R tiene algunas soluciones."
+  },
+  {
+    "objectID": "presentaciones/1.1-exploracion_rapida_datos.html",
+    "href": "presentaciones/1.1-exploracion_rapida_datos.html",
+    "title": "Exploración rápida de datos",
+    "section": "",
+    "text": "Buscar información general sobre los datos\nCon Big Data es muy dificil, si no imposible, visualizar toda la información que se importa a R\nIdentificar problemas de forma y contenido\n\n\nA idéia dessa aula é importar dados e olhar pra eles, os pacotes usados aqui são para ayudar a olhar conjuntos de dados grandes\n\n\n\n\nVamos a utilizar los siguientes paquetes de R\n\nskimr\njanitor\nreport\nvisdat\n\n\n\n“Los científicos de datos dedican entre el 50 % y el 80 % de su tiempo a esta labor mundana de recopilar y preparar datos digitales rebeldes, antes de que puedan explorarse en busca de información útil”\n\n\n\n\n\n\n\n\n\n\nEl primer paso es importar los datos en R.\nAntes de analizar los datos, hay que prepararlos y limpiarlos\nLuego, explorar los datos de manera rápida y eficiente para saber sí:\n\nFueron importados correctamente\nResumir características de los datos\n\n\n\n\n\n\nR identifica de manera automática las diferencias entre los tipos de datos\nNúmeros, caracteres, factores, faltantes, etc.\nImportante visualizar rápidamente la existencia de posibles problemas"
   }
 ]

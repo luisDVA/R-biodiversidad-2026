@@ -37,6 +37,7 @@ library(fontawesome)
 
 
 -  ¿Para qué tareas ya usas R?
+  - ¿Cuáles paquetes o herramientas usas más seguido?
  - ¿Qué te gustaría aprender a hacer con R?
 
 # Ejercicio

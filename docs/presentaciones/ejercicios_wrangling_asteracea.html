@@ -7,9 +7,12 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-fced259a1985fd972ecb57c7cd45153f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.31">
 
+  <meta name="author" content="Luis D. Verde Arregoitia">
   <title>Herramientas para el manejo de datos de biodiversidad en R – Asteraceae de México</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -28,74 +31,8 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-39d1eab08b8faec97b8adc39508066ea.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-7e13a509d2f2d17859c2f7af463a7b15.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -111,7 +48,6 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
-      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -188,6 +124,8 @@
       margin-right: 0; 
     }
   </style>
+  <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+  <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -195,174 +133,105 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Asteraceae de México</h1>
-  <p class="subtitle">Ejercicios pŕacticos</p>
+  <p class="subtitle">Ejercicio de arranque</p>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Luis D. Verde Arregoitia 
+</div>
+</div>
 </div>
 
 </section>
-<section id="introducción" class="slide level2 scrollable">
+<section id="introducción" class="slide level2">
 <h2>Introducción</h2>
-<p>En esta práctica utilizaremos dos conjuntos de datos relacionados con las Asteráceas de México:</p>
-<p>Fuente: CONABIO - <a href="http://ipttest.conabio.gob.mx/iptconabiotest/resource?r=SNIB-GE022">Las Asteráceas de México</a></p>
+<p>Datos reales de biodiversidad, del proyecto de CONABIO <a href="http://ipttest.conabio.gob.mx/iptconabiotest/resource?r=SNIB-GE022">La familia Asteraceae en México</a></p>
+<p>Dos archivos en la carpeta <code>archivos-ej/</code>:</p>
 <ol type="1">
-<li><code>archivos-ej/asteraceaMX.csv</code>: Datos de ocurrencias (colecciones).</li>
-<li><code>archivos-ej/asteraceaTaxonomia.csv</code>: Información taxonómica de las especies.</li>
+<li><code>asteraceaMX.csv</code>: Registros de colecta (ocurrencias).</li>
+<li><code>asteraceaTaxonomia.csv</code>: Información taxonómica.</li>
 </ol>
-<p><strong>Objetivo</strong>: Unir las tablas y realizar análisis exploratorios.</p>
+<p><strong>Dinámica</strong>: Discutir cada reto, proponer soluciones</p>
 </section>
 <section id="preparación" class="slide level2">
 <h2>Preparación</h2>
-<p>Carguemos las librerías y los datos iniciales.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a>occ <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../archivos-ej/asteraceaMX.csv"</span>)</span>
-<span id="cb1-5"><a></a>tax <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../archivos-ej/asteraceaTaxonomia.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<ul>
+<li>Explorar los archivos</li>
+</ul>
 </section>
-<section id="ejercicio-1-unir-las-tablas" class="slide level2">
-<h2>Ejercicio 1: Unir las tablas</h2>
-<p><strong>Tarea</strong>: Une la tabla de ocurrencias con la tabla de taxonomía usando la columna <code>scientificName</code>. Como la tabla de taxonomía tiene filas repetidas para los mismos nombres, asegúrate de usar solo registros únicos de taxonomía antes de unir, o nota cómo cambia el número de filas.</p>
-<p><strong>Solución</strong>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># Primero limpiamos la tabla de taxonomía para tener registros únicos por especie</span></span>
-<span id="cb2-2"><a></a>tax_unique <span class="ot">&lt;-</span> tax <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(scientificName, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-3"><a></a></span>
-<span id="cb2-4"><a></a><span class="co"># Unimos con left_join</span></span>
-<span id="cb2-5"><a></a>asteracea <span class="ot">&lt;-</span> occ <span class="sc">%&gt;%</span> </span>
-<span id="cb2-6"><a></a>  <span class="fu">left_join</span>(tax_unique, <span class="at">by =</span> <span class="st">"scientificName"</span>)</span>
-<span id="cb2-7"><a></a></span>
-<span id="cb2-8"><a></a><span class="co"># Verificamos dimensiones</span></span>
-<span id="cb2-9"><a></a><span class="fu">dim</span>(asteracea)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 15013    16</code></pre>
-</div>
-</div>
+<section id="integración-de-datos" class="slide level2">
+<h2>1: Integración de datos</h2>
+<p>** ¿Necesitamos toda la información en una sola tabla?**</p>
+<ul>
+<li>¿Qué columna tienen en común?</li>
+<li>¿Hay filas repetidas en la tabla de taxonomía?</li>
+</ul>
 </section>
-<section id="ejercicio-2-qué-género-tiene-más-registros" class="slide level2">
-<h2>Ejercicio 2: ¿Qué género tiene más registros?</h2>
-<p><strong>Tarea</strong>: Extrae el género de la columna <code>scientificName</code> (es la primera palabra) y cuenta cuántos registros hay por género. Muestra los 10 géneros con más colectas.</p>
-<p><strong>Solución</strong>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>asteracea <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a></a>  <span class="fu">mutate</span>(<span class="at">genus =</span> <span class="fu">str_extract</span>(scientificName, <span class="st">"^</span><span class="sc">\\</span><span class="st">w+"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a></a>  <span class="fu">count</span>(genus, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-4"><a></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 2
-   genus             n
-   &lt;chr&gt;         &lt;int&gt;
- 1 Senecio        1691
- 2 Roldana        1483
- 3 Psacalium       905
- 4 Dyssodia        680
- 5 Tagetes         665
- 6 Thymophylla     502
- 7 Acourtia        497
- 8 Barkleyanthus   449
- 9 Packera         432
-10 Critoniopsis    357</code></pre>
-</div>
-</div>
+<section id="género-dominante" class="slide level2">
+<h2>2: Género dominante</h2>
+<p><strong>¿Cuáles géneros de estas plantas aparecen más en estos datos?</strong></p>
+<ul>
+<li>extraer solo el género a partir del nombre científico</li>
+<li>Una vez extraído, ¿cómo contamos la frecuencia de cada uno?</li>
+<li>Reportemos el “Top 10”.</li>
+</ul>
 </section>
-<section id="ejercicio-3-elevación-por-subfamilia" class="slide level2">
-<h2>Ejercicio 3: Elevación por subfamilia</h2>
-<p><strong>Tarea</strong>: ¿Cuál es el promedio de elevación mínima (<code>minimumElevationInMeters</code>) para cada subfamilia? Ignora los valores <code>NA</code>.</p>
-<p><strong>Solución</strong>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>asteracea <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a></a>  <span class="fu">group_by</span>(subfamily) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a></a>  <span class="fu">summarise</span>(</span>
-<span id="cb6-4"><a></a>    <span class="at">elev_promedio =</span> <span class="fu">mean</span>(minimumElevationInMeters, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb6-5"><a></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb6-6"><a></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb6-7"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(elev_promedio))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 75 × 3
-   subfamily       elev_promedio     n
-   &lt;chr&gt;                   &lt;dbl&gt; &lt;int&gt;
- 1 Carduoideae             1931      1
- 2 Asteroideae             1826. 11832
- 3 Mutisioideae            1604.   777
- 4 Gochnatioideae          1434.    45
- 5 Vernonioideae           1275.  1479
- 6 Micrairoideae           1264      1
- 7 Pothoideae              1192.     4
- 8 Tillandsioideae         1182.     2
- 9 Pitcairnioideae         1125      1
-10 Sempervivoideae         1052      1
-# ℹ 65 more rows</code></pre>
-</div>
-</div>
+<section id="gradientes-de-elevación" class="slide level2">
+<h2>3: Gradientes de elevación</h2>
+<p><strong>¿A qué elevación viven las diferentes subfamilias?</strong></p>
+<p>Nos interesa el promedio de la elevación mínima (<code>minimumElevationInMeters</code>) para cada subfamilia de Asteraceae.</p>
+<ul>
+<li>¿Cómo agrupamos los datos?</li>
+<li>¿Qué hacemos con los valores faltantes?</li>
+<li>¿Cuál es la subfamilia que alcanza mayores altitudes en promedio?</li>
+</ul>
 </section>
-<section id="ejercicio-4-riqueza-de-especies-por-estado" class="slide level2">
-<h2>Ejercicio 4: Riqueza de especies por estado</h2>
-<p><strong>Tarea</strong>: ¿Qué estado tiene la mayor cantidad de <strong>especies diferentes</strong> (riqueza)?</p>
-<p><strong>Solución</strong>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>asteracea <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a></a>  <span class="fu">group_by</span>(stateProvince) <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a></a>  <span class="fu">summarise</span>(<span class="at">riqueza =</span> <span class="fu">n_distinct</span>(scientificName)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-4"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(riqueza)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-5"><a></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 2
-   stateProvince                   riqueza
-   &lt;chr&gt;                             &lt;int&gt;
- 1 OAXACA                              472
- 2 JALISCO                             261
- 3 VERACRUZ DE IGNACIO DE LA LLAVE     200
- 4 MICHOACAN DE OCAMPO                 174
- 5 SAN LUIS POTOSI                     145
- 6 QUERETARO                           144
- 7 MEXICO                              140
- 8 PUEBLA                              118
- 9 CHIHUAHUA                           115
-10 DURANGO                             114</code></pre>
-</div>
-</div>
+<section id="geografía-y-riqueza" class="slide level2">
+<h2>4: Geografía y riqueza</h2>
+<p><strong>¿Dónde se concentra la diversidad?</strong></p>
+<p>Calcular la riqueza de especies de cada estado (<code>stateProvince</code>)</p>
+<ul>
+<li><p>¿Cuál es la diferencia entre contar registros y contar especies?</p></li>
+<li><p>Crear una tabla ordenando los estados de mayor a menor riqueza.</p></li>
+</ul>
 </section>
-<section id="ejercicio-5-colectas-en-los-años-80" class="slide level2">
-<h2>Ejercicio 5: Colectas en los años 80</h2>
-<p><strong>Tarea</strong>: Filtra los datos para obtener solo los registros colectados entre 1980 y 1989. <em>Nota: La columna <code>eventDate</code> tiene formatos variables (DD-MM-YYYY o MM-YYYY).</em></p>
-<p><strong>Solución</strong>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># Una forma es extraer el año con regex si el formato es consistente al final</span></span>
-<span id="cb10-2"><a></a>asteracea_80s <span class="ot">&lt;-</span> asteracea <span class="sc">%&gt;%</span></span>
-<span id="cb10-3"><a></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.numeric</span>(<span class="fu">str_extract</span>(eventDate, <span class="st">"</span><span class="sc">\\</span><span class="st">d{4}$"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb10-4"><a></a>  <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">1980</span> <span class="sc">&amp;</span> year <span class="sc">&lt;=</span> <span class="dv">1989</span>)</span>
-<span id="cb10-5"><a></a></span>
-<span id="cb10-6"><a></a><span class="co"># ¿Cuántos registros encontramos?</span></span>
-<span id="cb10-7"><a></a><span class="fu">nrow</span>(asteracea_80s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 5355</code></pre>
-</div>
-</div>
+<section id="dimensión-temporal" class="slide level2">
+<h2>5: Dimensión temporal</h2>
+<p>Filtrar la base de datos para quedarnos solo con los registros con fecha de colecta entre 1980 y 1989. Columna <code>eventDate</code></p>
+<ul>
+<li>¿Cómo podemos extraer el año si los datos vienen como “DD-MM-YYYY”?</li>
+<li>¿Cuántos registros logramos rescatar de esta década?</li>
+</ul>
 </section>
-<section id="ejercicio-6-estados-con-lepidonia" class="slide level2">
-<h2>Ejercicio 6: Estados con “Lepidonia”</h2>
-<p><strong>Tarea</strong>: Encuentra en qué estados se ha recolectado el género <em>Lepidonia</em> y cuántos registros hay en cada uno.</p>
-<p><strong>Solución</strong>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>asteracea <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(scientificName, <span class="st">"^Lepidonia"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a></a>  <span class="fu">count</span>(stateProvince, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 2
-  stateProvince                       n
-  &lt;chr&gt;                           &lt;int&gt;
-1 OAXACA                             12
-2 GUERRERO                            4
-3 CHIAPAS                             2
-4 PUEBLA                              2
-5 VERACRUZ DE IGNACIO DE LA LLAVE     2
-6 &lt;NA&gt;                                1</code></pre>
-</div>
-</div>
+<section id="género-lepidonia" class="slide level2">
+<h2>6: Género <em>Lepidonia</em></h2>
+<p>Preparandpo salidas a campo:</p>
+<ul>
+<li>Filtrar todos los registros cuyo nombre científico empiece con “Lepidonia”.</li>
+<li>¿En qué estados de la república se ha encontrado?</li>
+<li>¿En cuál es hay mas registros?</li>
+</ul>
+</section>
+<section id="soluciones" class="slide level2">
+<h2>Soluciones</h2>
+<p>El script <code>archivos-ej/R/soluciones_asteracea.R</code> tiene algunas soluciones.</p>
 
 
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
@@ -522,10 +391,10 @@
         hideCursorTime: 5000,
 
         // Opens links in an iframe preview overlay
-        previewLinks: false,
+        previewLinks: true,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
+        transition: 'fade',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
@@ -578,6 +447,17 @@
           RevealZoom
         ]
       });
+    </script>
+    <script type="ojs-module-contents">
+    eyJjb250ZW50cyI6W119
+    </script>
+    <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+    window._ojs.paths.runtimeToDoc = "../../presentaciones";
+    window._ojs.paths.runtimeToRoot = "../..";
+    window._ojs.paths.docToRoot = "..";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
     </script>
     
     <script>

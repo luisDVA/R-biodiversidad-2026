@@ -422,6 +422,16 @@ library(visdat)
 vis_dat(pambol)
 ```
 
+##
+
+```{r}
+#| eval: true
+#| echo: true
+library(visdat)
+vis_dat(penguins)
+```
+
+
 ## Identificando vacíos visualmente
 
 - `vis_miss()` es ideal para ver si los datos faltantes siguen algún patrón (e.g., si todas las columnas de una fila están vacías).
@@ -459,7 +469,7 @@ data(flights)
 
 3. Use `tabyl()` para encontrar:
     - ¿Cuántos vuelos salieron de cada aeropuerto de origen (`origin`)?
-    - ¿Qué aerolínea (`carrier`) domina los cielos de NYC? (Use `adorn_percentages()`).
+    - ¿Qué aerolínea (`carrier`) domina los cielos de NYC?.
 4. **Opcional:** Use `vis_miss()` sobre una muestra de 1000 filas para ver el patrón de NAs.
 
 # Data Explorer de Positron

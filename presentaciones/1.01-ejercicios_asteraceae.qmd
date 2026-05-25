@@ -1,0 +1,97 @@
+---
+title: "Asteraceae de México"
+subtitle: "Ejercicio de arranque"
+author: Luis D. Verde Arregoitia
+format:
+  live-revealjs:
+    theme: curso_styles.scss
+    transition: fade
+    progress: true
+    preview-links: true
+    hide-inactive-cursor: true
+    highlight-style: a11y
+    pause: true
+webr:
+  packages:
+    - fs
+    - here
+    - fontawesome
+engine: knitr
+---
+
+
+## Introducción
+
+Datos reales de biodiversidad, del proyecto de CONABIO [La familia Asteraceae en México](http://ipttest.conabio.gob.mx/iptconabiotest/resource?r=SNIB-GE022)
+
+Dos archivos en la carpeta `archivos-ej/`:
+
+1.  `asteraceaMX.csv`: Registros de colecta (ocurrencias).
+2.  `asteraceaTaxonomia.csv`: Información taxonómica.
+
+**Dinámica**: Discutir cada reto, proponer soluciones
+
+---
+
+## Preparación
+
+- Explorar los archivos
+
+
+## 1: Integración de datos
+
+**¿Necesitamos toda la información en una sola tabla?**
+
+- ¿Qué columna tienen en común?
+- ¿Hay filas repetidas en la tabla de taxonomía?
+
+
+## 2: Género dominante
+
+**¿Cuáles géneros de estas plantas aparecen más en estos datos?**
+
+- Extraer solo el género a partir del nombre científico
+- Una vez extraído, ¿cómo contamos la frecuencia de cada uno?
+- Reportemos el "Top 10".
+
+
+## 3: Gradientes de elevación
+
+**¿A qué elevación viven las diferentes subfamilias?**
+
+Nos interesa el promedio de la elevación mínima (`minimumElevationInMeters`) para cada subfamilia de Asteraceae.
+
+- ¿Cómo agrupamos los datos?
+- ¿Qué hacemos con los valores faltantes?
+- ¿Cuál es la subfamilia que alcanza mayores altitudes en promedio?
+
+
+## 4: Geografía y riqueza
+
+**¿Dónde se concentra la diversidad?**
+
+Calcular la riqueza de especies de cada estado (`stateProvince`)
+
+- ¿Cuál es la diferencia entre contar registros y contar especies?
+
+- Crear una tabla ordenando los estados de mayor a menor riqueza.
+
+## 5: Dimensión temporal
+
+Filtrar la base de datos para quedarnos solo con los registros con fecha de colecta entre 1980 y 1989. Columna `eventDate`
+
+- ¿Cómo podemos extraer el año si los datos vienen como "DD-MM-YYYY"?
+- ¿Cuántos registros logramos rescatar de esta década?
+
+## 6: Género *Lepidonia*
+
+Preparando salidas a campo:
+
+- Filtrar todos los registros cuyo nombre científico empiece con "Lepidonia".
+- ¿En qué estados de la república se ha encontrado?
+- ¿En cuál es hay mas registros?
+
+## Soluciones
+
+
+El script `archivos-ej/R/soluciones_asteracea.R` tiene algunas soluciones.

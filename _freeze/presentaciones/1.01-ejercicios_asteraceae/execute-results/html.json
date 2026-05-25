@@ -1,0 +1,15 @@
+{
+  "hash": "27f527fd5826c85333c069cc2a0ef2cc",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Asteraceae de México\"\nsubtitle: \"Ejercicio de arranque\"\nauthor: Luis D. Verde Arregoitia\nformat:\n  live-revealjs:\n    theme: curso_styles.scss\n    transition: fade\n    progress: true\n    preview-links: true\n    hide-inactive-cursor: true\n    highlight-style: a11y\n    pause: true\nwebr:\n  packages:\n    - fs\n    - here\n    - fontawesome\nengine: knitr\n---\n\n\n## Introducción\n\nDatos reales de biodiversidad, del proyecto de CONABIO [La familia Asteraceae en México](http://ipttest.conabio.gob.mx/iptconabiotest/resource?r=SNIB-GE022)\n\nDos archivos en la carpeta `archivos-ej/`:\n\n1.  `asteraceaMX.csv`: Registros de colecta (ocurrencias).\n2.  `asteraceaTaxonomia.csv`: Información taxonómica.\n\n**Dinámica**: Discutir cada reto, proponer soluciones\n\n---\n\n## Preparación\n\n- Explorar los archivos\n\n\n## 1: Integración de datos\n\n**¿Necesitamos toda la información en una sola tabla?**\n\n- ¿Qué columna tienen en común?\n- ¿Hay filas repetidas en la tabla de taxonomía?\n\n\n## 2: Género dominante\n\n**¿Cuáles géneros de estas plantas aparecen más en estos datos?**\n\n- Extraer solo el género a partir del nombre científico\n- Una vez extraído, ¿cómo contamos la frecuencia de cada uno?\n- Reportemos el \"Top 10\".\n\n\n## 3: Gradientes de elevación\n\n**¿A qué elevación viven las diferentes subfamilias?**\n\nNos interesa el promedio de la elevación mínima (`minimumElevationInMeters`) para cada subfamilia de Asteraceae.\n\n- ¿Cómo agrupamos los datos?\n- ¿Qué hacemos con los valores faltantes?\n- ¿Cuál es la subfamilia que alcanza mayores altitudes en promedio?\n\n\n## 4: Geografía y riqueza\n\n**¿Dónde se concentra la diversidad?**\n\nCalcular la riqueza de especies de cada estado (`stateProvince`)\n\n- ¿Cuál es la diferencia entre contar registros y contar especies?\n\n- Crear una tabla ordenando los estados de mayor a menor riqueza.\n\n## 5: Dimensión temporal\n\nFiltrar la base de datos para quedarnos solo con los registros con fecha de colecta entre 1980 y 1989. Columna `eventDate`\n\n- ¿Cómo podemos extraer el año si los datos vienen como \"DD-MM-YYYY\"?\n- ¿Cuántos registros logramos rescatar de esta década?\n\n## 6: Género *Lepidonia*\n\nPreparando salidas a campo:\n\n- Filtrar todos los registros cuyo nombre científico empiece con \"Lepidonia\".\n- ¿En qué estados de la república se ha encontrado?\n- ¿En cuál es hay mas registros?\n\n## Soluciones\n\n\nEl script `archivos-ej/R/soluciones_asteracea.R` tiene algunas soluciones.",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

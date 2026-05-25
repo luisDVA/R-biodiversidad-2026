@@ -34138,13 +34138,21 @@ computed using a Wald t-distribution approximation.</code></pre>
 <span id="cb38-5"><a></a><span class="fu">vis_dat</span>(pambol)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+<section id="section-8" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">library</span>(visdat)</span>
+<span id="cb39-2"><a></a><span class="fu">vis_dat</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1.1-exploracion_rapida_datos_files/figure-revealjs/unnamed-chunk-23-1.png" width="1000" class="r-stretch"></section>
 <section id="identificando-vacíos-visualmente" class="slide level2">
 <h2>Identificando vacíos visualmente</h2>
 <ul>
 <li><code>vis_miss()</code> es ideal para ver si los datos faltantes siguen algún patrón (e.g., si todas las columnas de una fila están vacías).</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">vis_miss</span>(birds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">vis_miss</span>(birds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -34152,16 +34160,16 @@ computed using a Wald t-distribution approximation.</code></pre>
 <h1>Ejercicio: Vuelos de Nueva York</h1>
 
 </section>
-<section id="section-8" class="slide level2">
+<section id="section-9" class="slide level2">
 <h2></h2>
 <ul>
 <li>Utilizaremos el paquete <code>nycflights13</code>, que contiene datos de 336,776 vuelos.</li>
 <li>Es un dataset perfecto para practicar exploración rápida por su tamaño y diversidad.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="co"># install.packages("nycflights13")</span></span>
-<span id="cb40-2"><a></a><span class="fu">library</span>(nycflights13)</span>
-<span id="cb40-3"><a></a><span class="fu">data</span>(flights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="co"># install.packages("nycflights13")</span></span>
+<span id="cb41-2"><a></a><span class="fu">library</span>(nycflights13)</span>
+<span id="cb41-3"><a></a><span class="fu">data</span>(flights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="reto-de-exploración" class="slide level2">
@@ -34181,7 +34189,7 @@ computed using a Wald t-distribution approximation.</code></pre>
 <li>Use <code>tabyl()</code> para encontrar:
 <ul>
 <li>¿Cuántos vuelos salieron de cada aeropuerto de origen (<code>origin</code>)?</li>
-<li>¿Qué aerolínea (<code>carrier</code>) domina los cielos de NYC? (Use <code>adorn_percentages()</code>).</li>
+<li>¿Qué aerolínea (<code>carrier</code>) domina los cielos de NYC?.</li>
 </ul></li>
 <li><strong>Opcional:</strong> Use <code>vis_miss()</code> sobre una muestra de 1000 filas para ver el patrón de NAs.</li>
 </ol>
