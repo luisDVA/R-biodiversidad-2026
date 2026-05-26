@@ -1,0 +1,207 @@
+---
+title: "Ejercicios: pipes"
+subtitle: "Operaciones secuenciales con `|>`"
+author: Luis D. Verde Arregoitia
+format:
+  revealjs:
+    theme: curso_styles.scss
+    chalkboard: true
+    transition: fade
+    progress: true
+    code-line-numbers: false
+    preview-links: true
+    hide-inactive-cursor: true
+    highlight-style: printing
+    pause: true
+editor: source
+execute:
+  echo: true
+  eval: true
+---
+
+## Repaso
+
+El operador pipe toma el objeto a la izquierda (**LHS**) y lo pasa como el **primer argumento** de la función a la derecha (**RHS**).
+
+</br>
+
+::: {style="text-align: center; font-size: 1.5em;"}
+`x |> f(y)`
+
+*es lo mismo que*
+
+`f(x, y)`
+:::
+
+
+# de código anidado a pipe
+
+¿Cómo escribimos ésto usando `|>`?
+
+::: big-code
+```{r}
+#| eval: false
+goles <- c(7, 8, 5, 10, 9)
+round(mean(goles), digits = 1)
+```
+:::
+
+. . .
+
+**Solución:**
+
+::: med-code
+```{r}
+#| eval: false 
+goles |>  mean() |>  round(digits = 1)
+```
+:::
+
+
+## Operaciones en secuencia
+
+Traduce el siguiente código anidado a una secuencia con pipes:
+
+::: med-code
+```{r}
+#| eval: false
+# Queremos:
+# 1. Tomar un vector
+# 2. Calcular el valor absoluto
+# 3. Obtener la raíz cuadrada
+# 4. Redondear a 2 decimales
+
+round(sqrt(abs(c(-4, -9, -16))), 2)
+```
+:::
+
+
+## Opción Múltiple
+
+¿Cuál de estas opciones produce el mismo resultado que `sort(unique(c(1, 3, 2, 1, 2)))`?
+
+a) `c(1, 3, 2, 1, 2) |> unique() |> sort()`
+b) `unique(c(1, 3, 2, 1, 2)) |> sort()`
+c) `c(1, 3, 2, 1, 2) |> sort() |> unique()`
+d) Todas las anteriores
+
+. . .
+
+**Respuesta:** **d)**  pero la opción **a** es la más estándar
+
+
+## Ordenando
+
+Tenemos este vector de nombres:
+```{r}
+nombres <- c("ana", "bea", "carlos")
+```
+
+¿Qué devuelve esta secuencia en cada paso y al final?
+```{r}
+#| eval: false
+nombres |> 
+  rev() |> 
+  head(n = 1) |> 
+  toupper()
+```
+
+::: incremental
+1. `rev()`: "carlos", "bea", "ana"
+2. `head(n = 1)`: "carlos"
+3. `toupper()`: "CARLOS"
+:::
+
+
+## Secuencia completa
+
+Usando `|>` y funciones base, crea una secuencia que:
+
+1. Cree un vector con los números del 1 al 10 .
+2. Calcule la suma total (`sum()`).
+3. Calcule la raíz cuadrada del total (`sqrt()`).
+
+. . .
+
+**Posible solución:**
+```{r}
+c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) |> 
+  sum() |> 
+  sqrt()
+```
+
+
+
+## ¡listo! 
+
+ya podemos:
+
+- Leer código de izquierda a derecha con `|>`.
+- Evitar el exceso de funciones anidadas.
+- Evitar crear objetos intermedios innecesarios.
+
+## Opcional: composición con pipes
+
+El pipe nativo permite usar el marcador `_` para pasar el resultado a un argumento que no sea el primero.
+
+## Ejercicio: `overlay`
+
+El paquete `overlay` sirve para combinar imágenes, gráficos o código sobre un fondo.
+
+::: med-code
+```{r}
+#| eval: false
+
+# remotes::install_github("luisdva/overlay")
+library(overlay)
+
+# Tenemos un gráfico y un fondo
+mi_plot <- ggplot(...)
+fondo <- "imagen.png"
+
+# Con pipe:
+mi_plot |> 
+  hud_overlay(background = fondo)
+```
+:::
+
+## Encadenando capas
+
+Podemos agregar múltiples capas usando el marcador de posición `_` :
+
+```{r}
+#| eval: false
+# 1. Ponemos el plot sobre el fondo
+# 2. El resultado pasa a ser el fondo de la siguiente capa
+mi_plot |> 
+  hud_overlay(background = fondo, placement = "top-left") |> 
+  hud_overlay(overlay = mi_codigo, background = _)
+```
+
+##
+
+**¿Por qué `_`?** 
+
+Porque en la segunda llamada, el resultado del primer paso (la imagen ya compuesta) debe entrar en el argumento `background`, no en el primero (`overlay`).
+
+## Ejemplo real (una sola imagen)
+
+```{r}
+#| message: false
+#| output-location: slide
+library(ggplot2)
+library(overlay)
+
+# Creamos un gráfico
+p_penguins <- ggplot(penguins, aes(bill_len, bill_dep, color = species)) +
+  geom_point() +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+# Combinamos con el fondo usando pipes
+p_penguins |> 
+  hud_overlay(background = "../archivos-ej/sor.jpg", 
+              size = "medium", tilt="right",
+              placement = "top-right")
+```
+

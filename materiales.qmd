@@ -28,6 +28,8 @@ Estas presentaciones en formato web cuentan con un índice de contenidos interac
 
 ### Martes
 
+[Ejercicios pipes](presentaciones/ejercicios-pipes.qmd){.external target="_blank"}
+
 [Manipulación y Limpieza de datos - II](presentaciones/2-manipulacion_y_limpieza.qmd){.external target="_blank"}
 
 ### Miércoles

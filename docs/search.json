@@ -60,7 +60,7 @@
     "href": "materiales.html#presentaciones",
     "title": "Materiales del curso",
     "section": "Presentaciones",
-    "text": "Presentaciones\nEstas presentaciones en formato web cuentan con un índice de contenidos interactivo (botón en la esquina inferior izquierda).\n\nLunes\nFlujos de Trabajo y Organización de Proyectos\nEjercicio de arranque\nExploración de datos\nManipulación y Limpieza de datos - I\n\n\nMartes\nManipulación y Limpieza de datos - II\n\n\nMiércoles\n\n\n\nJueves\n\n\n\n\n\nViernes"
+    "text": "Presentaciones\nEstas presentaciones en formato web cuentan con un índice de contenidos interactivo (botón en la esquina inferior izquierda).\n\nLunes\nFlujos de Trabajo y Organización de Proyectos\nEjercicio de arranque\nExploración de datos\nManipulación y Limpieza de datos - I\n\n\nMartes\nEjercicios pipes\nManipulación y Limpieza de datos - II\n\n\nMiércoles\n\n\n\nJueves\n\n\n\n\n\nViernes"
   },
   {
     "objectID": "presentaciones/5-gradiente_riqueza.html",
@@ -4926,5 +4926,124 @@
     "title": "Exploración rápida de datos",
     "section": "",
     "text": "Buscar información general sobre los datos\nCon Big Data es muy dificil, si no imposible, visualizar toda la información que se importa a R\nIdentificar problemas de forma y contenido\n\n\nA idéia dessa aula é importar dados e olhar pra eles, os pacotes usados aqui são para ayudar a olhar conjuntos de dados grandes\n\n\n\n\nVamos a utilizar los siguientes paquetes de R\n\nskimr\njanitor\nreport\nvisdat\n\n\n\n“Los científicos de datos dedican entre el 50 % y el 80 % de su tiempo a esta labor mundana de recopilar y preparar datos digitales rebeldes, antes de que puedan explorarse en busca de información útil”\n\n\n\n\n\n\n\n\n\n\nEl primer paso es importar los datos en R.\nAntes de analizar los datos, hay que prepararlos y limpiarlos\nLuego, explorar los datos de manera rápida y eficiente para saber sí:\n\nFueron importados correctamente\nResumir características de los datos\n\n\n\n\n\n\nR identifica de manera automática las diferencias entre los tipos de datos\nNúmeros, caracteres, factores, faltantes, etc.\nImportante visualizar rápidamente la existencia de posibles problemas"
+  },
+  {
+    "objectID": "presentaciones/ejercicios-pipes.html#repaso",
+    "href": "presentaciones/ejercicios-pipes.html#repaso",
+    "title": "Ejercicios: pipes",
+    "section": "Repaso",
+    "text": "Repaso\nEl operador pipe toma el objeto a la izquierda (LHS) y lo pasa como el primer argumento de la función a la derecha (RHS).\n\n\nx |&gt; f(y)\nes lo mismo que\nf(x, y)"
+  },
+  {
+    "objectID": "presentaciones/ejercicios-pipes.html#operaciones-en-secuencia",
+    "href": "presentaciones/ejercicios-pipes.html#operaciones-en-secuencia",
+    "title": "Ejercicios: pipes",
+    "section": "Operaciones en secuencia",
+    "text": "Operaciones en secuencia\nTraduce el siguiente código anidado a una secuencia con pipes:\n\n\n# Queremos:\n# 1. Tomar un vector\n# 2. Calcular el valor absoluto\n# 3. Obtener la raíz cuadrada\n# 4. Redondear a 2 decimales\n\nround(sqrt(abs(c(-4, -9, -16))), 2)"
+  },
+  {
+    "objectID": "presentaciones/ejercicios-pipes.html#opción-múltiple",
+    "href": "presentaciones/ejercicios-pipes.html#opción-múltiple",
+    "title": "Ejercicios: pipes",
+    "section": "Opción Múltiple",
+    "text": "Opción Múltiple\n¿Cuál de estas opciones produce el mismo resultado que sort(unique(c(1, 3, 2, 1, 2)))?\n\nc(1, 3, 2, 1, 2) |&gt; unique() |&gt; sort()\nunique(c(1, 3, 2, 1, 2)) |&gt; sort()\nc(1, 3, 2, 1, 2) |&gt; sort() |&gt; unique()\nTodas las anteriores\n\n\nRespuesta: d) pero la opción a es la más estándar"
+  },
+  {
+    "objectID": "presentaciones/ejercicios-pipes.html#ordenando",
+    "href": "presentaciones/ejercicios-pipes.html#ordenando",
+    "title": "Ejercicios: pipes",
+    "section": "Ordenando",
+    "text": "Ordenando\nTenemos este vector de nombres:\n\nnombres &lt;- c(\"ana\", \"bea\", \"carlos\")\n\n¿Qué devuelve esta secuencia en cada paso y al final?\n\nnombres |&gt; \n  rev() |&gt; \n  head(n = 1) |&gt; \n  toupper()\n\n\nrev(): “carlos”, “bea”, “ana”\nhead(n = 1): “carlos”\ntoupper(): “CARLOS”"
+  },
+  {
+    "objectID": "presentaciones/ejercicios-pipes.html#secuencia-completa",
+    "href": "presentaciones/ejercicios-pipes.html#secuencia-completa",
+    "title": "Ejercicios: pipes",
+    "section": "Secuencia completa",
+    "text": "Secuencia completa\nUsando |&gt; y funciones base, crea una secuencia que:\n\nCree un vector con los números del 1 al 10 .\nCalcule la suma total (sum()).\nCalcule la raíz cuadrada del total (sqrt()).\n\n\nPosible solución:\n\nc(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) |&gt; \n  sum() |&gt; \n  sqrt()\n\n[1] 7.416198"
+  },
+  {
+    "objectID": "presentaciones/ejercicios-pipes.html#felicidades",
+    "href": "presentaciones/ejercicios-pipes.html#felicidades",
+    "title": "Ejercicios: pipes",
+    "section": "¡Felicidades! 🥳",
+    "text": "¡Felicidades! 🥳\nAhora ya sabes:\n\nLeer código de izquierda a derecha con |&gt;.\nEvitar el exceso de paréntesis anidados.\nMantener tu código limpio sin crear objetos intermedios innecesarios.\n\nSiguiente paso: ¡Veremos cómo el tidyverse hace esto aún más potente!"
+  },
+  {
+    "objectID": "presentaciones/ejercicios-pipes.html#listo",
+    "href": "presentaciones/ejercicios-pipes.html#listo",
+    "title": "Ejercicios: pipes",
+    "section": "¡listo!",
+    "text": "¡listo!\nya podemos:\n\nLeer código de izquierda a derecha con |&gt;.\nEvitar el exceso de funciones anidadas.\nEvitar crear objetos intermedios innecesarios."
+  },
+  {
+    "objectID": "presentaciones/ejercicios-pipes.html#opcional-composición-con-pipes",
+    "href": "presentaciones/ejercicios-pipes.html#opcional-composición-con-pipes",
+    "title": "Ejercicios: pipes",
+    "section": "Opcional: composición con pipes",
+    "text": "Opcional: composición con pipes\nEl pipe nativo permite usar el marcador _ para pasar el resultado a un argumento que no sea el primero."
+  },
+  {
+    "objectID": "presentaciones/ejercicios-pipes.html#encadenando-capas",
+    "href": "presentaciones/ejercicios-pipes.html#encadenando-capas",
+    "title": "Ejercicios: pipes",
+    "section": "Encadenando capas",
+    "text": "Encadenando capas\nPodemos agregar múltiples capas usando el marcador de posición _ :\n\n# 1. Ponemos el plot sobre el fondo\n# 2. El resultado pasa a ser el fondo de la siguiente capa\nmi_plot |&gt; \n  hud_overlay(background = fondo, placement = \"top-left\") |&gt; \n  hud_overlay(overlay = mi_codigo, background = _)"
+  },
+  {
+    "objectID": "presentaciones/ejercicios-pipes.html#ejemplo-en-vivo",
+    "href": "presentaciones/ejercicios-pipes.html#ejemplo-en-vivo",
+    "title": "Ejercicios: pipes",
+    "section": "Ejemplo en vivo",
+    "text": "Ejemplo en vivo\n\nlibrary(ggplot2)\nlibrary(overlay)\n\n# Creamos un gráfico\np_penguins &lt;- ggplot(penguins, aes(bill_len, bill_dep, color = species)) +\n  geom_point() +\n  theme_minimal() +\n  theme(legend.position = \"none\")\n\n# Combinamos con el fondo usando pipes\np_penguins |&gt; \n  hud_overlay(background = \"../archivos-ej/sor.jpg\", \n              size = \"medium\", \n              placement = \"top-right\")"
+  },
+  {
+    "objectID": "presentaciones/ejercicios-pipes.html#ejercicio-overlay",
+    "href": "presentaciones/ejercicios-pipes.html#ejercicio-overlay",
+    "title": "Ejercicios: pipes",
+    "section": "Ejercicio: overlay",
+    "text": "Ejercicio: overlay\nEl paquete overlay sirve para combinar imágenes, gráficos o código sobre un fondo.\n\n\n# remotes::install_github(\"luisdva/overlay\")\nlibrary(overlay)\n\n# Tenemos un gráfico y un fondo\nmi_plot &lt;- ggplot(...)\nfondo &lt;- \"imagen.png\"\n\n# Con pipe:\nmi_plot |&gt; \n  hud_overlay(background = fondo)"
+  },
+  {
+    "objectID": "presentaciones/ejercicios-pipes.html#section",
+    "href": "presentaciones/ejercicios-pipes.html#section",
+    "title": "Ejercicios: pipes",
+    "section": "",
+    "text": "¿Por qué _?\nPorque en la segunda llamada, el resultado del primer paso (la imagen ya compuesta) debe entrar en el argumento background, no en el primero (overlay)."
+  },
+  {
+    "objectID": "presentaciones/ejercicios-pipes.html#ejemplo-real",
+    "href": "presentaciones/ejercicios-pipes.html#ejemplo-real",
+    "title": "Ejercicios: pipes",
+    "section": "Ejemplo real",
+    "text": "Ejemplo real\n\nlibrary(ggplot2)\nlibrary(overlay)\n\n# Creamos un gráfico\np_penguins &lt;- ggplot(penguins, aes(bill_len, bill_dep, color = species)) +\n  geom_point() +\n  theme_minimal() +\n  theme(legend.position = \"none\")\n\n# Combinamos con el fondo usando pipes\np_penguins |&gt; \n  hud_overlay(background = \"../archivos-ej/sor.jpg\", \n              size = \"medium\", \n              placement = \"top-right\")"
+  },
+  {
+    "objectID": "presentaciones/ejercicios-pipes.html#ejemplo-real-output",
+    "href": "presentaciones/ejercicios-pipes.html#ejemplo-real-output",
+    "title": "Ejercicios: pipes",
+    "section": "Ejemplo real",
+    "text": "Ejemplo real"
+  },
+  {
+    "objectID": "presentaciones/ejercicios-pipes.html#ejemplo-real-una-sola-imagen",
+    "href": "presentaciones/ejercicios-pipes.html#ejemplo-real-una-sola-imagen",
+    "title": "Ejercicios: pipes",
+    "section": "Ejemplo real (una sola imagen)",
+    "text": "Ejemplo real (una sola imagen)\n\nlibrary(ggplot2)\nlibrary(overlay)\n\n# Creamos un gráfico\np_penguins &lt;- ggplot(penguins, aes(bill_len, bill_dep, color = species)) +\n  geom_point() +\n  theme_minimal() +\n  theme(legend.position = \"none\")\n\n# Combinamos con el fondo usando pipes\np_penguins |&gt; \n  hud_overlay(background = \"../archivos-ej/sor.jpg\", \n              size = \"medium\", tilt=\"right\",\n              placement = \"top-right\")"
+  },
+  {
+    "objectID": "presentaciones/ejercicios-pipes.html#ejemplo-real-una-sola-imagen-output",
+    "href": "presentaciones/ejercicios-pipes.html#ejemplo-real-una-sola-imagen-output",
+    "title": "Ejercicios: pipes",
+    "section": "Ejemplo real (una sola imagen)",
+    "text": "Ejemplo real (una sola imagen)"
+  },
+  {
+    "objectID": "presentaciones/ejercicios-pipes.html",
+    "href": "presentaciones/ejercicios-pipes.html",
+    "title": "Ejercicios: pipes",
+    "section": "",
+    "text": "El operador pipe toma el objeto a la izquierda (LHS) y lo pasa como el primer argumento de la función a la derecha (RHS).\n\n\nx |&gt; f(y)\nes lo mismo que\nf(x, y)"
   }
 ]

@@ -1,6 +1,5 @@
 # Soluciones - Asteraceae de México
 # Curso 2026
-
 library(tidyverse)
 
 # datos
@@ -19,7 +18,7 @@ asteraceae
 # ¿Qué género tiene más registros?
 asteraceae |> 
   separate(scientificName, into = "genus", sep = " ") |> 
-  count(genus, sort = TRUE) |> 
+  count(genus, sort = TRUE)  
   head(10) 
   
 # Elevación por subfamilia
