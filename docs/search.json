@@ -2286,7 +2286,7 @@
     "href": "presentaciones/3-visualizacion.html#section-14",
     "title": "Visualización de datos",
     "section": "",
-    "text": "library(ggtext)\nggplot(cafeteria,aes(carbohidratos,grasa,color=bajo_grasa))+\ngeom_point()+\n  scale_color_discrete(labels=c(\"Chatarra  **Grasienta**\",\"light\"))+\n  theme(legend.text = element_markdown())"
+    "text": "protEnergia_mod &lt;- protEnergia + labs(x = \"*Esta es una etiqueta tan larga e importante \\nque tiene que abarcar muchas líneas \\nen el gráfico\")\n\n\nfree(grasaCarb) | protEnergia_mod"
   },
   {
     "objectID": "presentaciones/3-visualizacion.html#extensiones-para-ggplot2",
@@ -5045,5 +5045,110 @@
     "title": "Ejercicios: pipes",
     "section": "",
     "text": "El operador pipe toma el objeto a la izquierda (LHS) y lo pasa como el primer argumento de la función a la derecha (RHS).\n\n\nx |&gt; f(y)\nes lo mismo que\nf(x, y)"
+  },
+  {
+    "objectID": "presentaciones/3-visualizacion.html#recursos-por-nicola-rennie",
+    "href": "presentaciones/3-visualizacion.html#recursos-por-nicola-rennie",
+    "title": "Visualización de datos",
+    "section": "Recursos por Nicola Rennie",
+    "text": "Recursos por Nicola Rennie\n\nGalería de ejemplos\nThe Art of Data Visualization with ggplot2"
+  },
+  {
+    "objectID": "presentaciones/3-visualizacion.html#recuadros",
+    "href": "presentaciones/3-visualizacion.html#recuadros",
+    "title": "Visualización de datos",
+    "section": "Recuadros",
+    "text": "Recuadros\n\npuntos_ranas + \n  inset_element(grasaCarb, left = 0.6, bottom = 0.6, right = 1, top = 1)"
+  },
+  {
+    "objectID": "presentaciones/3-visualizacion.html#section-15",
+    "href": "presentaciones/3-visualizacion.html#section-15",
+    "title": "Visualización de datos",
+    "section": "",
+    "text": "library(ggtext)\nggplot(cafeteria,aes(carbohidratos,grasa,color=bajo_grasa))+\ngeom_point()+\n  scale_color_discrete(labels=c(\"Chatarra  **Grasienta**\",\"light\"))+\n  theme(legend.text = element_markdown())"
+  },
+  {
+    "objectID": "presentaciones/3-visualizacion.html#acomodar-leyendas",
+    "href": "presentaciones/3-visualizacion.html#acomodar-leyendas",
+    "title": "Visualización de datos",
+    "section": "Acomodar leyendas",
+    "text": "Acomodar leyendas\n\nlibrary(ggtext)\ngrasaCarb2 &lt;- ggplot(cafeteria,aes(carbohidratos,grasa,color=bajo_grasa, size = proteina))+\ngeom_point()+\n  scale_color_discrete(labels=c(\"Chatarra  **Grasienta**\",\"light\"))+\n  theme(legend.text = element_markdown())\n\ngrasaCarb2 | (puntos_ranas / protEnergia)"
+  },
+  {
+    "objectID": "presentaciones/3-visualizacion.html#section-16",
+    "href": "presentaciones/3-visualizacion.html#section-16",
+    "title": "Visualización de datos",
+    "section": "",
+    "text": "(grasaCarb2 | (puntos_ranas / protEnergia)) + plot_layout(guides = 'collect')"
+  },
+  {
+    "objectID": "presentaciones/3-visualizacion.html#leyendas-repetidas",
+    "href": "presentaciones/3-visualizacion.html#leyendas-repetidas",
+    "title": "Visualización de datos",
+    "section": "Leyendas repetidas",
+    "text": "Leyendas repetidas\n\nlibrary(ggtext)\nprotEnergia2 &lt;- ggplot(cafeteria,aes(energia,proteina,color=bajo_grasa))+ geom_point() +\n  scale_color_discrete(labels=c(\"Chatarra  **Grasienta**\",\"light\"))+\n  theme(legend.text = element_markdown())\n\ngrasaCarb2 | (puntos_ranas / protEnergia2)"
+  },
+  {
+    "objectID": "presentaciones/3-visualizacion.html#section-17",
+    "href": "presentaciones/3-visualizacion.html#section-17",
+    "title": "Visualización de datos",
+    "section": "",
+    "text": "(grasaCarb2 | (puntos_ranas / protEnergia2)) + \n  plot_layout(guides = 'collect')"
+  },
+  {
+    "objectID": "presentaciones/3-visualizacion.html#ejes-repetidos",
+    "href": "presentaciones/3-visualizacion.html#ejes-repetidos",
+    "title": "Visualización de datos",
+    "section": "Ejes repetidos",
+    "text": "Ejes repetidos\n\nlibrary(ggtext)\ngrasaenergia &lt;- ggplot(cafeteria,aes(energia,grasa)) +\n   geom_point()\n\ngrasaCarb + grasaenergia"
+  },
+  {
+    "objectID": "presentaciones/3-visualizacion.html#section-18",
+    "href": "presentaciones/3-visualizacion.html#section-18",
+    "title": "Visualización de datos",
+    "section": "",
+    "text": "grasaCarb + grasaenergia + plot_layout(axes = \"collect\")"
+  },
+  {
+    "objectID": "presentaciones/3-visualizacion.html#combinar-gráficos-base-y-ggplot2",
+    "href": "presentaciones/3-visualizacion.html#combinar-gráficos-base-y-ggplot2",
+    "title": "Visualización de datos",
+    "section": "Combinar gráficos base y ggplot2",
+    "text": "Combinar gráficos base y ggplot2\nwrap_elements() es el puente que convierte cualquier gráfico en algo que patchwork puede tratar como si fuera un ggplot\n\n\np1 | wrap_elements(full = ~plot(x, y))\n\n\n\n\n\n\n\nNote\n\n\nSolo se combinan gráficos R base si se pasan como fórmula."
+  },
+  {
+    "objectID": "presentaciones/3-visualizacion.html#section-20",
+    "href": "presentaciones/3-visualizacion.html#section-20",
+    "title": "Visualización de datos",
+    "section": "",
+    "text": "grasaCarb &lt;- ggplot(cafeteria,aes(carbohidratos,grasa))+\n  geom_point()\n\ngrasaCarb + wrap_elements(full = ~ plot(cafeteria$energia, cafeteria$proteina))"
+  },
+  {
+    "objectID": "presentaciones/3-visualizacion.html#section-21",
+    "href": "presentaciones/3-visualizacion.html#section-21",
+    "title": "Visualización de datos",
+    "section": "",
+    "text": "grasaCarb + wrap_elements(full = ~ {\n  par(mar = c(4, 4, 2, 1))\n  plot(cafeteria$energia, cafeteria$proteina,\n       main = \"Figura R base\")\n})"
+  },
+  {
+    "objectID": "presentaciones/3-visualizacion.html#ejercicio-6",
+    "href": "presentaciones/3-visualizacion.html#ejercicio-6",
+    "title": "Visualización de datos",
+    "section": "Ejercicio",
+    "text": "Ejercicio\nCon las figuras puntos_ranas, grasaCarb y protEnergia de los ejercicios anteriores, hacer la siguiente:"
+  },
+  {
+    "objectID": "presentaciones/3-visualizacion.html#section-22",
+    "href": "presentaciones/3-visualizacion.html#section-22",
+    "title": "Visualización de datos",
+    "section": "",
+    "text": "puntos_ranas + grasaCarb + protEnergia + \nplot_layout(ncol = 2,widths = c(2, 1), byrow = FALSE, guides = \"collect\") + \nplot_annotation(tag_levels = \"a\") & theme(plot.tag = element_text(face = \"bold\"))"
+  },
+  {
+    "objectID": "presentaciones/3-visualizacion.html#más-paletas",
+    "href": "presentaciones/3-visualizacion.html#más-paletas",
+    "title": "Visualización de datos",
+    "section": "Más paletas",
+    "text": "Más paletas\nAves\n\nManu\nbirdcolors\n\nPeces\n\nfishualize"
   }
 ]

@@ -34,7 +34,7 @@ Estas presentaciones en formato web cuentan con un índice de contenidos interac
 
 ### Miércoles
 
-<!--[Visualización de Datos](presentaciones/3-visualizacion.qmd){.external target="_blank"}-->
+[Visualización de Datos](presentaciones/3-visualizacion.qmd){.external target="_blank"}
 
 ### Jueves
 

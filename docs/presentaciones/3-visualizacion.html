@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ae0b5334a1ec0bf99af3d0c304a697d2.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.31">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c875dbb4c9335aca9cc352e974a4ec92.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Luis D. Verde Arregoitia">
   <title>Herramientas para el manejo de datos de biodiversidad en R – Visualización de datos</title>
@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -95,7 +98,7 @@
     code span.vs { color: #4070a0; } /* VerbatimString */
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-4b30003381292c86f756b974607fa5da.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-3fe984cd4113ab3ee3087cf24cad71eb.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -226,11 +229,11 @@ Luis D. Verde Arregoitia
 <p>Por si no los tienen:</p>
 <div class="big-code">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span>
 <span id="cb1-2"><a></a><span class="fu">install.packages</span>(<span class="st">"ggthemes"</span>) </span>
 <span id="cb1-3"><a></a><span class="fu">install.packages</span>(<span class="st">"ragg"</span>)</span>
 <span id="cb1-4"><a></a><span class="fu">install.packages</span>(<span class="st">"patchwork"</span>)</span>
-<span id="cb1-5"><a></a><span class="fu">install.packages</span>(<span class="st">"forcats"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a></a><span class="fu">install.packages</span>(<span class="st">"forcats"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -311,6 +314,13 @@ Rafael A. Irizarry (2020)</p>
 
 
 <img data-src="imgs/showcase/genart.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://www.data-imaginist.com/art">arte de Thomas Lin Pedersen</a></p></section>
+<section id="recursos-por-nicola-rennie" class="slide level2">
+<h2>Recursos por Nicola Rennie</h2>
+<ul>
+<li><p><a href="https://nrennie.rbind.io/viz-gallery/">Galería de ejemplos</a></p></li>
+<li><p><a href="https://nrennie.rbind.io/art-of-viz/">The Art of Data Visualization with ggplot2</a></p></li>
+</ul>
+</section>
 <section id="gramática-de-gráficos" class="slide level2">
 <h2>Gramática de gráficos</h2>
 
@@ -323,8 +333,8 @@ Rafael A. Irizarry (2020)</p>
 <h2></h2>
 <div class="big-code">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(x,y)) <span class="sc">+</span></span>
-<span id="cb2-2"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(x,y)) <span class="sc">+</span></span>
+<span id="cb2-2"><a></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <p><br> <br> <code>ggplot()</code> crea el gráfico</p>
@@ -339,23 +349,23 @@ Rafael A. Irizarry (2020)</p>
 <div id="tabset-1-1">
 <div class="cell">
 <div class="cell-output-display">
-<div id="fdsprjkjhd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fdsprjkjhd table {
+<div id="oaveyvskrs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#oaveyvskrs table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fdsprjkjhd thead, #fdsprjkjhd tbody, #fdsprjkjhd tfoot, #fdsprjkjhd tr, #fdsprjkjhd td, #fdsprjkjhd th {
+#oaveyvskrs thead, #oaveyvskrs tbody, #oaveyvskrs tfoot, #oaveyvskrs tr, #oaveyvskrs td, #oaveyvskrs th {
   border-style: none;
 }
 
-#fdsprjkjhd p {
+#oaveyvskrs p {
   margin: 0;
   padding: 0;
 }
 
-#fdsprjkjhd .gt_table {
+#oaveyvskrs .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -381,12 +391,12 @@ Rafael A. Irizarry (2020)</p>
   border-left-color: #D3D3D3;
 }
 
-#fdsprjkjhd .gt_caption {
+#oaveyvskrs .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fdsprjkjhd .gt_title {
+#oaveyvskrs .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -398,7 +408,7 @@ Rafael A. Irizarry (2020)</p>
   border-bottom-width: 0;
 }
 
-#fdsprjkjhd .gt_subtitle {
+#oaveyvskrs .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -410,7 +420,7 @@ Rafael A. Irizarry (2020)</p>
   border-top-width: 0;
 }
 
-#fdsprjkjhd .gt_heading {
+#oaveyvskrs .gt_heading {
   background-color: #F4F4F9;
   text-align: center;
   border-bottom-color: #F4F4F9;
@@ -422,13 +432,13 @@ Rafael A. Irizarry (2020)</p>
   border-right-color: #D3D3D3;
 }
 
-#fdsprjkjhd .gt_bottom_border {
+#oaveyvskrs .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fdsprjkjhd .gt_col_headings {
+#oaveyvskrs .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -443,7 +453,7 @@ Rafael A. Irizarry (2020)</p>
   border-right-color: #D3D3D3;
 }
 
-#fdsprjkjhd .gt_col_heading {
+#oaveyvskrs .gt_col_heading {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -463,7 +473,7 @@ Rafael A. Irizarry (2020)</p>
   overflow-x: hidden;
 }
 
-#fdsprjkjhd .gt_column_spanner_outer {
+#oaveyvskrs .gt_column_spanner_outer {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -475,15 +485,15 @@ Rafael A. Irizarry (2020)</p>
   padding-right: 4px;
 }
 
-#fdsprjkjhd .gt_column_spanner_outer:first-child {
+#oaveyvskrs .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fdsprjkjhd .gt_column_spanner_outer:last-child {
+#oaveyvskrs .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fdsprjkjhd .gt_column_spanner {
+#oaveyvskrs .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -495,11 +505,11 @@ Rafael A. Irizarry (2020)</p>
   width: 100%;
 }
 
-#fdsprjkjhd .gt_spanner_row {
+#oaveyvskrs .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fdsprjkjhd .gt_group_heading {
+#oaveyvskrs .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -525,7 +535,7 @@ Rafael A. Irizarry (2020)</p>
   text-align: left;
 }
 
-#fdsprjkjhd .gt_empty_group_heading {
+#oaveyvskrs .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #F4F4F9;
@@ -540,15 +550,15 @@ Rafael A. Irizarry (2020)</p>
   vertical-align: middle;
 }
 
-#fdsprjkjhd .gt_from_md > :first-child {
+#oaveyvskrs .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fdsprjkjhd .gt_from_md > :last-child {
+#oaveyvskrs .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fdsprjkjhd .gt_row {
+#oaveyvskrs .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -567,7 +577,7 @@ Rafael A. Irizarry (2020)</p>
   overflow-x: hidden;
 }
 
-#fdsprjkjhd .gt_stub {
+#oaveyvskrs .gt_stub {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -580,7 +590,7 @@ Rafael A. Irizarry (2020)</p>
   padding-right: 5px;
 }
 
-#fdsprjkjhd .gt_stub_row_group {
+#oaveyvskrs .gt_stub_row_group {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -594,15 +604,15 @@ Rafael A. Irizarry (2020)</p>
   vertical-align: top;
 }
 
-#fdsprjkjhd .gt_row_group_first td {
+#oaveyvskrs .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fdsprjkjhd .gt_row_group_first th {
+#oaveyvskrs .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fdsprjkjhd .gt_summary_row {
+#oaveyvskrs .gt_summary_row {
   color: #333333;
   background-color: #F4F4F9;
   text-transform: inherit;
@@ -612,16 +622,16 @@ Rafael A. Irizarry (2020)</p>
   padding-right: 5px;
 }
 
-#fdsprjkjhd .gt_first_summary_row {
+#oaveyvskrs .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fdsprjkjhd .gt_first_summary_row.thick {
+#oaveyvskrs .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fdsprjkjhd .gt_last_summary_row {
+#oaveyvskrs .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -631,7 +641,7 @@ Rafael A. Irizarry (2020)</p>
   border-bottom-color: #D3D3D3;
 }
 
-#fdsprjkjhd .gt_grand_summary_row {
+#oaveyvskrs .gt_grand_summary_row {
   color: #333333;
   background-color: #F4F4F9;
   text-transform: inherit;
@@ -641,7 +651,7 @@ Rafael A. Irizarry (2020)</p>
   padding-right: 5px;
 }
 
-#fdsprjkjhd .gt_first_grand_summary_row {
+#oaveyvskrs .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -651,7 +661,7 @@ Rafael A. Irizarry (2020)</p>
   border-top-color: #D3D3D3;
 }
 
-#fdsprjkjhd .gt_last_grand_summary_row_top {
+#oaveyvskrs .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -661,11 +671,11 @@ Rafael A. Irizarry (2020)</p>
   border-bottom-color: #D3D3D3;
 }
 
-#fdsprjkjhd .gt_striped {
+#oaveyvskrs .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fdsprjkjhd .gt_table_body {
+#oaveyvskrs .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -674,7 +684,7 @@ Rafael A. Irizarry (2020)</p>
   border-bottom-color: #D3D3D3;
 }
 
-#fdsprjkjhd .gt_footnotes {
+#oaveyvskrs .gt_footnotes {
   color: #333333;
   background-color: #F4F4F9;
   border-bottom-style: none;
@@ -688,7 +698,7 @@ Rafael A. Irizarry (2020)</p>
   border-right-color: #D3D3D3;
 }
 
-#fdsprjkjhd .gt_footnote {
+#oaveyvskrs .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -697,7 +707,7 @@ Rafael A. Irizarry (2020)</p>
   padding-right: 5px;
 }
 
-#fdsprjkjhd .gt_sourcenotes {
+#oaveyvskrs .gt_sourcenotes {
   color: #333333;
   background-color: #F4F4F9;
   border-bottom-style: none;
@@ -711,7 +721,7 @@ Rafael A. Irizarry (2020)</p>
   border-right-color: #D3D3D3;
 }
 
-#fdsprjkjhd .gt_sourcenote {
+#oaveyvskrs .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -719,77 +729,77 @@ Rafael A. Irizarry (2020)</p>
   padding-right: 5px;
 }
 
-#fdsprjkjhd .gt_left {
+#oaveyvskrs .gt_left {
   text-align: left;
 }
 
-#fdsprjkjhd .gt_center {
+#oaveyvskrs .gt_center {
   text-align: center;
 }
 
-#fdsprjkjhd .gt_right {
+#oaveyvskrs .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fdsprjkjhd .gt_font_normal {
+#oaveyvskrs .gt_font_normal {
   font-weight: normal;
 }
 
-#fdsprjkjhd .gt_font_bold {
+#oaveyvskrs .gt_font_bold {
   font-weight: bold;
 }
 
-#fdsprjkjhd .gt_font_italic {
+#oaveyvskrs .gt_font_italic {
   font-style: italic;
 }
 
-#fdsprjkjhd .gt_super {
+#oaveyvskrs .gt_super {
   font-size: 65%;
 }
 
-#fdsprjkjhd .gt_footnote_marks {
+#oaveyvskrs .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fdsprjkjhd .gt_asterisk {
+#oaveyvskrs .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fdsprjkjhd .gt_indent_1 {
+#oaveyvskrs .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fdsprjkjhd .gt_indent_2 {
+#oaveyvskrs .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fdsprjkjhd .gt_indent_3 {
+#oaveyvskrs .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fdsprjkjhd .gt_indent_4 {
+#oaveyvskrs .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fdsprjkjhd .gt_indent_5 {
+#oaveyvskrs .gt_indent_5 {
   text-indent: 25px;
 }
 
-#fdsprjkjhd .katex-display {
+#oaveyvskrs .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#fdsprjkjhd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#oaveyvskrs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="largo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-size: 33px" scope="col">largo</th>
@@ -837,7 +847,7 @@ Rafael A. Irizarry (2020)</p>
 </div>
 <div id="tabset-1-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>lagartijas <span class="ot">&lt;-</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>lagartijas <span class="ot">&lt;-</span> </span>
 <span id="cb3-2"><a></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
 <span id="cb3-3"><a></a>  <span class="sc">~</span>largo, <span class="sc">~</span>peso,     <span class="sc">~</span>edad,</span>
 <span id="cb3-4"><a></a>      <span class="dv">9</span>L,   <span class="dv">20</span>L,  <span class="st">"adulto"</span>,</span>
@@ -846,7 +856,7 @@ Rafael A. Irizarry (2020)</p>
 <span id="cb3-7"><a></a>     <span class="dv">13</span>L,   <span class="dv">18</span>L,  <span class="st">"adulto"</span>,</span>
 <span id="cb3-8"><a></a>     <span class="dv">11</span>L,   <span class="dv">21</span>L,  <span class="st">"adulto"</span>,</span>
 <span id="cb3-9"><a></a>      <span class="dv">6</span>L,   <span class="dv">14</span>L, <span class="st">"juvenil"</span></span>
-<span id="cb3-10"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-10"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -858,23 +868,23 @@ Rafael A. Irizarry (2020)</p>
 <div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
-<div id="jeakvxdfci" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jeakvxdfci table {
+<div id="saxjpwcmfw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#saxjpwcmfw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jeakvxdfci thead, #jeakvxdfci tbody, #jeakvxdfci tfoot, #jeakvxdfci tr, #jeakvxdfci td, #jeakvxdfci th {
+#saxjpwcmfw thead, #saxjpwcmfw tbody, #saxjpwcmfw tfoot, #saxjpwcmfw tr, #saxjpwcmfw td, #saxjpwcmfw th {
   border-style: none;
 }
 
-#jeakvxdfci p {
+#saxjpwcmfw p {
   margin: 0;
   padding: 0;
 }
 
-#jeakvxdfci .gt_table {
+#saxjpwcmfw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -900,12 +910,12 @@ Rafael A. Irizarry (2020)</p>
   border-left-color: #D3D3D3;
 }
 
-#jeakvxdfci .gt_caption {
+#saxjpwcmfw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jeakvxdfci .gt_title {
+#saxjpwcmfw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -917,7 +927,7 @@ Rafael A. Irizarry (2020)</p>
   border-bottom-width: 0;
 }
 
-#jeakvxdfci .gt_subtitle {
+#saxjpwcmfw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -929,7 +939,7 @@ Rafael A. Irizarry (2020)</p>
   border-top-width: 0;
 }
 
-#jeakvxdfci .gt_heading {
+#saxjpwcmfw .gt_heading {
   background-color: #F4F4F9;
   text-align: center;
   border-bottom-color: #F4F4F9;
@@ -941,13 +951,13 @@ Rafael A. Irizarry (2020)</p>
   border-right-color: #D3D3D3;
 }
 
-#jeakvxdfci .gt_bottom_border {
+#saxjpwcmfw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jeakvxdfci .gt_col_headings {
+#saxjpwcmfw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -962,7 +972,7 @@ Rafael A. Irizarry (2020)</p>
   border-right-color: #D3D3D3;
 }
 
-#jeakvxdfci .gt_col_heading {
+#saxjpwcmfw .gt_col_heading {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -982,7 +992,7 @@ Rafael A. Irizarry (2020)</p>
   overflow-x: hidden;
 }
 
-#jeakvxdfci .gt_column_spanner_outer {
+#saxjpwcmfw .gt_column_spanner_outer {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -994,15 +1004,15 @@ Rafael A. Irizarry (2020)</p>
   padding-right: 4px;
 }
 
-#jeakvxdfci .gt_column_spanner_outer:first-child {
+#saxjpwcmfw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jeakvxdfci .gt_column_spanner_outer:last-child {
+#saxjpwcmfw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jeakvxdfci .gt_column_spanner {
+#saxjpwcmfw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1014,11 +1024,11 @@ Rafael A. Irizarry (2020)</p>
   width: 100%;
 }
 
-#jeakvxdfci .gt_spanner_row {
+#saxjpwcmfw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jeakvxdfci .gt_group_heading {
+#saxjpwcmfw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1044,7 +1054,7 @@ Rafael A. Irizarry (2020)</p>
   text-align: left;
 }
 
-#jeakvxdfci .gt_empty_group_heading {
+#saxjpwcmfw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #F4F4F9;
@@ -1059,15 +1069,15 @@ Rafael A. Irizarry (2020)</p>
   vertical-align: middle;
 }
 
-#jeakvxdfci .gt_from_md > :first-child {
+#saxjpwcmfw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jeakvxdfci .gt_from_md > :last-child {
+#saxjpwcmfw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jeakvxdfci .gt_row {
+#saxjpwcmfw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1086,7 +1096,7 @@ Rafael A. Irizarry (2020)</p>
   overflow-x: hidden;
 }
 
-#jeakvxdfci .gt_stub {
+#saxjpwcmfw .gt_stub {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -1099,7 +1109,7 @@ Rafael A. Irizarry (2020)</p>
   padding-right: 5px;
 }
 
-#jeakvxdfci .gt_stub_row_group {
+#saxjpwcmfw .gt_stub_row_group {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -1113,15 +1123,15 @@ Rafael A. Irizarry (2020)</p>
   vertical-align: top;
 }
 
-#jeakvxdfci .gt_row_group_first td {
+#saxjpwcmfw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jeakvxdfci .gt_row_group_first th {
+#saxjpwcmfw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jeakvxdfci .gt_summary_row {
+#saxjpwcmfw .gt_summary_row {
   color: #333333;
   background-color: #F4F4F9;
   text-transform: inherit;
@@ -1131,16 +1141,16 @@ Rafael A. Irizarry (2020)</p>
   padding-right: 5px;
 }
 
-#jeakvxdfci .gt_first_summary_row {
+#saxjpwcmfw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jeakvxdfci .gt_first_summary_row.thick {
+#saxjpwcmfw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jeakvxdfci .gt_last_summary_row {
+#saxjpwcmfw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1150,7 +1160,7 @@ Rafael A. Irizarry (2020)</p>
   border-bottom-color: #D3D3D3;
 }
 
-#jeakvxdfci .gt_grand_summary_row {
+#saxjpwcmfw .gt_grand_summary_row {
   color: #333333;
   background-color: #F4F4F9;
   text-transform: inherit;
@@ -1160,7 +1170,7 @@ Rafael A. Irizarry (2020)</p>
   padding-right: 5px;
 }
 
-#jeakvxdfci .gt_first_grand_summary_row {
+#saxjpwcmfw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1170,7 +1180,7 @@ Rafael A. Irizarry (2020)</p>
   border-top-color: #D3D3D3;
 }
 
-#jeakvxdfci .gt_last_grand_summary_row_top {
+#saxjpwcmfw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1180,11 +1190,11 @@ Rafael A. Irizarry (2020)</p>
   border-bottom-color: #D3D3D3;
 }
 
-#jeakvxdfci .gt_striped {
+#saxjpwcmfw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jeakvxdfci .gt_table_body {
+#saxjpwcmfw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1193,7 +1203,7 @@ Rafael A. Irizarry (2020)</p>
   border-bottom-color: #D3D3D3;
 }
 
-#jeakvxdfci .gt_footnotes {
+#saxjpwcmfw .gt_footnotes {
   color: #333333;
   background-color: #F4F4F9;
   border-bottom-style: none;
@@ -1207,7 +1217,7 @@ Rafael A. Irizarry (2020)</p>
   border-right-color: #D3D3D3;
 }
 
-#jeakvxdfci .gt_footnote {
+#saxjpwcmfw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1216,7 +1226,7 @@ Rafael A. Irizarry (2020)</p>
   padding-right: 5px;
 }
 
-#jeakvxdfci .gt_sourcenotes {
+#saxjpwcmfw .gt_sourcenotes {
   color: #333333;
   background-color: #F4F4F9;
   border-bottom-style: none;
@@ -1230,7 +1240,7 @@ Rafael A. Irizarry (2020)</p>
   border-right-color: #D3D3D3;
 }
 
-#jeakvxdfci .gt_sourcenote {
+#saxjpwcmfw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1238,77 +1248,77 @@ Rafael A. Irizarry (2020)</p>
   padding-right: 5px;
 }
 
-#jeakvxdfci .gt_left {
+#saxjpwcmfw .gt_left {
   text-align: left;
 }
 
-#jeakvxdfci .gt_center {
+#saxjpwcmfw .gt_center {
   text-align: center;
 }
 
-#jeakvxdfci .gt_right {
+#saxjpwcmfw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jeakvxdfci .gt_font_normal {
+#saxjpwcmfw .gt_font_normal {
   font-weight: normal;
 }
 
-#jeakvxdfci .gt_font_bold {
+#saxjpwcmfw .gt_font_bold {
   font-weight: bold;
 }
 
-#jeakvxdfci .gt_font_italic {
+#saxjpwcmfw .gt_font_italic {
   font-style: italic;
 }
 
-#jeakvxdfci .gt_super {
+#saxjpwcmfw .gt_super {
   font-size: 65%;
 }
 
-#jeakvxdfci .gt_footnote_marks {
+#saxjpwcmfw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jeakvxdfci .gt_asterisk {
+#saxjpwcmfw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jeakvxdfci .gt_indent_1 {
+#saxjpwcmfw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jeakvxdfci .gt_indent_2 {
+#saxjpwcmfw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jeakvxdfci .gt_indent_3 {
+#saxjpwcmfw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jeakvxdfci .gt_indent_4 {
+#saxjpwcmfw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jeakvxdfci .gt_indent_5 {
+#saxjpwcmfw .gt_indent_5 {
   text-indent: 25px;
 }
 
-#jeakvxdfci .katex-display {
+#saxjpwcmfw .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#jeakvxdfci div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#saxjpwcmfw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="largo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-size: 34px" scope="col">largo</th>
@@ -1356,23 +1366,23 @@ Rafael A. Irizarry (2020)</p>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
-<div id="ssshzvgxqw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ssshzvgxqw table {
+<div id="afpieqwsnr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#afpieqwsnr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ssshzvgxqw thead, #ssshzvgxqw tbody, #ssshzvgxqw tfoot, #ssshzvgxqw tr, #ssshzvgxqw td, #ssshzvgxqw th {
+#afpieqwsnr thead, #afpieqwsnr tbody, #afpieqwsnr tfoot, #afpieqwsnr tr, #afpieqwsnr td, #afpieqwsnr th {
   border-style: none;
 }
 
-#ssshzvgxqw p {
+#afpieqwsnr p {
   margin: 0;
   padding: 0;
 }
 
-#ssshzvgxqw .gt_table {
+#afpieqwsnr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1398,12 +1408,12 @@ Rafael A. Irizarry (2020)</p>
   border-left-color: #D3D3D3;
 }
 
-#ssshzvgxqw .gt_caption {
+#afpieqwsnr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ssshzvgxqw .gt_title {
+#afpieqwsnr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1415,7 +1425,7 @@ Rafael A. Irizarry (2020)</p>
   border-bottom-width: 0;
 }
 
-#ssshzvgxqw .gt_subtitle {
+#afpieqwsnr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1427,7 +1437,7 @@ Rafael A. Irizarry (2020)</p>
   border-top-width: 0;
 }
 
-#ssshzvgxqw .gt_heading {
+#afpieqwsnr .gt_heading {
   background-color: #F4F4F9;
   text-align: center;
   border-bottom-color: #F4F4F9;
@@ -1439,13 +1449,13 @@ Rafael A. Irizarry (2020)</p>
   border-right-color: #D3D3D3;
 }
 
-#ssshzvgxqw .gt_bottom_border {
+#afpieqwsnr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ssshzvgxqw .gt_col_headings {
+#afpieqwsnr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1460,7 +1470,7 @@ Rafael A. Irizarry (2020)</p>
   border-right-color: #D3D3D3;
 }
 
-#ssshzvgxqw .gt_col_heading {
+#afpieqwsnr .gt_col_heading {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -1480,7 +1490,7 @@ Rafael A. Irizarry (2020)</p>
   overflow-x: hidden;
 }
 
-#ssshzvgxqw .gt_column_spanner_outer {
+#afpieqwsnr .gt_column_spanner_outer {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -1492,15 +1502,15 @@ Rafael A. Irizarry (2020)</p>
   padding-right: 4px;
 }
 
-#ssshzvgxqw .gt_column_spanner_outer:first-child {
+#afpieqwsnr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ssshzvgxqw .gt_column_spanner_outer:last-child {
+#afpieqwsnr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ssshzvgxqw .gt_column_spanner {
+#afpieqwsnr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1512,11 +1522,11 @@ Rafael A. Irizarry (2020)</p>
   width: 100%;
 }
 
-#ssshzvgxqw .gt_spanner_row {
+#afpieqwsnr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ssshzvgxqw .gt_group_heading {
+#afpieqwsnr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1542,7 +1552,7 @@ Rafael A. Irizarry (2020)</p>
   text-align: left;
 }
 
-#ssshzvgxqw .gt_empty_group_heading {
+#afpieqwsnr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #F4F4F9;
@@ -1557,15 +1567,15 @@ Rafael A. Irizarry (2020)</p>
   vertical-align: middle;
 }
 
-#ssshzvgxqw .gt_from_md > :first-child {
+#afpieqwsnr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ssshzvgxqw .gt_from_md > :last-child {
+#afpieqwsnr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ssshzvgxqw .gt_row {
+#afpieqwsnr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1584,7 +1594,7 @@ Rafael A. Irizarry (2020)</p>
   overflow-x: hidden;
 }
 
-#ssshzvgxqw .gt_stub {
+#afpieqwsnr .gt_stub {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -1597,7 +1607,7 @@ Rafael A. Irizarry (2020)</p>
   padding-right: 5px;
 }
 
-#ssshzvgxqw .gt_stub_row_group {
+#afpieqwsnr .gt_stub_row_group {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -1611,15 +1621,15 @@ Rafael A. Irizarry (2020)</p>
   vertical-align: top;
 }
 
-#ssshzvgxqw .gt_row_group_first td {
+#afpieqwsnr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ssshzvgxqw .gt_row_group_first th {
+#afpieqwsnr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ssshzvgxqw .gt_summary_row {
+#afpieqwsnr .gt_summary_row {
   color: #333333;
   background-color: #F4F4F9;
   text-transform: inherit;
@@ -1629,16 +1639,16 @@ Rafael A. Irizarry (2020)</p>
   padding-right: 5px;
 }
 
-#ssshzvgxqw .gt_first_summary_row {
+#afpieqwsnr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ssshzvgxqw .gt_first_summary_row.thick {
+#afpieqwsnr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ssshzvgxqw .gt_last_summary_row {
+#afpieqwsnr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1648,7 +1658,7 @@ Rafael A. Irizarry (2020)</p>
   border-bottom-color: #D3D3D3;
 }
 
-#ssshzvgxqw .gt_grand_summary_row {
+#afpieqwsnr .gt_grand_summary_row {
   color: #333333;
   background-color: #F4F4F9;
   text-transform: inherit;
@@ -1658,7 +1668,7 @@ Rafael A. Irizarry (2020)</p>
   padding-right: 5px;
 }
 
-#ssshzvgxqw .gt_first_grand_summary_row {
+#afpieqwsnr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1668,7 +1678,7 @@ Rafael A. Irizarry (2020)</p>
   border-top-color: #D3D3D3;
 }
 
-#ssshzvgxqw .gt_last_grand_summary_row_top {
+#afpieqwsnr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1678,11 +1688,11 @@ Rafael A. Irizarry (2020)</p>
   border-bottom-color: #D3D3D3;
 }
 
-#ssshzvgxqw .gt_striped {
+#afpieqwsnr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ssshzvgxqw .gt_table_body {
+#afpieqwsnr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1691,7 +1701,7 @@ Rafael A. Irizarry (2020)</p>
   border-bottom-color: #D3D3D3;
 }
 
-#ssshzvgxqw .gt_footnotes {
+#afpieqwsnr .gt_footnotes {
   color: #333333;
   background-color: #F4F4F9;
   border-bottom-style: none;
@@ -1705,7 +1715,7 @@ Rafael A. Irizarry (2020)</p>
   border-right-color: #D3D3D3;
 }
 
-#ssshzvgxqw .gt_footnote {
+#afpieqwsnr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1714,7 +1724,7 @@ Rafael A. Irizarry (2020)</p>
   padding-right: 5px;
 }
 
-#ssshzvgxqw .gt_sourcenotes {
+#afpieqwsnr .gt_sourcenotes {
   color: #333333;
   background-color: #F4F4F9;
   border-bottom-style: none;
@@ -1728,7 +1738,7 @@ Rafael A. Irizarry (2020)</p>
   border-right-color: #D3D3D3;
 }
 
-#ssshzvgxqw .gt_sourcenote {
+#afpieqwsnr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1736,77 +1746,77 @@ Rafael A. Irizarry (2020)</p>
   padding-right: 5px;
 }
 
-#ssshzvgxqw .gt_left {
+#afpieqwsnr .gt_left {
   text-align: left;
 }
 
-#ssshzvgxqw .gt_center {
+#afpieqwsnr .gt_center {
   text-align: center;
 }
 
-#ssshzvgxqw .gt_right {
+#afpieqwsnr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ssshzvgxqw .gt_font_normal {
+#afpieqwsnr .gt_font_normal {
   font-weight: normal;
 }
 
-#ssshzvgxqw .gt_font_bold {
+#afpieqwsnr .gt_font_bold {
   font-weight: bold;
 }
 
-#ssshzvgxqw .gt_font_italic {
+#afpieqwsnr .gt_font_italic {
   font-style: italic;
 }
 
-#ssshzvgxqw .gt_super {
+#afpieqwsnr .gt_super {
   font-size: 65%;
 }
 
-#ssshzvgxqw .gt_footnote_marks {
+#afpieqwsnr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ssshzvgxqw .gt_asterisk {
+#afpieqwsnr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ssshzvgxqw .gt_indent_1 {
+#afpieqwsnr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ssshzvgxqw .gt_indent_2 {
+#afpieqwsnr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ssshzvgxqw .gt_indent_3 {
+#afpieqwsnr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ssshzvgxqw .gt_indent_4 {
+#afpieqwsnr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ssshzvgxqw .gt_indent_5 {
+#afpieqwsnr .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ssshzvgxqw .katex-display {
+#afpieqwsnr .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ssshzvgxqw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#afpieqwsnr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="x" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-size: 34px" scope="col">x</th>
@@ -1856,9 +1866,9 @@ Rafael A. Irizarry (2020)</p>
 <section id="section-4" class="slide level2">
 <h2></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> lagartijas,     </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> lagartijas,     </span>
 <span id="cb4-2"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> largo,<span class="at">y =</span> peso))<span class="sc">+</span></span>
-<span id="cb4-3"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-8-1.png" width="2000" class="r-stretch"></section>
@@ -1925,11 +1935,11 @@ apariencias predefinidas</p>
 <p>Para dos categorías con dos niveles c/u:</p>
 <div class="med-code">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">aes</span>(x,y, <span class="at">color =</span> var1, <span class="at">shape =</span> var2)<span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">aes</span>(x,y, <span class="at">color =</span> var1, <span class="at">shape =</span> var2)<span class="sc">+</span></span>
 <span id="cb5-2"><a></a> <span class="fu">scale_color_manual</span>(<span class="at">values=</span></span>
 <span id="cb5-3"><a></a>                      <span class="fu">c</span>(<span class="st">'lightskyblue4'</span>,<span class="st">'blue'</span>))<span class="sc">+</span></span>
 <span id="cb5-4"><a></a> <span class="fu">scale_shape_manual</span>(<span class="at">values=</span>c</span>
-<span id="cb5-5"><a></a>                    (<span class="dv">20</span>,<span class="dv">21</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-5"><a></a>                    (<span class="dv">20</span>,<span class="dv">21</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -1970,16 +1980,28 @@ apariencias predefinidas</p>
 <p>🔗 Galería de ejemplos de <a href="https://pmassicotte.github.io/paletteer_gallery/"><code>paletteer</code></a></p>
 <p>🔗 <a href="https://pokepalettes.com/">Pokepalettes</a></p>
 </section>
+<section id="más-paletas" class="slide level2">
+<h2>Más paletas</h2>
+<h3 id="aves">Aves</h3>
+<ul>
+<li><a href="https://g-thomson.github.io/Manu/">Manu</a></li>
+<li><a href="https://github.com/bentonelli/birdcolors">birdcolors</a></li>
+</ul>
+<h3 id="peces">Peces</h3>
+<ul>
+<li><a href="https://nschiett.github.io/fishualize/index.html">fishualize</a></li>
+</ul>
+</section>
 <section id="section-8" class="slide level2">
 <h2></h2>
 <p>El argumento <code>name</code> modifica el título de la leyenda que se genera automáticamente para los <em>mapeos</em></p>
 <div class="med-code">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">aes</span>(x,y, <span class="at">color =</span> var1, <span class="at">shape =</span> var2)<span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">aes</span>(x,y, <span class="at">color =</span> var1, <span class="at">shape =</span> var2)<span class="sc">+</span></span>
 <span id="cb6-2"><a></a>    <span class="fu">scale_shape_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">21</span>),</span>
 <span id="cb6-3"><a></a>                       <span class="at">name =</span> <span class="st">'Variable Dos'</span>)<span class="sc">+</span></span>
 <span id="cb6-4"><a></a>    <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">'red'</span>,<span class="st">'blue'</span>), </span>
-<span id="cb6-5"><a></a>                       <span class="at">name=</span> <span class="st">'Variable Uno'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-5"><a></a>                       <span class="at">name=</span> <span class="st">'Variable Uno'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -1991,14 +2013,14 @@ apariencias predefinidas</p>
 </ul>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(ranas,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(ranas,</span>
 <span id="cb7-2"><a></a>       <span class="fu">aes</span>(<span class="at">x=</span>svl, <span class="at">y=</span>freq_dom,</span>
 <span id="cb7-3"><a></a>           <span class="at">fill=</span>svl))<span class="sc">+</span></span>
 <span id="cb7-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">4</span>,<span class="at">color=</span><span class="st">"white"</span>,</span>
 <span id="cb7-5"><a></a>             <span class="at">pch=</span><span class="dv">21</span>)<span class="sc">+</span></span>
 <span id="cb7-6"><a></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Tamaño Corporal (SVL)"</span>,</span>
 <span id="cb7-7"><a></a>       <span class="at">y=</span><span class="st">"Frequencia Dominante (Hz)"</span>,</span>
-<span id="cb7-8"><a></a>       <span class="at">title=</span><span class="st">"Llamados Ranas"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-8"><a></a>       <span class="at">title=</span><span class="st">"Llamados Ranas"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column fragment">
 <div class="cell-output-display">
 <div>
@@ -2130,7 +2152,7 @@ apariencias predefinidas</p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>figura_ranas <span class="ot">&lt;-</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>figura_ranas <span class="ot">&lt;-</span> </span>
 <span id="cb8-2"><a></a><span class="fu">ggplot</span>(ranas,</span>
 <span id="cb8-3"><a></a>       <span class="fu">aes</span>(<span class="at">x=</span>svl,<span class="at">y=</span>freq_dom,<span class="at">fill=</span>svl))<span class="sc">+</span></span>
 <span id="cb8-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">4</span>,<span class="at">color=</span><span class="st">"white"</span>,<span class="at">pch=</span><span class="dv">21</span>)</span>
@@ -2141,7 +2163,7 @@ apariencias predefinidas</p>
 <span id="cb8-9"><a></a>    <span class="at">units =</span><span class="st">"cm"</span>,</span>
 <span id="cb8-10"><a></a>    <span class="at">res =</span> <span class="dv">200</span>)</span>
 <span id="cb8-11"><a></a>figura_ranas</span>
-<span id="cb8-12"><a></a><span class="fu">dev.off</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-12"><a></a><span class="fu">dev.off</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="dispositivos-gráficos-de-ragg" class="slide level2">
@@ -2152,7 +2174,7 @@ apariencias predefinidas</p>
 </ul>
 <div class="med-code">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>figura_ranas <span class="ot">&lt;-</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>figura_ranas <span class="ot">&lt;-</span> </span>
 <span id="cb9-2"><a></a><span class="fu">ggplot</span>(ranas,<span class="fu">aes</span>(<span class="at">x=</span>svl,<span class="at">y=</span>freq_dom,<span class="at">fill=</span>svl))<span class="sc">+</span></span>
 <span id="cb9-3"><a></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">4</span>,<span class="at">color=</span><span class="st">"white"</span>,<span class="at">pch=</span><span class="dv">21</span>)</span>
 <span id="cb9-4"><a></a></span>
@@ -2161,7 +2183,7 @@ apariencias predefinidas</p>
 <span id="cb9-7"><a></a>    <span class="at">units =</span><span class="st">"cm"</span>,</span>
 <span id="cb9-8"><a></a>    <span class="at">res =</span> <span class="dv">200</span>)</span>
 <span id="cb9-9"><a></a>figura_ranas</span>
-<span id="cb9-10"><a></a><span class="fu">dev.off</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-10"><a></a><span class="fu">dev.off</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -2172,12 +2194,12 @@ apariencias predefinidas</p>
 </ul>
 <div class="big-code">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggsave</span>(figura_ranas, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggsave</span>(figura_ranas, </span>
 <span id="cb10-2"><a></a>  <span class="at">filename =</span> <span class="st">"mifigura.png"</span>,</span>
 <span id="cb10-3"><a></a>    <span class="at">width =</span> <span class="dv">10</span>, </span>
 <span id="cb10-4"><a></a>    <span class="at">height =</span> <span class="dv">10</span>,</span>
 <span id="cb10-5"><a></a>    <span class="at">units =</span><span class="st">"cm"</span>,</span>
-<span id="cb10-6"><a></a>    <span class="at">dpi =</span> <span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-6"><a></a>    <span class="at">dpi =</span> <span class="dv">200</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -2208,8 +2230,8 @@ apariencias predefinidas</p>
 <h2>Reordenar elementos (ejes, paneles)</h2>
 <p>Orden alfabético de los niveles de la variable <em>tipo</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(cafeteria,<span class="fu">aes</span>(carbohidratos,proteina))<span class="sc">+</span></span>
-<span id="cb11-2"><a></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">facet_wrap</span>(<span class="st">"tipo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(cafeteria,<span class="fu">aes</span>(carbohidratos,proteina))<span class="sc">+</span></span>
+<span id="cb11-2"><a></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">facet_wrap</span>(<span class="st">"tipo"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-18-1.png" width="2000" class="r-stretch"></section>
@@ -2230,7 +2252,7 @@ apariencias predefinidas</p>
 <h2>Categorías</h2>
 <div class="big-code">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>cafeteria<span class="sc">$</span>tipo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>cafeteria<span class="sc">$</span>tipo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </div>
@@ -2258,7 +2280,7 @@ apariencias predefinidas</p>
 <h2></h2>
 <div class="big-code">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">factor</span>(cafeteria<span class="sc">$</span>tipo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">factor</span>(cafeteria<span class="sc">$</span>tipo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </div>
@@ -2287,7 +2309,7 @@ apariencias predefinidas</p>
 <h2></h2>
 <div class="big-code">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">levels</span>(<span class="fu">factor</span>(cafeteria<span class="sc">$</span>tipo))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">levels</span>(<span class="fu">factor</span>(cafeteria<span class="sc">$</span>tipo))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </div>
@@ -2340,7 +2362,7 @@ apariencias predefinidas</p>
 <section>
 <section id="figuras-compuestas" class="title-slide slide level1 center" data-background-image="imgs/patchdrone.jpg">
 <h1>Figuras compuestas</h1>
-
+<p><strong>Diana Marcela Ochoa Sanz</strong></p>
 </section>
 <section id="patchwork" class="slide level2">
 <h2><code>patchwork</code></h2>
@@ -2363,10 +2385,10 @@ apariencias predefinidas</p>
 <section class="slide level2">
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">ggplot</span>(cafeteria,<span class="fu">aes</span>(carbohidratos,grasa))<span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">ggplot</span>(cafeteria,<span class="fu">aes</span>(carbohidratos,grasa))<span class="sc">+</span></span>
 <span id="cb18-2"><a></a>     <span class="fu">geom_point</span>()<span class="sc">+</span></span>
 <span id="cb18-3"><a></a><span class="fu">ggplot</span>(cafeteria,<span class="fu">aes</span>(energia,proteina))<span class="sc">+</span></span>
-<span id="cb18-4"><a></a>     <span class="fu">geom_point</span>()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-4"><a></a>     <span class="fu">geom_point</span>()  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-22-1.png" width="2000" class="r-stretch"></section>
@@ -2374,12 +2396,12 @@ apariencias predefinidas</p>
 
 <p>Más fácil de leer:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>grasaCarb <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cafeteria,<span class="fu">aes</span>(carbohidratos,grasa))<span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>grasaCarb <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cafeteria,<span class="fu">aes</span>(carbohidratos,grasa))<span class="sc">+</span></span>
 <span id="cb19-2"><a></a>     <span class="fu">geom_point</span>()</span>
 <span id="cb19-3"><a></a>protEnergia <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cafeteria,<span class="fu">aes</span>(energia,proteina))<span class="sc">+</span></span>
 <span id="cb19-4"><a></a>     <span class="fu">geom_point</span>()  </span>
 <span id="cb19-5"><a></a></span>
-<span id="cb19-6"><a></a>grasaCarb<span class="sc">+</span>protEnergia</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-6"><a></a>grasaCarb<span class="sc">+</span>protEnergia</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-23-1.png" width="2000" class="r-stretch"></section>
@@ -2387,10 +2409,10 @@ apariencias predefinidas</p>
 
 <p>Tres figuras:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>grasaCarb<span class="sc">+</span>protEnergia<span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>grasaCarb<span class="sc">+</span>protEnergia<span class="sc">+</span></span>
 <span id="cb20-2"><a></a>  <span class="fu">ggplot</span>(ranas,</span>
 <span id="cb20-3"><a></a>       <span class="fu">aes</span>(<span class="at">x=</span>svl,<span class="at">y=</span>freq_dom,<span class="at">fill=</span>svl))<span class="sc">+</span></span>
-<span id="cb20-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">4</span>,<span class="at">color=</span><span class="st">"white"</span>,<span class="at">pch=</span><span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">4</span>,<span class="at">color=</span><span class="st">"white"</span>,<span class="at">pch=</span><span class="dv">21</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-24-1.png" width="2000" class="r-stretch"></section>
@@ -2398,13 +2420,13 @@ apariencias predefinidas</p>
 
 <p>En una sola columna</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>puntos_ranas <span class="ot">&lt;-</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>puntos_ranas <span class="ot">&lt;-</span> </span>
 <span id="cb21-2"><a></a>  <span class="fu">ggplot</span>(ranas,<span class="fu">aes</span>(<span class="at">x=</span>svl,<span class="at">y=</span>freq_dom,<span class="at">fill=</span>svl))<span class="sc">+</span></span>
-<span id="cb21-3"><a></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">4</span>,<span class="at">color=</span><span class="st">"white"</span>,<span class="at">pch=</span><span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-3"><a></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">4</span>,<span class="at">color=</span><span class="st">"white"</span>,<span class="at">pch=</span><span class="dv">21</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>grasaCarb<span class="sc">+</span>protEnergia<span class="sc">+</span>puntos_ranas<span class="sc">+</span></span>
-<span id="cb22-2"><a></a>  <span class="fu">plot_layout</span>(<span class="at">ncol=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>grasaCarb<span class="sc">+</span>protEnergia<span class="sc">+</span>puntos_ranas<span class="sc">+</span></span>
+<span id="cb22-2"><a></a>  <span class="fu">plot_layout</span>(<span class="at">ncol=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-26-1.png" width="2000" class="r-stretch"></section>
@@ -2413,7 +2435,7 @@ apariencias predefinidas</p>
 <p>Anidando:</p>
 <div class="med-code">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>(grasaCarb<span class="sc">+</span>protEnergia)<span class="sc">/</span>puntos_ranas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>(grasaCarb<span class="sc">+</span>protEnergia)<span class="sc">/</span>puntos_ranas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -2428,7 +2450,7 @@ apariencias predefinidas</p>
 
 <div class="med-code">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>(grasaCarb<span class="sc">/</span>protEnergia)<span class="sc">|</span>puntos_ranas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>(grasaCarb<span class="sc">/</span>protEnergia)<span class="sc">|</span>puntos_ranas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -2439,40 +2461,246 @@ apariencias predefinidas</p>
 </div>
 </div>
 </section>
+<section class="slide level2">
+
+<p>Aprovechando los espacios</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>protEnergia_mod <span class="ot">&lt;-</span> protEnergia <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"*Esta es una etiqueta tan larga e importante </span><span class="sc">\n</span><span class="st">que tiene que abarcar muchas líneas </span><span class="sc">\n</span><span class="st">en el gráfico"</span>)</span>
+<span id="cb25-2"><a></a></span>
+<span id="cb25-3"><a></a>grasaCarb <span class="sc">|</span> protEnergia_mod</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-29-1.png" width="2000" class="r-stretch"></section>
+<section id="section-14" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>protEnergia_mod <span class="ot">&lt;-</span> protEnergia <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"*Esta es una etiqueta tan larga e importante </span><span class="sc">\n</span><span class="st">que tiene que abarcar muchas líneas </span><span class="sc">\n</span><span class="st">en el gráfico"</span>)</span>
+<span id="cb26-2"><a></a></span>
+<span id="cb26-3"><a></a></span>
+<span id="cb26-4"><a></a><span class="fu">free</span>(grasaCarb) <span class="sc">|</span> protEnergia_mod</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-30-1.png" width="2000" class="r-stretch"></section>
+<section id="recuadros" class="slide level2">
+<h2>Recuadros</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>puntos_ranas <span class="sc">+</span> </span>
+<span id="cb27-2"><a></a>  <span class="fu">inset_element</span>(grasaCarb, <span class="at">left =</span> <span class="fl">0.6</span>, <span class="at">bottom =</span> <span class="fl">0.6</span>, <span class="at">right =</span> <span class="dv">1</span>, <span class="at">top =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-31-1.png" width="2000" class="r-stretch"></section>
 <section id="anotaciones" class="slide level2">
 <h2>Anotaciones</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>((grasaCarb<span class="sc">/</span>protEnergia)<span class="sc">|</span>puntos_ranas)<span class="sc">+</span></span>
-<span id="cb25-2"><a></a>  <span class="fu">plot_annotation</span>(<span class="at">title=</span><span class="st">"Mi figura de tres elementos"</span>,</span>
-<span id="cb25-3"><a></a>                  <span class="at">subtitle =</span> <span class="st">"ejemplo de patchwork"</span>,</span>
-<span id="cb25-4"><a></a>                  <span class="at">tag_levels =</span> <span class="st">"A"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>((grasaCarb<span class="sc">/</span>protEnergia)<span class="sc">|</span>puntos_ranas)<span class="sc">+</span></span>
+<span id="cb28-2"><a></a>  <span class="fu">plot_annotation</span>(<span class="at">title=</span><span class="st">"Mi figura de tres elementos"</span>,</span>
+<span id="cb28-3"><a></a>                  <span class="at">subtitle =</span> <span class="st">"ejemplo de patchwork"</span>,</span>
+<span id="cb28-4"><a></a>                  <span class="at">tag_levels =</span> <span class="st">"A"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-29-1.png" width="2000" class="r-stretch"><p><code>tag_levels</code> genera diferentes secuencias alfabéticas o numéricas para identificar a cada elemento</p>
+<img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-32-1.png" width="2000" class="r-stretch"><p><code>tag_levels</code> genera diferentes secuencias alfabéticas o numéricas para identificar a cada elemento</p>
 </section>
 <section id="texto-con-formato" class="slide level2">
 <h2>Texto con formato</h2>
 <p>Podemos usar <em>markdown</em> para darle formato al texto que aparece en diferentes elementos de nuestras gráficas, a través de la función <code>element_markdown()</code> del paquete <strong><code>ggtext</code></strong></p>
 <p><a href="https://wilkelab.org/ggtext/">Documentación del paquete</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">library</span>(ggtext)</span>
-<span id="cb26-2"><a></a><span class="fu">ggplot</span>(cafeteria,<span class="fu">aes</span>(carbohidratos,grasa,<span class="at">color=</span>bajo_grasa))<span class="sc">+</span></span>
-<span id="cb26-3"><a></a><span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb26-4"><a></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Chatarra  **Grasienta**"</span>,<span class="st">"light"</span>))<span class="sc">+</span></span>
-<span id="cb26-5"><a></a>  <span class="fu">theme</span>(<span class="at">legend.text =</span> <span class="fu">element_markdown</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">library</span>(ggtext)</span>
+<span id="cb29-2"><a></a><span class="fu">ggplot</span>(cafeteria,<span class="fu">aes</span>(carbohidratos,grasa,<span class="at">color=</span>bajo_grasa))<span class="sc">+</span></span>
+<span id="cb29-3"><a></a><span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb29-4"><a></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Chatarra  **Grasienta**"</span>,<span class="st">"light"</span>))<span class="sc">+</span></span>
+<span id="cb29-5"><a></a>  <span class="fu">theme</span>(<span class="at">legend.text =</span> <span class="fu">element_markdown</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="section-14" class="slide level2">
+<section id="section-15" class="slide level2">
 <h2></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">library</span>(ggtext)</span>
-<span id="cb27-2"><a></a><span class="fu">ggplot</span>(cafeteria,<span class="fu">aes</span>(carbohidratos,grasa,<span class="at">color=</span>bajo_grasa))<span class="sc">+</span></span>
-<span id="cb27-3"><a></a><span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb27-4"><a></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Chatarra  **Grasienta**"</span>,<span class="st">"light"</span>))<span class="sc">+</span></span>
-<span id="cb27-5"><a></a>  <span class="fu">theme</span>(<span class="at">legend.text =</span> <span class="fu">element_markdown</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">library</span>(ggtext)</span>
+<span id="cb30-2"><a></a><span class="fu">ggplot</span>(cafeteria,<span class="fu">aes</span>(carbohidratos,grasa,<span class="at">color=</span>bajo_grasa))<span class="sc">+</span></span>
+<span id="cb30-3"><a></a><span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb30-4"><a></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Chatarra  **Grasienta**"</span>,<span class="st">"light"</span>))<span class="sc">+</span></span>
+<span id="cb30-5"><a></a>  <span class="fu">theme</span>(<span class="at">legend.text =</span> <span class="fu">element_markdown</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-31-1.png" width="2000" class="r-stretch"></section>
+<img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-34-1.png" width="2000" class="r-stretch"></section>
+<section id="acomodar-leyendas" class="slide level2">
+<h2>Acomodar leyendas</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">library</span>(ggtext)</span>
+<span id="cb31-2"><a></a>grasaCarb2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cafeteria,<span class="fu">aes</span>(carbohidratos,grasa,<span class="at">color=</span>bajo_grasa, <span class="at">size =</span> proteina))<span class="sc">+</span></span>
+<span id="cb31-3"><a></a><span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb31-4"><a></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Chatarra  **Grasienta**"</span>,<span class="st">"light"</span>))<span class="sc">+</span></span>
+<span id="cb31-5"><a></a>  <span class="fu">theme</span>(<span class="at">legend.text =</span> <span class="fu">element_markdown</span>())</span>
+<span id="cb31-6"><a></a></span>
+<span id="cb31-7"><a></a>grasaCarb2 <span class="sc">|</span> (puntos_ranas <span class="sc">/</span> protEnergia)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-35-1.png" width="2000" class="r-stretch"></section>
+<section id="section-16" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>(grasaCarb2 <span class="sc">|</span> (puntos_ranas <span class="sc">/</span> protEnergia)) <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">'collect'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-36-1.png" width="2000" class="r-stretch"></section>
+<section id="leyendas-repetidas" class="slide level2">
+<h2>Leyendas repetidas</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">library</span>(ggtext)</span>
+<span id="cb33-2"><a></a>protEnergia2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cafeteria,<span class="fu">aes</span>(energia,proteina,<span class="at">color=</span>bajo_grasa))<span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb33-3"><a></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Chatarra  **Grasienta**"</span>,<span class="st">"light"</span>))<span class="sc">+</span></span>
+<span id="cb33-4"><a></a>  <span class="fu">theme</span>(<span class="at">legend.text =</span> <span class="fu">element_markdown</span>())</span>
+<span id="cb33-5"><a></a></span>
+<span id="cb33-6"><a></a>grasaCarb2 <span class="sc">|</span> (puntos_ranas <span class="sc">/</span> protEnergia2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-37-1.png" width="2000" class="r-stretch"></section>
+<section id="section-17" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>(grasaCarb2 <span class="sc">|</span> (puntos_ranas <span class="sc">/</span> protEnergia2)) <span class="sc">+</span> </span>
+<span id="cb34-2"><a></a>  <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">'collect'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-38-1.png" width="2000" class="r-stretch"></section>
+<section id="ejes-repetidos" class="slide level2">
+<h2>Ejes repetidos</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">library</span>(ggtext)</span>
+<span id="cb35-2"><a></a>grasaenergia <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cafeteria,<span class="fu">aes</span>(energia,grasa)) <span class="sc">+</span></span>
+<span id="cb35-3"><a></a>   <span class="fu">geom_point</span>()</span>
+<span id="cb35-4"><a></a></span>
+<span id="cb35-5"><a></a>grasaCarb <span class="sc">+</span> grasaenergia</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-39-1.png" width="2000" class="r-stretch"></section>
+<section id="section-18" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>grasaCarb <span class="sc">+</span> grasaenergia <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">axes =</span> <span class="st">"collect"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-40-1.png" width="2000" class="r-stretch"></section>
+<section class="slide level2">
+
+<p>Solo los títulos de eje</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>grasaCarb <span class="sc">+</span> grasaenergia <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">axis_titles =</span> <span class="st">"collect"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-41-1.png" width="2000" class="r-stretch"></section>
+<section class="slide level2">
+
+<p>También funciona en la otra dirección</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>grasaCarb <span class="sc">/</span> grasaenergia <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">axis_titles =</span> <span class="st">"collect"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-42-1.png" width="2000" class="r-stretch"></section>
+<section id="combinar-gráficos-base-y-ggplot2" class="slide level2">
+<h2>Combinar gráficos base y ggplot2</h2>
+<p><code>wrap_elements()</code> es el puente que convierte cualquier gráfico en algo que patchwork puede tratar como si fuera un ggplot</p>
+<p><br></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>p1 <span class="sc">|</span> <span class="fu">wrap_elements</span>(<span class="at">full =</span> <span class="sc">~</span><span class="fu">plot</span>(x, y))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Solo se combinan gráficos R base si se pasan como fórmula.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-20" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>grasaCarb <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cafeteria,<span class="fu">aes</span>(carbohidratos,grasa))<span class="sc">+</span></span>
+<span id="cb40-2"><a></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb40-3"><a></a></span>
+<span id="cb40-4"><a></a>grasaCarb <span class="sc">+</span> <span class="fu">wrap_elements</span>(<span class="at">full =</span> <span class="sc">~</span> <span class="fu">plot</span>(cafeteria<span class="sc">$</span>energia, cafeteria<span class="sc">$</span>proteina))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-44-1.png" width="2000" class="r-stretch"></section>
+<section class="slide level2">
+
+<p>Agregándole título</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>grasaCarb <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cafeteria,<span class="fu">aes</span>(carbohidratos,grasa))<span class="sc">+</span></span>
+<span id="cb41-2"><a></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb41-3"><a></a></span>
+<span id="cb41-4"><a></a>grasaCarb <span class="sc">+</span> <span class="fu">wrap_elements</span>(<span class="at">full =</span> <span class="sc">~</span> <span class="fu">plot</span>(cafeteria<span class="sc">$</span>energia, cafeteria<span class="sc">$</span>proteina, <span class="at">main =</span> <span class="st">"Figura R base"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-45-1.png" width="2000" class="r-stretch"></section>
+<section id="section-21" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>grasaCarb <span class="sc">+</span> <span class="fu">wrap_elements</span>(<span class="at">full =</span> <span class="sc">~</span> {</span>
+<span id="cb42-2"><a></a>  <span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb42-3"><a></a>  <span class="fu">plot</span>(cafeteria<span class="sc">$</span>energia, cafeteria<span class="sc">$</span>proteina,</span>
+<span id="cb42-4"><a></a>       <span class="at">main =</span> <span class="st">"Figura R base"</span>)</span>
+<span id="cb42-5"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-46-1.png" width="2000" class="r-stretch"></section>
+<section class="slide level2">
+
+<p>Uniendo una tabla</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb43-2"><a></a></span>
+<span id="cb43-3"><a></a>tabla <span class="ot">&lt;-</span> cafeteria <span class="sc">|&gt;</span></span>
+<span id="cb43-4"><a></a>  <span class="fu">group_by</span>(tipo) <span class="sc">|&gt;</span></span>
+<span id="cb43-5"><a></a>  <span class="fu">summarise</span>(</span>
+<span id="cb43-6"><a></a>    <span class="at">n          =</span> <span class="fu">n</span>(),</span>
+<span id="cb43-7"><a></a>    <span class="at">kcal_prom  =</span> <span class="fu">round</span>(<span class="fu">mean</span>(energia)),</span>
+<span id="cb43-8"><a></a>    <span class="at">grasa_prom =</span> <span class="fu">round</span>(<span class="fu">mean</span>(grasa), <span class="dv">1</span>),</span>
+<span id="cb43-9"><a></a>    <span class="at">prot_prom  =</span> <span class="fu">round</span>(<span class="fu">mean</span>(proteina), <span class="dv">1</span>)</span>
+<span id="cb43-10"><a></a>  )</span>
+<span id="cb43-11"><a></a></span>
+<span id="cb43-12"><a></a><span class="co"># convertir tabla en un objeto gráfico</span></span>
+<span id="cb43-13"><a></a></span>
+<span id="cb43-14"><a></a>tabla_plot <span class="ot">&lt;-</span> <span class="fu">tableGrob</span>(</span>
+<span id="cb43-15"><a></a>  tabla,</span>
+<span id="cb43-16"><a></a>  <span class="at">rows  =</span> <span class="cn">NULL</span>,</span>
+<span id="cb43-17"><a></a>  <span class="at">theme =</span> <span class="fu">ttheme_minimal</span>(<span class="at">base_size =</span> <span class="dv">9</span>)</span>
+<span id="cb43-18"><a></a>)</span>
+<span id="cb43-19"><a></a></span>
+<span id="cb43-20"><a></a>grasaCarb <span class="sc">+</span> <span class="fu">wrap_elements</span>(<span class="at">full =</span> tabla_plot) <span class="sc">+</span></span>
+<span id="cb43-21"><a></a>  <span class="fu">plot_layout</span>(<span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb43-22"><a></a>  <span class="fu">plot_annotation</span>(<span class="at">title =</span> <span class="st">"Titulo del gráfico y tabla"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column fragment">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-47-1.png" width="2000"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="ejercicio-6" class="slide level2" data-background-color="#a4c5ff">
+<h2>Ejercicio</h2>
+<p>Con las figuras puntos_ranas, grasaCarb y protEnergia de los ejercicios anteriores, hacer la siguiente:</p>
+
+<img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-48-1.png" width="2000" class="r-stretch"></section>
+<section id="section-22" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>puntos_ranas <span class="sc">+</span> grasaCarb <span class="sc">+</span> protEnergia <span class="sc">+</span> </span>
+<span id="cb44-2"><a></a><span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">2</span>,<span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>), <span class="at">byrow =</span> <span class="cn">FALSE</span>, <span class="at">guides =</span> <span class="st">"collect"</span>) <span class="sc">+</span> </span>
+<span id="cb44-3"><a></a><span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">"a"</span>) <span class="sc">&amp;</span> <span class="fu">theme</span>(<span class="at">plot.tag =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="3-visualizacion_files/figure-revealjs/unnamed-chunk-49-1.png" width="2000" class="r-stretch"></section>
 <section id="extensiones-para-ggplot2" class="slide level2">
 <h2>Extensiones para <code>ggplot2</code></h2>
 <p><a href="https://luisdva.github.io/ggmas/">Taller LatinR</a></p>
@@ -2674,7 +2902,7 @@ apariencias predefinidas</p>
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -2786,13 +3014,14 @@ apariencias predefinidas</p>
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

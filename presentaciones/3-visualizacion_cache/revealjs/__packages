@@ -3,5 +3,6 @@ dplyr
 here
 gt
 ggthemes
-patchwork
 ggtext
+patchwork
+gridExtra

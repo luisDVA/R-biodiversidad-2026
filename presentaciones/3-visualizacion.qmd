@@ -143,6 +143,11 @@ Compilada por Cédric Scherer
 
 ![[arte de Thomas Lin Pedersen](https://www.data-imaginist.com/art)](imgs/showcase/genart.png){fig-align="center"}
 
+## Recursos por Nicola Rennie
+
+- [Galería de ejemplos](https://nrennie.rbind.io/viz-gallery/)
+
+- [The Art of Data Visualization with ggplot2](https://nrennie.rbind.io/art-of-viz/)
 
 ## Gramática de gráficos
 
@@ -399,6 +404,17 @@ Free Color Picker (Windows); Gpick (Linux); ColorSlurp (Mac)
 🔗 Galería de ejemplos de [`paletteer`](https://pmassicotte.github.io/paletteer_gallery/)  
 
 🔗 [Pokepalettes](https://pokepalettes.com/)
+
+## Más paletas
+
+### Aves
+
+- [Manu](https://g-thomson.github.io/Manu/)
+- [birdcolors](https://github.com/bentonelli/birdcolors)
+
+### Peces
+- [fishualize](https://nschiett.github.io/fishualize/index.html)
+
 
 ##
 
@@ -757,26 +773,27 @@ Datos sobre la edad (semanas) de gateo en relación a temperatura y mes de nacim
 
 # Figuras compuestas {background-image="imgs/patchdrone.jpg"}
 
+**Diana Marcela Ochoa Sanz**
 
 ## `patchwork`
 
-::: columns
+::::: columns
 ::: {.column width="20%"}
 ![](imgs/patchworklogo.png)
 :::
 
 ::: {.column width="80%"}
-- Símbolo `+` para acomodar dos gráficos juntos
-- Símbolo `|` para figuras lado a lado
-- Símbolo `/` para apilar figuras 
+-   Símbolo `+` para acomodar dos gráficos juntos
+-   Símbolo `|` para figuras lado a lado
+-   Símbolo `/` para apilar figuras
 :::
-:::   
+:::::
 
-- Álgebra simple para anidar y acomodar elementos
-- `plot_layout()` para controlar la composición
-- `plot_annotation()` para rotular elementos o agregar textos
+-   Álgebra simple para anidar y acomodar elementos
+-   `plot_layout()` para controlar la composición
+-   `plot_annotation()` para rotular elementos o agregar textos
 
---------
+------------------------------------------------------------------------
 
 ```{r}
 ggplot(cafeteria,aes(carbohidratos,grasa))+
@@ -786,7 +803,7 @@ ggplot(cafeteria,aes(energia,proteina))+
 
 ```
 
-------
+------------------------------------------------------------------------
 
 Más fácil de leer:
 
@@ -799,7 +816,7 @@ protEnergia <- ggplot(cafeteria,aes(energia,proteina))+
 grasaCarb+protEnergia
 ```
 
---------
+------------------------------------------------------------------------
 
 Tres figuras:
 
@@ -811,7 +828,7 @@ grasaCarb+protEnergia+
   
 ```
 
---------
+------------------------------------------------------------------------
 
 En una sola columna
 
@@ -821,30 +838,58 @@ puntos_ranas <-
   geom_point(size=4,color="white",pch=21)
 ```
 
-
 ```{r}
 grasaCarb+protEnergia+puntos_ranas+
   plot_layout(ncol=1)
 
 ```
 
-------------------
+------------------------------------------------------------------------
 
 Anidando:
 
-:::{.med-code}
+::: med-code
 ```{r}
 (grasaCarb+protEnergia)/puntos_ranas
 ```
 :::
 
----------------
+------------------------------------------------------------------------
 
-:::{.med-code}
+::: med-code
 ```{r}
 (grasaCarb/protEnergia)|puntos_ranas
 ```
 :::
+
+------------------------------------------------------------------------
+
+Aprovechando los espacios
+
+```{r}
+protEnergia_mod <- protEnergia + labs(x = "*Esta es una etiqueta tan larga e importante \nque tiene que abarcar muchas líneas \nen el gráfico")
+
+grasaCarb | protEnergia_mod
+
+```
+
+##
+
+```{r}
+
+protEnergia_mod <- protEnergia + labs(x = "*Esta es una etiqueta tan larga e importante \nque tiene que abarcar muchas líneas \nen el gráfico")
+
+
+free(grasaCarb) | protEnergia_mod
+
+```
+
+## Recuadros
+
+```{r}
+puntos_ranas + 
+  inset_element(grasaCarb, left = 0.6, bottom = 0.6, right = 1, top = 1)
+```
 
 ## Anotaciones
 
@@ -859,12 +904,9 @@ Anidando:
 
 ## Texto con formato
 
-Podemos usar _markdown_ para darle formato al texto que aparece en diferentes elementos de nuestras gráficas, a través de la función `element_markdown()` del paquete **`ggtext`**
+Podemos usar *markdown* para darle formato al texto que aparece en diferentes elementos de nuestras gráficas, a través de la función `element_markdown()` del paquete **`ggtext`**
 
 [Documentación del paquete](https://wilkelab.org/ggtext/)
-
-  
-
 
 ```{r}
 #| eval: false
@@ -876,8 +918,7 @@ geom_point()+
   theme(legend.text = element_markdown())
 ```
 
-
-##
+## 
 
 ```{r}
 library(ggtext)
@@ -887,12 +928,181 @@ geom_point()+
   theme(legend.text = element_markdown())
 ```
 
+## Acomodar leyendas
+
+```{r}
+library(ggtext)
+grasaCarb2 <- ggplot(cafeteria,aes(carbohidratos,grasa,color=bajo_grasa, size = proteina))+
+geom_point()+
+  scale_color_discrete(labels=c("Chatarra  **Grasienta**","light"))+
+  theme(legend.text = element_markdown())
+
+grasaCarb2 | (puntos_ranas / protEnergia)
+
+```
+
+##
+
+```{r}
+(grasaCarb2 | (puntos_ranas / protEnergia)) + plot_layout(guides = 'collect')
+```
+
+## Leyendas repetidas
+
+```{r}
+library(ggtext)
+protEnergia2 <- ggplot(cafeteria,aes(energia,proteina,color=bajo_grasa))+ geom_point() +
+  scale_color_discrete(labels=c("Chatarra  **Grasienta**","light"))+
+  theme(legend.text = element_markdown())
+
+grasaCarb2 | (puntos_ranas / protEnergia2)
+
+```
+
+##
+
+```{r}
+(grasaCarb2 | (puntos_ranas / protEnergia2)) + 
+  plot_layout(guides = 'collect')
+```
+
+## Ejes repetidos
+
+```{r}
+library(ggtext)
+grasaenergia <- ggplot(cafeteria,aes(energia,grasa)) +
+   geom_point()
+
+grasaCarb + grasaenergia
+
+```
+
+##
+
+```{r}
+grasaCarb + grasaenergia + plot_layout(axes = "collect")
+```
+
+------------------------------------------------------------------------
+
+Solo los títulos de eje
+
+```{r}
+grasaCarb + grasaenergia + plot_layout(axis_titles = "collect")
+```
+
+------------------------------------------------------------------------
+
+También funciona en la otra dirección
+
+```{r}
+grasaCarb / grasaenergia + plot_layout(axis_titles = "collect")
+```
+
+## Combinar gráficos base y ggplot2
+
+`wrap_elements()` es el puente que convierte cualquier gráfico en algo que patchwork puede tratar como si fuera un ggplot
+
+</br> 
+```{r}
+#| eval: false
+#| echo: true
+p1 | wrap_elements(full = ~plot(x, y))
+```
+
+::: callout-note
+## 
+
+Solo se combinan gráficos R base si se pasan como fórmula.
+:::
+
+##
+
+```{r}
+grasaCarb <- ggplot(cafeteria,aes(carbohidratos,grasa))+
+  geom_point()
+
+grasaCarb + wrap_elements(full = ~ plot(cafeteria$energia, cafeteria$proteina))
+```
+
+------------------------------------------------------------------------
+
+Agregándole título
+
+```{r}
+grasaCarb <- ggplot(cafeteria,aes(carbohidratos,grasa))+
+  geom_point()
+
+grasaCarb + wrap_elements(full = ~ plot(cafeteria$energia, cafeteria$proteina, main = "Figura R base"))
+```
+
+
+## 
+
+```{r}
+grasaCarb + wrap_elements(full = ~ {
+  par(mar = c(4, 4, 2, 1))
+  plot(cafeteria$energia, cafeteria$proteina,
+       main = "Figura R base")
+})
+```
+
+------------------------------------------------------------------------
+
+Uniendo una tabla
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+library(gridExtra)
+
+tabla <- cafeteria |>
+  group_by(tipo) |>
+  summarise(
+    n          = n(),
+    kcal_prom  = round(mean(energia)),
+    grasa_prom = round(mean(grasa), 1),
+    prot_prom  = round(mean(proteina), 1)
+  )
+
+# convertir tabla en un objeto gráfico
+
+tabla_plot <- tableGrob(
+  tabla,
+  rows  = NULL,
+  theme = ttheme_minimal(base_size = 9)
+)
+
+grasaCarb + wrap_elements(full = tabla_plot) +
+  plot_layout(widths = c(1, 1)) +
+  plot_annotation(title = "Titulo del gráfico y tabla")
+
+```
+
+## Ejercicio {background-color="#a4c5ff"}
+
+Con las figuras puntos_ranas, grasaCarb y protEnergia de los ejercicios anteriores, hacer la siguiente:
+
+```{r}
+#| eval: true
+#| echo: false
+puntos_ranas + grasaCarb + protEnergia + 
+plot_layout(ncol = 2,widths = c(2, 1), byrow = FALSE, guides = "collect") + 
+plot_annotation(tag_levels = "a") & theme(plot.tag = element_text(face = "bold"))
+```
+
+##
+
+```{r}
+puntos_ranas + grasaCarb + protEnergia + 
+plot_layout(ncol = 2,widths = c(2, 1), byrow = FALSE, guides = "collect") + 
+plot_annotation(tag_levels = "a") & theme(plot.tag = element_text(face = "bold"))
+```
+
 
 ## Extensiones para `ggplot2`
 
-
 [Taller LatinR](https://luisdva.github.io/ggmas/)
-  
 
 [Galería oficial de extensiones](https://exts.ggplot2.tidyverse.org/)
 
