@@ -43,7 +43,7 @@ Traslape de nicho Grinnelliano (climático)
 
 ## Para esto
 
-  - Localidades de presencia (maldicho: Occurrencias)
+  - Localidades de presencia ("Occurrencias")
   
   
   - Localidades históricamente accesibles (Áreas de accesibilidad)
@@ -59,8 +59,7 @@ Traslape de nicho Grinnelliano (climático)
   - Estimamos el traslape en el espacio ambiental (D de Schoener)
   
   
-  - Pruebas estadísticas (pruebas de similitud de nicho)
-
+  
 ## Funciones
 
 El script "funciones.R" contiene las funciones que vamos a utilizar

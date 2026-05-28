@@ -46,21 +46,21 @@
     "href": "materiales.html",
     "title": "Materiales del curso",
     "section": "",
-    "text": "Descargar todos los archivos (datos y scripts) para los ejercicios y ejemplos del curso:\nArchivos para el curso"
+    "text": "Descargar todos los archivos (datos y scripts) para los ejercicios y ejemplos del curso:\nArchivos para el curso\nDatos automatización"
   },
   {
     "objectID": "materiales.html#datos",
     "href": "materiales.html#datos",
     "title": "Materiales del curso",
     "section": "",
-    "text": "Descargar todos los archivos (datos y scripts) para los ejercicios y ejemplos del curso:\nArchivos para el curso"
+    "text": "Descargar todos los archivos (datos y scripts) para los ejercicios y ejemplos del curso:\nArchivos para el curso\nDatos automatización"
   },
   {
     "objectID": "materiales.html#presentaciones",
     "href": "materiales.html#presentaciones",
     "title": "Materiales del curso",
     "section": "Presentaciones",
-    "text": "Presentaciones\nEstas presentaciones en formato web cuentan con un índice de contenidos interactivo (botón en la esquina inferior izquierda).\n\nLunes\nFlujos de Trabajo y Organización de Proyectos\nEjercicio de arranque\nExploración de datos\nManipulación y Limpieza de datos - I\n\n\nMartes\nEjercicios pipes\nManipulación y Limpieza de datos - II\n\n\nMiércoles\nVisualización de Datos\n\n\nJueves\nLo que Nunca nos Enseñaron sobre R\nCreando tablas con gt\n\n\n\n\nViernes"
+    "text": "Presentaciones\nEstas presentaciones en formato web cuentan con un índice de contenidos interactivo (botón en la esquina inferior izquierda).\n\nLunes\nFlujos de Trabajo y Organización de Proyectos\nEjercicio de arranque\nExploración de datos\nManipulación y Limpieza de datos - I\n\n\nMartes\nEjercicios pipes\nManipulación y Limpieza de datos - II\n\n\nMiércoles\nVisualización de Datos\n\n\nJueves\nLo que Nunca nos Enseñaron sobre R\nCreando tablas con gt\nAutomatización y funciones\n\n\n\nViernes"
   },
   {
     "objectID": "presentaciones/5-gradiente_riqueza.html",
@@ -3272,15 +3272,15 @@
     "objectID": "presentaciones/4.1-practica-funciones.html#para-qué-automatizar",
     "href": "presentaciones/4.1-practica-funciones.html#para-qué-automatizar",
     "title": "Práctica: Automatización",
-    "section": "",
-    "text": "Permite facilitar y optimizar diversas tareas internas\n\nResumir código\nProductividad\nEvitar errores\nCompartir código"
+    "section": "¿Para qué automatizar?",
+    "text": "¿Para qué automatizar?\nPermite facilitar y optimizar diversas tareas internas\n\nResumir código\nProductividad\nEvitar errores\nCompartir código"
   },
   {
     "objectID": "presentaciones/4.1-practica-funciones.html#ejemplo",
     "href": "presentaciones/4.1-practica-funciones.html#ejemplo",
     "title": "Práctica: Automatización",
     "section": "Ejemplo:",
-    "text": "Ejemplo:\nTraslape de nicho Grinnelliano (climático)\n\nChiroptera:Phyllostomidae\n\n\n\n\nUroderma"
+    "text": "Ejemplo:\nTraslape de nicho Grinnelliano (climático)\n\nChiroptera:Phyllostomidae\n\n\nUroderma"
   },
   {
     "objectID": "presentaciones/4.1-practica-funciones.html#qué-necesitamos",
@@ -3294,14 +3294,14 @@
     "href": "presentaciones/4.1-practica-funciones.html#para-esto",
     "title": "Práctica: Automatización",
     "section": "Para esto",
-    "text": "Para esto\n\nLocalidades de presencia (maldicho: Occurrencias)\nLocalidades históricamente accesibles (Áreas de accesibilidad)\nVariables climáticas"
+    "text": "Para esto\n\nLocalidades de presencia (“Occurrencias”)\nLocalidades históricamente accesibles (Áreas de accesibilidad)\nVariables climáticas"
   },
   {
     "objectID": "presentaciones/4.1-practica-funciones.html#con-esta-información",
     "href": "presentaciones/4.1-practica-funciones.html#con-esta-información",
     "title": "Práctica: Automatización",
     "section": "Con esta información",
-    "text": "Con esta información\n\nCaracterizamos el nicho de nuestras especies de interés\nEstimamos el traslape en el espacio ambiental (D de Schoener)\nPruebas estadísticas (pruebas de similitud de nicho)"
+    "text": "Con esta información\n\nCaracterizamos el nicho de nuestras especies de interés\nEstimamos el traslape en el espacio ambiental (D de Schoener)"
   },
   {
     "objectID": "presentaciones/4.1-practica-funciones.html#funciones",
