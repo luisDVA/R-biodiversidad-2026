@@ -1,0 +1,232 @@
+---
+title: "Tablas con gt"
+subtitle: "Datos tabulares presentables"
+author: Luis D. Verde Arregoitia
+format:
+  revealjs:
+    theme: curso_styles.scss
+    transition: fade
+    progress: true
+    preview-links: true
+    hide-inactive-cursor: true
+    highlight-style: printing
+    pause: true
+editor: source
+knitr:
+  opts_chunk:
+    dev: "ragg_png"
+    retina: 3
+    dpi: 200
+execute:
+  freeze: auto
+  cache: true
+  echo: true
+---
+
+## ¿Por qué tablas y gt?
+
+![](https://gt.rstudio.com/logo.svg)
+
+- El paquete `gt` permite crear tablas de alta calidad para publicaciones, informes y presentaciones.
+- Sigue una filosofía similar a `ggplot2`: construir la tabla por capas y siguiendo una gramática
+- Múltiples formatos de salida (HTML, PDF, RTF, Word, Imagen)
+
+## Anatomía de una tabla gt
+
+Componentes:
+
+- **Table Header**: Título y subtítulo.
+- **Stub**: Etiquetas de fila.
+- **Column Labels**: Encabezados de columna.
+- **Table Body**: Los datos.
+- **Table Footer**: Notas al pie y fuentes.
+
+##
+
+![](https://gt.rstudio.com/reference/figures/gt_parts_of_a_table.svg)
+
+## Preparación de los datos
+
+Descargamos datos de restaurantes en México
+
+```{r}
+#| label: load-data
+library(gt)
+library(dplyr)
+
+url <- "https://raw.githubusercontent.com/kaisesha/cdrgraph/refs/heads/master/Restaurants.csv"
+restaurantes <- read.csv(url)
+
+# nos quedamos solo con unos cuantos
+muestra <- restaurantes |> 
+  select(Name, City, Price, Ambience, Alcohol) |> 
+  slice_sample(n = 13)
+```
+
+---
+
+## Tabla básica
+
+De data frame a `gt()`.
+
+```{r}
+#| label: tabla-basica
+#| output-location: slide
+muestra |> 
+  gt()
+```
+
+---
+
+## Encabezados y etiquetas
+
+Mayor claridad con títulos y mejores nombres de columna
+
+```{r}
+#| label: tabla-formato
+#| output-location: slide
+muestra |> 
+  gt() |> 
+  tab_header(
+    title = "Restaurantes en México",
+    subtitle = "Muestra de datos de precios y ambiente"
+  ) |> 
+  cols_label(
+    Name = "Nombre",
+    City = "Ciudad",
+    Price = "Precio",
+    Ambience = "Ambiente"
+  )
+```
+
+---
+
+## Colores asociados a valores
+
+`data_color()` para resaltar categorías (ej. niveles de precio).
+
+```{r}
+#| label: tabla-colores
+#| output-location: slide
+muestra |> 
+  gt() |> 
+  data_color(
+    columns = Price,
+    target_columns = Price,
+    method = "factor",
+    palette = c("low" = "lightgreen", "medium" = "orange", "high" = "tomato")
+  )
+```
+
+---
+
+## Resúmenes 
+
+Podemos calcular estadísticas antes de pasarlas a `gt`.
+
+```{r}
+#| label: tabla-resumen
+#| output-location: slide
+restaurantes |> 
+  group_by(City, Price) |> 
+  summarise(n = n(), .groups = 'drop') |> 
+  gt() |> 
+  tab_header(title = "Conteo de restaurantes por ciudad y precio") |> 
+  cols_align(align = "center", columns = n)
+```
+
+---
+
+## Alinear o justificar contenidos
+
+Podemos alinear texto a la izquierda, números a la derecha, etc. 
+
+```{r}
+#| label: tabla-formato-num
+#| output-location: slide
+muestra |> 
+  mutate(
+    Rating = sample(seq(3, 5, by = 0.1), n(), replace = TRUE),
+    Reviews = sample(50:1000, n(), replace = TRUE)
+  ) |> 
+  gt() |> 
+  cols_align(align = "left", columns = Name) |> 
+  cols_align(align = "center", columns = c(Price, Ambience)) |> 
+  cols_align(align = "right", columns = c(Rating, Reviews)) |> 
+  tab_footnote(
+    footnote = "Niveles de precio estimados por comensales.",
+    locations = cells_column_labels(columns = Price)
+  )
+```
+
+---
+
+## Color y estilo
+
+Podemos usar `data_color` y funciones de transformación para inyectar estilo.
+
+```{r}
+#| label: tabla-emoji
+#| output-location: slide
+muestra |> 
+  gt() |> 
+  tab_header(title = "Restaurantes Top 🌮") |> 
+  tab_style(
+    style = cell_text(weight = "bold", style = "italic"),
+    locations = cells_body(columns = Name)
+  ) |> 
+  tab_style(
+    style = cell_text(size = px(12)),
+    locations = cells_body(columns = City)
+  ) |> 
+  data_color(
+    columns = Ambience,
+    palette = "Pastel1"
+  ) |> 
+  text_transform(
+    locations = cells_body(columns = Alcohol),
+    fn = function(x) ifelse(x == "Full Bar", "🍺✅", "🚫")
+  ) |> 
+  tab_options(
+    table.background.color = "#fdf6e3",
+    column_labels.background.color = "#268bd2"
+  )
+```
+
+---
+
+## Exportando nuestras tablas
+
+Una vez que la tabla es perfecta, podemos guardarla en disco.
+
+`gtsave()` detecta el formato por la extensión del archivo:
+
+```{r}
+#| label: gtsave-example
+#| eval: false
+
+mi_tabla <- muestra |> gt()
+
+# Guardar como HTML (perfecto para web)
+mi_tabla |> gtsave("tabla_restaurantes.html")
+
+# Guardar como Imagen (requiere webshot2)
+mi_tabla |> gtsave("tabla_restaurantes.png")
+
+# Guardar como PDF
+mi_tabla |> gtsave("tabla_restaurantes.pdf")
+```
+
+---
+
+## Formatos adicionales
+
+`gt` también soporta:
+
+- **RTF**: Para documentos de Word enriquecidos.
+- **LaTeX**: Para documentos científicos de alta calidad.
+- **Word**: Directamente a archivos `.docx`.
+
+```r
+mi_tabla |> gtsave("mi_tabla.docx")
+```

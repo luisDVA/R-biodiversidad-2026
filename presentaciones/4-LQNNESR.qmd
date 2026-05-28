@@ -31,7 +31,6 @@ execute:
 - Trabajando con listas  
 - Atajos y herramientas para mayor eficiencia   
 - Novedades  
-- Errores comunes  
 
 ```{r}
 #| echo: false
@@ -45,7 +44,7 @@ library(ggplot2)
 
 ## Personalización
 
--   Colores para el IDE - 🔗 [tmThemeEditor](https://tmtheme-editor.glitch.me/) por Allen Bargi
+-   Colores para el IDE - 🔗 [rsthemes](https://www.garrickadenbuie.com/project/rsthemes/) por Garrick Aden-Buie 
 
 ::: {style="background-color: #3F3B3B; box-shadow: 10px 10px grey;  padding: 25px"}
 
@@ -63,13 +62,19 @@ library(ggplot2)
 
 -   Disposición de los paneles
 
+## Personalización
 
+### Positron
+
+- Mercado OpenVSX (íconos, temas, asistentes, etc.)
+- Disposición de elementos flexible
+- Fuentes (Font Changer)
 
 # Iteración 
 
 ## Aplicando una función varias veces
 
-Copiar/pegar código para editarlo en análisis repetitivos agrega pasos innecesarios, pierde tiempo, y aumenta el riesgo de introducir errores 
+Copiar/pegar código para editarlo en análisis repetitivos agrega pasos innecesarios, quita tiempo, y aumenta el riesgo de introducir errores 
 
 </br>
 
@@ -82,7 +87,7 @@ Nick Holt (2017)\
 
 ## Ejercicio - futbol {background-color="#a4c5ff"}
 
-El archivo `tabla_futbol.csv` contiene la clasificación en la tabla global de la FIFA de los primeros 20 países de 1994 a 2022. Agrupa países en diferentes confederaciones.
+El archivo `tabla_futbol.csv` contiene la clasificación en la tabla global de la FIFA de los primeros 20 países de 1994 a 2022 y sus respectivas federaciones.
 
 </br> 
 
@@ -224,10 +229,11 @@ msleep %>% slice_sample(n=2, by = order)
 
 ##
 
-> Usando el argumento `by` ya no se quedan 'pegados' los grupos
-
+> Usando el argumento `by` ya no se quedan 'pegados' los grupos (agrupamiento persistente vs. agrupamiento por operación)
 
 > A veces usamos `.by` y a veces `by`
+
+[Blog](https://dplyr.tidyverse.org/reference/dplyr_by.html)
 
 ## Resumiendo valores
 
@@ -258,10 +264,19 @@ msleep %>%
 :::
 
 
+## Ejercicio - futbol {background-color="#a4c5ff"}
+
+Ahora sí, a responder:
+
+- ¿De qué confederación fue el equipo 20 cada año? 
+- Puntos totales por año para todos los equipos 
+
 ## Bucles (_for loops_)
 
 - De gran utilidad
 - No siempre es necesario escribirlos de 0
+- Llevan >20 años corriendo rápido
+
 
 ::: columns
 ::: {.column width="40%"}
@@ -648,7 +663,8 @@ Russ Hyde (2021)\
 
 :::{.callout-note}
 ## 
-Los desarrolladores del `tidyverse` están migrando al uso de esta notación
+Los desarrolladores del `tidyverse` están migrando al uso de esta notación; en `purrr`  ver este [PR](https://github.com/tidyverse/purrr/pull/1220)
+
 :::
 
 
@@ -740,7 +756,7 @@ class(gremios)
 
 ##
 
-`group_keys()` regresa los grupos
+`group_keys()` muestra los grupos
 
 :::{.med-code}
 ```{r}
@@ -986,6 +1002,21 @@ Altman et al. (2021)\
 
 - usar funciones con regresos específicos para terminar con la tabla inicial
 
+## `map` de alto rendimiento
+
+::: columns
+::: {.column width="25%"}
+![](https://mirai.r-lib.org/logo.png)
+:::
+
+::: {.column width="75%"}
+📦 **`mirai`** - Minimalist Async Evaluation Framework for R 
+
+-  Se encarga de todo para paralelizar funciones `map`
+-  De los núcleos de nuestra PC hasta SSH, Slurm, Torque, LSF
+:::
+:::
+
 
 # Atajos y herramientas para mayor eficiencia  
 
@@ -996,6 +1027,8 @@ Altman et al. (2021)\
 
 ## Programando eficientemente
 
+**En Positron**: habilitar atajos RStudio (settings -> Workbench -> RStudio Keybindings)
+  
 [Ctrl == ⌘ Command && Alt == ⌥ Option]{style="font-size: 1.5em; text-align: center"}
 
 - cursor multilinea (`ctrl`+`alt`+`arriba`) o (`ctrl`+`alt`+`abajo`)
@@ -1043,30 +1076,16 @@ Ejecutar de nuevo la última línea
 [`ctrl` + Alt + P]{style="color: orange"}
 
 ### Abrir el directorio de trabajo 
-[`shell.exec(getwd())`]{style="color: orange"} en Windows y en Linux [`browseURL(getwd())`]{style="color: orange"}
+[`shell.exec(getwd())`]{style="color: orange"} en Windows y en Linux [`browseURL(getwd())`]{style="color: orange"}  
+Atajo de Open Containing Folder en Positron
 
+## En Positron
 
-## Práctica {background-color="#a4c5ff"}
+- Click derecho en archivos o pestañas para copiar rutas absolutas y relativas
+- Paleta de comandos Ctrl + Shift + P
+- Botón Split Editor
 
-Exploremos la diversidad de paquetes que hay en CRAN hoy mismo:
-
-```{r}
-#| echo: true
-#| eval: true
-
-library(dplyr)
-library(stringr)
-p_db <- tools::CRAN_package_db()
-p_db <- p_db %>% select(Package, Author, Description, Title)
-```
-
-
-##
-
-```{r}
-p_db |> filter(str_detect(Package,"gg"))
-```
-
+# Novedades
 
 ## 📦 [`annotater`](https://annotater.liomys.mx)
 
@@ -1137,65 +1156,4 @@ Copiar y pegar datos desde y hacia R, manipular vectores
 
 ![](imgs/tribble_paste.gif){width="48%"}
 
-# Errores comunes y como solucionarlos
-
-## 1 - **Resetear**
-
-Reiniciar R (limpia la ruta de búsqueda, "desprende" objetos, regresa opciones a sus valores predeterminados) 
-
-:::{.callout-note}
-##
-_search path_: los entornos que definen los objetos y funciones a los que podemos acceder desde el entorno de trabajo global
-:::
-
-### prueba
-(e.g. `Sys.setenv(LANGUAGE="ko"`))
-
-## 2 - **Reprex** (ejemplos reproducibles)
-
-Crear el ejemplo más simple posible que genere el mismo error para poder confirmar o resolver algún problema
-
-- Proporcionar datos
-- Acotarse al problema  
-- Paquetes, versiones, OS
-- Que otras personas pueda copiar, pegar,   y ejecutar
-
-::::{.rightref}
-:::{.refbox}
-Jenny Bryan (2020)\
-[Object of type 'closure' is not subsettable](https://www.rstudio.com/resources/rstudioconf-2020/object-of-type-closure-is-not-subsettable/)
-:::
-::::
-
-## Novedades
-
-<br/>
-
-### Positron
-IDE de nueva generación para ciencia de datos multilenguaje 
-
-### Inteligencia Artifial?
-- `gander`   
-- extensiones para Positron  
-- guía [LLM+R](https://luisdva.github.io/llmsr-book/es/index.es.html)
-
-## Errores comunes
-
-- paquetes sin cargar o cargados en desorden (search path)
-- operadores cambiados, signos
-- espacios, paréntesis, o comas de más o de menos
-- pasos en desorden
-
-## Opciones útiles
-- Estudiar los mensajes de error más comunes
-
-::::{.rightref}
-:::{.refbox}
-Emily Jennings-Dobbs (2021)\
-[Common Errors in R](https://jtr13.github.io/cc21/common-errors-in-r.html)
-:::
-::::
-
-- Correr los ejemplos disponibles con la ayuda y comparar con nuestro código
-
-
+- en Positron podemos usar Pastum
