@@ -28,6 +28,7 @@ execute:
 
 ```{r}
 #| echo: false
+#| warning: false
 library(ape)
 library(dplyr)
 
@@ -37,11 +38,11 @@ Primero, ¿Qué es un árbol Filogenético?
 
 . . .
 
--   Un árbol filogenético es un diagrama que muestra la relación de parentesco entre especies (o taxones)
+-   Diagrama que muestra la relación de parentesco entre especies (o taxones)
 
 -   Uno de los formatos más utilizados para representar filogenias es el *Newick*(.tree)
 
--   El formato Newick es una notación para representar parentescos utilizando paréntesis y comas.
+-   Newick: notación para representar parentescos con paréntesis y comas.
 
 ## 
 
@@ -68,9 +69,9 @@ read.tree(text="((A,B),X);") %>% plot()
 
 ## 
 
-El formato Newick es anidado, por lo que podemos explorar la relación entre diferentes grupos. Por ejemplo:
+El formato Newick es anidado
 
-Sabemos que los lobos, los coyotes y los zorros pertenecen a Canidae, pero que los lobos y los coyotes son del mismo género
+- los lobos, los coyotes y los zorros pertenecen a Canidae, pero los lobos y los coyotes son del mismo género
 
 ```{r}
 #| eval: true
@@ -96,7 +97,7 @@ read.tree(text=Mammalia) %>% plot()
 
 ## 
 
-También podríamos anexar otros grupos pj: cuervos y zanates. ¿Estos dónde irían?
+También podríamos anexar otros grupos ej: cuervos y zanates. ¿Estos dónde irían?
 
 ```{r}
 #| label: zan
@@ -123,9 +124,9 @@ Nktree<-read.tree(text=Eukarya)
 plot(Nktree)
 ```
 
-## 
+##  `ggtree` 
 
-En esta **práctica** haremos uso del paquete `ggtree` para graficar, personalizar y anotar árboles filogenéticos
+paquete para graficar, personalizar y anotar árboles filogenéticos
 
 
 ```{r}
@@ -157,9 +158,9 @@ library(TDbook)
 library(here)
 ```
 
-## ¿Qué insumos utilizaremos?
+## Insumos
 
-En este ejercicio utilizaremos una filogenia con las especies del Orden Siluriformes (peces) a las cuales se le conoce su tipo de migración. Esto es un subset de la Megafilogenia para peces propuesta por Rabosky (2018)
+- Filogenia con las especies del Orden Siluriformes (peces) a las cuales se le conoce su tipo de migración. De la Megafilogenia para peces propuesta por Rabosky (2018)
 
 ```{r}
 #| eval: true
@@ -186,7 +187,7 @@ plot(fishtree, show.tip.label=F)
 
 ## 
 
-Ahora graficaremos el mismo árbol utilizando ggtree, el cual sigue una formula idéntica a la de `ggplot`. Nuestro árbol base se llamará **p1**:
+Mismo árbol utilizando ggtree, el cual sigue la gramática de `ggplot`. Nuestro árbol base se llamará **p1**:
 
 ```{r, fig.width=4, fig.height=5,fig.align='center'}
 #| eval: true
@@ -198,7 +199,7 @@ plot(p1)
 
 ## 
 
-Con **p1,** al igual que con cualquier otro gráfico de `ggplot`, podemos agregar parámetros gráficos para personalizar o agregar anotaciones a nuestra filogenia.
+podemos agregar parámetros gráficos para personalizar o agregar anotaciones
 
 Por ejemplo, podemos cambiar la disposición de la filogenia utilizando el parámetro `layout_`:
 
@@ -216,12 +217,13 @@ p1+layout_circular()
 
 ## 
 
-También podemos cambiar el color del fondo del gráfico
+O cambiar el color del fondo del gráfico
 
 ```{r, fig.width=4, fig.height=5,fig.align='center'}
 #| eval: true
 #| echo: true
-p1+  theme_tree(bgcolor="skyblue")
+#| output-location: slide
+p1 +  theme_tree(bgcolor="skyblue")
 ```
 
 ## Adicionar información a los tips
@@ -280,12 +282,10 @@ Podemos agregar escalas de tiempo con el paquete `deeptime`
 #| message: false
 #| warning: false
 
-py<-revts(p1)
+py <- revts(p1)
 
-py+ geom_tiplab(size=1,color="black",angle=0)+xlim(-100,30)+ylim(-2,70)+coord_geo(abbrv = T,neg=T,skip=NULL,dat=list("epochs"),size=2)
-
-
-
+py + geom_tiplab(size = 1, color = "black", angle=0) + xlim(-100,30) +
+  ylim(-2,70) + coord_geo(abbrv = T, neg=T, skip=NULL, dat=list("epochs"),size=2)
 
 
 ```
@@ -350,11 +350,11 @@ p1+ layout_fan(angle = 180)+xlim(NA,150)+geom_tiplab(hjust= -0.2,size=2,color="b
 
 ## Anotaciones en Árboles
 
-Podemos incluir texto adicional en los gráficos,Por ejemplo: quiero seleccionar la parte de la filogenia donde se encuentra las especies de la Familia *Pimelodidae*
+Podemos incluir texto adicional en los gráficos, Por ejemplo: seleccionar la parte de la filogenia donde se encuentra las especies de la Familia *Pimelodidae*
 
 ## Obtener nodos
 
-Para esto primero debemos encontrar el nodo del ancestro común más reciente para este grupo (Usando un *tibble* y la estructura de `dplyr` es muy fácil).
+Para esto primero debemos encontrar el nodo del ancestro común más reciente para este grupo (con un *tibble* y `dplyr` es muy fácil).
 
 Después usando la función `getMRCA()` podemos encontrar el ancestro en común de estas especies
 
@@ -373,15 +373,13 @@ nodepimelo
 
 ## 
 
-Ahora conociendo que el ancestro en común de la familia *Pimelodidae* se encuentra en el nodo 80, puedo utilizar esta información para anotar la filogenia utilizando el parámetro *geom_cladelab*:
+Conociendo que el ancestro en común de la familia *Pimelodidae* se encuentra en el nodo 80, puedo utilizar esta información para anotar la filogenia utilizando el parámetro *geom_cladelab*:
 
 ```{r, fig.width=8, fig.height=8,fig.align='center'}
 #| eval: true
 #| echo: true
-p1+xlim(NA, 110)+ geom_cladelab(node=nodepimelo,label = "Pimelodidae",offset=0,barcolor="red",textcolor="red",angle=0, offset.text=0.1)
 
-
-
+p1 + xlim(NA, 110)+ geom_cladelab(node=nodepimelo,label = "Pimelodidae",offset=0,barcolor="red",textcolor="red",angle=0, offset.text=0.1)
 ```
 
 ## 
@@ -420,7 +418,7 @@ p1+xlim(NA, 110)+
 
 ## 
 
-O incluso anotar grupos sin ancestro común utilizando el parámetro `geom_strip()`:
+O anotar grupos sin ancestro común utilizando el parámetro `geom_strip()`:
 
 ```{r, fig.width=8, fig.height=5,fig.align='center'}
 #| eval: true
@@ -431,7 +429,7 @@ p1+xlim(0,120)+
 
 ## Resaltar
 
-Otro parámetro de anotación muy interesante es *geom_highlight*, el cual nos permite destacar clados, utilizando los nodos de ancestro en común:
+Otro parámetro de anotación muy interesante es *geom_highlight*, para destacar clados, utilizando los nodos de ancestro en común:
 
 ```{r, fig.width=8, fig.height=5,fig.align='center'}
 #| eval: true
@@ -456,7 +454,7 @@ p1+
 
 En `ggtree` como en `ggplot` podemos incluir imagenes de recursos en línea como *phylopic* o enriquecerlas con imágenes propias.
 
-Para poder hacer uso de esta función, primero debemos cargar 2 paquetes extra:
+Para poder hacer uso de esta función, primero debemos cargar:
 
 ```{r}
 #| eval: true
@@ -509,7 +507,7 @@ ids<-phylopic_uid(c("Phractocephalus hemioliopterus","Siluridae","Ameiurus","Cha
 
 ## 
 
-Con estos ids, ya podemos crear nuestra tabla con los datos necesarios y después gráficarlos:
+Con estos ids, podemos crear nuestra tabla con los datos necesarios y gráficarlos:
 
 ```{r, fig.width=8, fig.height=5,fig.align='center'}
 #| eval: true
@@ -523,7 +521,6 @@ dt
 
 ## 
 
-Por ejemplo: 
 
 ```{r, fig.width=8, fig.height=5,fig.align='center'}
 #| eval: true
@@ -538,7 +535,7 @@ p1+ylim(-10,80)+geom_cladelab(data = dt,mapping = aes(node = node, label = Famil
 
 ## 
 
-También podemos combinar otros parametros que ya conociamos:
+Combinar con otros parametros que ya conociamos:
 
 ```{r, fig.width=8, fig.height=5,fig.align='center'}
 #| eval: true
@@ -571,9 +568,9 @@ p2 + ylim(-10, 80) +geom_cladelab(data = dt,mapping = aes(node = node,label = Fa
 
 ## Atributos de las especies
 
-También se puede usar `ggtree`, para graficar atributos de las especies en la filogenia.
+`ggtree` puede graficar atributos de las especies en la filogenia.
 
-Para hacer esto, primero debemos cargar los atributos, en este caso usaremos la longitud estándar máxima y el hábito migratorio:
+Primero debemos cargar los atributos, en este caso la longitud estándar máxima y el hábito migratorio:
 
 ```{r}
 #| eval: true
@@ -587,7 +584,7 @@ head(fishdata)
 
 ## 
 
-Una vez cargados los datos, la manera más fácil de utilizarlos es uniendolos a la filogenia usando la función `full_join`, es importante que las especies estén etiquetadas como label, para que la función las reconozca:
+Unimos los datos a la filogenia usando la función `full_join`, es importante que las especies estén etiquetadas como label, para que la función las reconozca:
 
 ```{r}
 #| eval: true
@@ -601,7 +598,7 @@ datatree<-left_join(fishtree,fishdata,by="label")
 
 ¡Listo! Ahora tenemos una filogenia con atributos y podemos graficarlos juntos
 
-Primero graficaremos los valores continuos de la longitud sobre las puntas del árbol en una escala de colores:
+Primero los valores continuos de la longitud sobre las puntas del árbol en una escala de colores:
 
 ```{r, fig.width=6, fig.height=8,fig.align='center'}
 #| eval: true
@@ -613,7 +610,7 @@ p4<-ggtree(datatree)
 
 ## 
 
-podemos también personalizar esta escala:
+personalizar la escala:
 
 ```{r, fig.width=6, fig.height=8,fig.align='center'}
 #| eval: true
@@ -625,7 +622,7 @@ p4+
 
 ## 
 
-¿Cómo se verían los datos discretos?
+Datos discretos
 
 ```{r, fig.width=6, fig.height=8,fig.align='center'}
 #| eval: true
@@ -710,9 +707,7 @@ p5+geom_fruit(data=dd[1:65,],
   
 ```
 
-## 
-
-Imágenes propias
+## Imágenes propias
 
 En este ejemplo usaremos las familias *Pimelodidae*,*Doradidae* y *Loricariidae*
 

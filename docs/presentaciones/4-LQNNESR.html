@@ -1986,6 +1986,109 @@ $un_dataframe
 <li>De los núcleos de nuestra PC hasta SSH, Slurm, Torque, LSF</li>
 </ul>
 </div></div>
+</section>
+<section id="con-r-base" class="slide level2">
+<h2>Con R base</h2>
+<p>R base tiene herramientas para iterar desde sus inicios: <strong>la familia <code>apply</code></strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code>purrr</code></th>
+<th style="text-align: left;">R Base</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>map()</code></td>
+<td style="text-align: left;"><code>lapply()</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>map_dbl()</code>, etc.</td>
+<td style="text-align: left;"><code>vapply()</code> (o <code>sapply()</code>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>map2()</code>, <code>pmap()</code></td>
+<td style="text-align: left;"><code>mapply()</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="familia-apply" class="slide level2">
+<h2>Familia <code>apply</code></h2>
+<ul>
+<li><strong><code>lapply()</code></strong>: (<strong>L</strong>ist apply) Aplica una función a cada elemento de una lista o vector y siempre devuelve una <strong>lista</strong>.</li>
+<li><strong><code>sapply()</code></strong>: (<strong>S</strong>implified apply) Intenta simplificar el resultado de <code>lapply()</code>. Si puede, devuelve un vector o matriz; si no, una lista.</li>
+<li><strong><code>tapply()</code></strong>: (<strong>T</strong>able apply) Aplica una función a subconjuntos de un vector definidos por uno o más factores (agrupamientos).</li>
+</ul>
+</section>
+<section id="por-qué-purrr" class="slide level2">
+<h2>¿Por qué <code>purrr</code>?</h2>
+<ol type="1">
+<li><strong>Consistencia en argumentos</strong>: En <code>purrr</code>, el objeto a iterar (<code>.x</code>) siempre es el primer argumento. En R base varía.</li>
+<li><strong>Type-safety</strong>: <code>sapply()</code> puede devolver una lista, un vector o una matriz según el resultado.</li>
+<li><strong>Sintaxis</strong>: Soporte para funciones anónimas</li>
+<li><strong>Integración</strong>: Funciona con el pipe (<code>|&gt;</code>) y otras herramientas del <code>tidyverse</code>.</li>
+</ol>
+</section>
+<section id="ejemplo-map-vs-lapply" class="slide level2">
+<h2>Ejemplo: <code>map()</code> vs <code>lapply()</code></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>purrr</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a></a><span class="fu">map</span>(rasgos, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] 4201.754
+
+[[2]]
+[1] 43.92193
+
+[[3]]
+[1] 200.9152</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong>R base</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a></a><span class="fu">lapply</span>(rasgos, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] 4201.754
+
+[[2]]
+[1] 43.92193
+
+[[3]]
+[1] 200.9152</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section id="ejemplo-map_dbl-vs-vapply" class="slide level2">
+<h2>Ejemplo: <code>map_dbl()</code> vs <code>vapply()</code></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>purrr</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a></a><span class="fu">map_dbl</span>(rasgos, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4201.75439   43.92193  200.91520</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong>R base</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a></a><span class="fu">vapply</span>(rasgos, mean, </span>
+<span id="cb82-2"><a></a>       <span class="at">FUN.VALUE =</span> <span class="fu">numeric</span>(<span class="dv">1</span>), </span>
+<span id="cb82-3"><a></a>       <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4201.75439   43.92193  200.91520</code></pre>
+</div>
+</div>
+</div></div>
+<p><br></p>
+<p>Ambas devuelven un <strong>vector numérico</strong></p>
 </section></section>
 <section>
 <section id="atajos-y-herramientas-para-mayor-eficiencia" class="title-slide slide level1 center">
@@ -2068,12 +2171,12 @@ Atajo de Open Containing Folder en Positron</p>
 <p>Agregar detalles sobre los paquetes que estamos mencionando en nuestros scripts</p>
 <p>Fuente y versión</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a></a><span class="fu">library</span>(dplyr)   <span class="co"># CRAN v1.0.7</span></span>
-<span id="cb76-2"><a></a><span class="fu">library</span>(janitor) <span class="co"># CRAN v2.1.0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a></a><span class="fu">library</span>(dplyr)   <span class="co"># CRAN v1.0.7</span></span>
+<span id="cb84-2"><a></a><span class="fu">library</span>(janitor) <span class="co"># CRAN v2.1.0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Título, fuente y versión</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a></a><span class="fu">library</span>(readr) <span class="co"># Read Rectangular Text Data, CRAN v2.0.2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a></a><span class="fu">library</span>(readr) <span class="co"># Read Rectangular Text Data, CRAN v2.0.2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li><em>También podemos anotar cuáles funciones o datos de c/ paquete estamos usando</em></li>
@@ -2084,17 +2187,17 @@ Atajo de Open Containing Folder en Positron</p>
 <p><code>remotes::install_github("ThinkR-open/littleboxes")</code></p>
 <p>Cajas para títulos</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a></a><span class="do">##%##################################################%##</span></span>
-<span id="cb78-2"><a></a><span class="co">#                                                      #</span></span>
-<span id="cb78-3"><a></a><span class="do">####    Mi análisis en R ,  Luis, Oct 2022          ####</span></span>
-<span id="cb78-4"><a></a><span class="co">#                                                      #</span></span>
-<span id="cb78-5"><a></a><span class="do">##%##################################################%##</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a></a><span class="do">##%##################################################%##</span></span>
+<span id="cb86-2"><a></a><span class="co">#                                                      #</span></span>
+<span id="cb86-3"><a></a><span class="do">####    Mi análisis en R ,  Luis, Oct 2022          ####</span></span>
+<span id="cb86-4"><a></a><span class="co">#                                                      #</span></span>
+<span id="cb86-5"><a></a><span class="do">##%##################################################%##</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="secciones-de-código-y-el-esquema-de-documento" class="slide level2">
 <h2>Secciones de código y el esquema de documento</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a></a><span class="co"># Mi sección nueva ------------------------------------ </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a></a><span class="co"># Mi sección nueva ------------------------------------ </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Dividir un script en segmentos discretos</p>
 <p>Las secciones se pueden colapsar y funcionan con el panel de navegación del editor de fuente.</p>

@@ -7,7 +7,6 @@ format:
     theme: curso_styles.scss
     slide-number: true
     embed-resources: true
-editor: visual
 highlight-style: arrow-light
 ---
 
@@ -15,8 +14,8 @@ highlight-style: arrow-light
 
 Vamos a utilizar los siguientes paquetes:
 
--   `biscale`
--   `ggplot2`
+- `biscale`
+- `ggplot2`
 
 ## Biscale
 
@@ -26,23 +25,23 @@ Vamos a utilizar los siguientes paquetes:
 :::
 
 ::: {.column width="80%"}
--   Paquete para producir mapas bivariados (i.e. dos variables en el mismo layout)
-    -   Sirve para producir leyendas bivariadas
-    -   Herramientas para classificación de datos en categorías usando diferentes técnicas
-    -   [Documentación](https://chris-prener.github.io/biscale/index.html)
+- Paquete para producir mapas bivariados (i.e. dos variables en el mismo layout)
+  - Sirve para producir leyendas bivariadas
+  - Herramientas para classificación de datos en categorías usando diferentes técnicas
+  - [Documentación](https://chris-prener.github.io/biscale/index.html)
 :::
 :::::
 
 ## Según Wikipedia...
 
--   Mapas bivariados también son conocidos como *Mapa coropleto* o *Mapa de coropletas*
+- Mapas bivariados también son conocidos como *Mapa coropleto* o *Mapa de coropletas*
 
 > Mapa temático en el que las áreas se sombrean de distintos colores, frecuentemente de la misma gama cromática, que representan distintos valores de una variable estadística característica.
 
 ## Dos o más variables...
 
--   Los mapas bivariados son útiles para graficar dos variables
--   Ajuste de colores, transparencias y formas
+- Los mapas bivariados son útiles para graficar dos variables
+- Ajuste de colores, transparencias y formas
 
 ![](https://www.joshuastevens.net/images/js_finalBivariateMap.png)
 
@@ -74,29 +73,29 @@ Vamos a utilizar los siguientes paquetes:
 
 ## Pero lo más importante es que la información esté clara
 
--   ¿Cuál de los dos mapas transmite mejor la información?\
-    ![](imgs/dengue2.png){fig-align="center"}
+- ¿Cuál de los dos mapas transmite mejor la información?\
+  ![](imgs/dengue2.png){fig-align="center"}
 
 # Producir mapas bivariados
 
 ## Teoría:
 
--   La idea central es buscar una manera de como combinar estas dos variables
+- La idea central es buscar una manera de como combinar estas dos variables
 
--   Escalas diferentes, número diferente de categorías etc...
+- Escalas diferentes, número diferente de categorías etc...
 
--   Los mapas bivariados conllevan dos pasos:
+- Los mapas bivariados conllevan dos pasos:
 
-    1.  Categorización de las variables según alguna estadística
-    2.  Preparación de una leyenda y su "paleta" de colores
+  1.  Categorización de las variables según alguna estadística
+  2.  Preparación de una leyenda y su "paleta" de colores
 
 # 1. Categorización de variables
 
 ## Pasos:
 
--   Normalizar los datos en conteos o proporciones
--   las funciones `cut()` y `summary()` de R base pueden ser útiles (revisar también `santoku`)
--   Con los datos *iris*
+- Normalizar los datos en conteos o proporciones
+- las funciones `cut()` y `summary()` de R base pueden ser útiles (revisar también `santoku`)
+- Con los datos *iris*
 
 ```{r}
 #| eval: true
@@ -123,9 +122,9 @@ tabyl(ci)
 
 ## la función `classIntervals()`
 
--   Permite categorizar los datos usando varios tipos de categorización
--   *quantile*, *jenkins*, *equal* para mencionar algunas
--   hay que definir el numero de clases (parámetro *n*)
+- Permite categorizar los datos usando varios tipos de categorización
+- *quantile*, *jenkins*, *equal* para mencionar algunas
+- hay que definir el numero de clases (parámetro *n*)
 
 ```{r}
 #| eval: true
@@ -141,8 +140,8 @@ classInt::classIntervals(iris$Sepal.Length,style="quantile",n=4)
 
 ::::: columns
 ::: {.column width="50%"}
--   Luego de categorizar el vector de interés, se puede cortar con la función `cut()`
--   También se puede generar un vector con las categorías y juntarlo a los datos originales usando la función `findCols()`
+- Luego de categorizar el vector de interés, se puede cortar con la función `cut()`
+- También se puede generar un vector con las categorías y juntarlo a los datos originales usando la función `findCols()`
 :::
 
 ::: {.column width="50%"}
@@ -175,8 +174,8 @@ head(fc)
 
 ::::: columns
 ::: {.column width="50%"}
--   Se utliza la función `bi_class()` para generar las catetorias
--   Permite hacer la categorización de las dos variables elejidas de una vez, a diferencia de `classIntervals()`
+- Se utliza la función `bi_class()` para generar las catetorias
+- Permite hacer la categorización de las dos variables elejidas de una vez, a diferencia de `classIntervals()`
 :::
 
 ::: {.column width="50%"}
@@ -207,7 +206,7 @@ head(data$bi_class)
 
 ## La función `bi_legend()`
 
--   Para ver las paletas disponibles [aquí](https://chris-prener.github.io/biscale/articles/bivariate_palettes.html)
+- Para ver las paletas disponibles [aquí](https://chris-prener.github.io/biscale/articles/bivariate_palettes.html)
 
 ```{r}
 #| eval: true
@@ -224,9 +223,9 @@ bi_legend(pal = "GrPink",
 
 1)  Vamos a ver el ejemplo del [vignette](https://chris-prener.github.io/biscale/articles/biscale.html)
 
--   Son datos sobre el porcentaje de "brancos" y la ganancia en los EUA.
--   Vamos usar las columnas `pctWhite` y `medInc` para hacer el mapa.
--   Vamos usar 3 dimensiones y categorizar los datos usando `quantiles`
+- Son datos sobre el porcentaje de "brancos" y la ganancia en los EUA.
+- Vamos usar las columnas `pctWhite` y `medInc` para hacer el mapa.
+- Vamos usar 3 dimensiones y categorizar los datos usando `quantiles`
 
 ## 
 
@@ -236,8 +235,8 @@ bi_legend(pal = "GrPink",
 
 ::::: columns
 ::: {.column width="50%"}
--   Determinamos el geom como `geom_sf` y `fill=bi_class`
--   `bi_class` debe ser la categorización que hemos visto anteriormente con `bi_class()`
+- Determinamos el geom como `geom_sf` y `fill=bi_class`
+- `bi_class` debe ser la categorización que hemos visto anteriormente con `bi_class()`
 :::
 
 ::: {.column width="50%"}
@@ -258,11 +257,11 @@ map <- ggplot() +
 :::
 :::::
 
--   `bi_scale_fill`, tiene el argumento `pal` para la paleta de colores y `dim` para el numero de categorías utilizadas
+- `bi_scale_fill`, tiene el argumento `pal` para la paleta de colores y `dim` para el numero de categorías utilizadas
 
 ## 
 
--   Después de preparar el mapa, hay que preparar la leyenda
+- Después de preparar el mapa, hay que preparar la leyenda
 
 ```{r}
 #| eval: false
@@ -274,7 +273,7 @@ legend <- bi_legend(pal = "GrPink",
                     size = 8)
 ```
 
--   Finalmente, ponerlos lado a lado usando `patchwork`
+- Finalmente, ponerlos lado a lado usando `patchwork`
 
 ```{r}
 #| eval: false
@@ -297,19 +296,19 @@ p1 + inset_element(p2, 0.6, 0.6, 1, 1) \# left, top, right, bottom
 
 ## 
 
--   El tutorial de [Len Kiefer](http://lenkiefer.com/2017/04/24/bivariate-map/)
--   Usar el paquete `classInt` para categorizar los datos
--   Usar el esquema de colores de la leyenda para preparar el mapa
+- El tutorial de [Len Kiefer](http://lenkiefer.com/2017/04/24/bivariate-map/)
+- Usar el paquete `classInt` para categorizar los datos
+- Usar el esquema de colores de la leyenda para preparar el mapa
 
 ![](http://lenkiefer.com/post/2017-04-24-bivariate-map_files/figure-html/04-24-2017-setup-2-1.png)
 
 ## 
 
--   Qué chulada! ![](imgs/map.png)
+- Qué chulada! ![](imgs/map.png)
 
 ## 
 
--   La leyenda se hace con la función `expand_grid()` de `tidyr`
+- La leyenda se hace con la función `expand_grid()` de `tidyr`
 
 ```{r}
 #| eval: true
@@ -341,9 +340,9 @@ ggplot(d, aes(x,y))+
 
 ## 
 
--   Lo importante aqui es usar el geom `geom_tile`
--   Permite usar varios [colores](https://ggplot2.tidyverse.org/reference/geom_tile.html)
--   Vamos jugar con los valores de `alpha` (transparencia) y `fill`
+- Lo importante aqui es usar el geom `geom_tile`
+- Permite usar varios [colores](https://ggplot2.tidyverse.org/reference/geom_tile.html)
+- Vamos jugar con los valores de `alpha` (transparencia) y `fill`
 
 ## 
 
@@ -385,7 +384,7 @@ ggplot(d, aes(x,y))+
 
 ## Categorizar los datos
 
--   vamos usar las funciones `classInt()` y `findCols()`
+- vamos usar las funciones `classInt()` y `findCols()`
 
 ```{r}
 #| eval: true
@@ -525,7 +524,7 @@ st_crs(geo)= st_crs(wrld)
 
 ## 1. Preparar el mapa usando el paquete `biscale`
 
--   Calcular las categorias
+- Calcular las categorias
 
 ```{r}
 #| eval: false
@@ -565,7 +564,7 @@ map
 
 ## 2. Manualmente
 
--   Crear un *grid*
+- Crear un *grid*
 
 ```{r}
 #| eval: false

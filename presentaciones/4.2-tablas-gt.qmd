@@ -112,9 +112,7 @@ muestra |>
   gt() |> 
   data_color(
     columns = Price,
-    target_columns = Price,
-    method = "factor",
-    palette = c("low" = "lightgreen", "medium" = "orange", "high" = "tomato")
+    palette = c("tomato","lightgreen","orange")
   )
 ```
 

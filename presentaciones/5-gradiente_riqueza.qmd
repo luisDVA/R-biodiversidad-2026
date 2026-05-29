@@ -39,6 +39,7 @@ library(sf)
 library(ggplot2)
 library(viridisLite)
 library(tmap)
+library(dplyr)
 library(here)
 ```
 
@@ -51,8 +52,8 @@ Cargar los polígonos de las especies de interés (shapefiles en su carpeta de t
 ```{r}
 #| eval: true
 #| echo: true
-primates_maps <- st_read(here("dados","primates_maps.shp"))
-
+primates_maps <- st_read(here("dados","primates_maps.shp")) |> 
+  rename(sciname=sci_name)
 ```
 
 ##

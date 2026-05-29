@@ -60,7 +60,7 @@
     "href": "materiales.html#presentaciones",
     "title": "Materiales del curso",
     "section": "Presentaciones",
-    "text": "Presentaciones\nEstas presentaciones en formato web cuentan con un índice de contenidos interactivo (botón en la esquina inferior izquierda).\n\nLunes\nFlujos de Trabajo y Organización de Proyectos\nEjercicio de arranque\nExploración de datos\nManipulación y Limpieza de datos - I\n\n\nMartes\nEjercicios pipes\nManipulación y Limpieza de datos - II\n\n\nMiércoles\nVisualización de Datos\n\n\nJueves\nLo que Nunca nos Enseñaron sobre R\nCreando tablas con gt\nAutomatización y funciones\n\n\n\nViernes\nDistribuciones Geográficas\nRiqueza de Especies\nMapas Bivariados\nFilogenias"
+    "text": "Presentaciones\nEstas presentaciones en formato web cuentan con un índice de contenidos interactivo (botón en la esquina inferior izquierda).\n\nLunes\nFlujos de Trabajo y Organización de Proyectos\nEjercicio de arranque\nExploración de datos\nManipulación y Limpieza de datos - I\n\n\nMartes\nEjercicios pipes\nManipulación y Limpieza de datos - II\n\n\nMiércoles\nVisualización de Datos\n\n\nJueves\nLo que Nunca nos Enseñaron sobre R\nCreando tablas con gt\nAutomatización y funciones\n\n\n\nViernes\nScript de instalación viernes\nDistribuciones Geográficas\nRiqueza de Especies\nMapas Bivariados\nFilogenias"
   },
   {
     "objectID": "presentaciones/5-gradiente_riqueza.html",
@@ -73,8 +73,8 @@
     "objectID": "presentaciones/5-gradiente_riqueza.html#áreas-de-distribución-y-patrones-geográficos-de-riqueza",
     "href": "presentaciones/5-gradiente_riqueza.html#áreas-de-distribución-y-patrones-geográficos-de-riqueza",
     "title": "Patrones geográficos de riqueza de especies",
-    "section": "",
-    "text": "“To do science is to search for repeated patterns, not simply to accumulate facts” R. MacArthur\n\n\nA partir de las distribuciones geográficas de las especies es posible describir y evaluar diferentes patrones de biodiversidad que emergen cuando estudiamos conjuntos de especies (y no a nivel indivual)"
+    "section": "Áreas de distribución y patrones geográficos de riqueza",
+    "text": "Áreas de distribución y patrones geográficos de riqueza\n\n“To do science is to search for repeated patterns, not simply to accumulate facts” R. MacArthur\n\n\nA partir de las distribuciones geográficas de las especies es posible describir y evaluar diferentes patrones de biodiversidad que emergen cuando estudiamos conjuntos de especies (y no a nivel indivual)"
   },
   {
     "objectID": "presentaciones/5-gradiente_riqueza.html#áreas-de-distribución-y-patrones-geográficos-de-riqueza-1",
@@ -95,14 +95,14 @@
     "href": "presentaciones/5-gradiente_riqueza.html#paquetes-necesarios",
     "title": "Patrones geográficos de riqueza de especies",
     "section": "Paquetes necesarios:",
-    "text": "Paquetes necesarios:\n\nlibrary(letsR)\nlibrary(sf)\nlibrary(ggplot2)\nlibrary(viridisLite)\nlibrary(tmap)\nlibrary(here)"
+    "text": "Paquetes necesarios:\n\nlibrary(letsR)\nlibrary(sf)\nlibrary(ggplot2)\nlibrary(viridisLite)\nlibrary(tmap)\nlibrary(dplyr)\nlibrary(here)"
   },
   {
     "objectID": "presentaciones/5-gradiente_riqueza.html#section-1",
     "href": "presentaciones/5-gradiente_riqueza.html#section-1",
     "title": "Patrones geográficos de riqueza de especies",
     "section": "",
-    "text": "Cargar los polígonos de las especies de interés (shapefiles en su carpeta de trabajo)\n\nprimates_maps &lt;- st_read(here(\"dados\",\"primates_maps.shp\"))\n\nReading layer `primates_maps' from data source \n  `/home/luisd/Dropbox/darcyDB/PDRF/R-biodiversidad-2025/dados/primates_maps.shp' \n  using driver `ESRI Shapefile'\nSimple feature collection with 915 features and 28 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -99.2274 ymin: -34.83983 xmax: 141.9292 ymax: 41.54623\nGeodetic CRS:  WGS 84"
+    "text": "Cargar los polígonos de las especies de interés (shapefiles en su carpeta de trabajo)\n\nprimates_maps &lt;- st_read(here(\"dados\",\"primates_maps.shp\")) |&gt; \n  rename(sciname=sci_name)\n\nReading layer `primates_maps' from data source \n  `/home/luisd/Dropbox/darcyDB/PDRF/curso2026/dados/primates_maps.shp' \n  using driver `ESRI Shapefile'\nSimple feature collection with 915 features and 28 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -99.2274 ymin: -34.83983 xmax: 141.9292 ymax: 41.54623\nGeodetic CRS:  WGS 84"
   },
   {
     "objectID": "presentaciones/5-gradiente_riqueza.html#section-2",
@@ -116,7 +116,7 @@
     "href": "presentaciones/5-gradiente_riqueza.html#cómo-se-ve-el-patrón-geográfico",
     "title": "Patrones geográficos de riqueza de especies",
     "section": "¿Cómo se ve el patrón geográfico?",
-    "text": "¿Cómo se ve el patrón geográfico?\n. . .\n\nplot(primates.pam)"
+    "text": "¿Cómo se ve el patrón geográfico?\n\n\nplot(primates.pam)"
   },
   {
     "objectID": "presentaciones/5-gradiente_riqueza.html#section-3",
@@ -130,14 +130,14 @@
     "href": "presentaciones/5-gradiente_riqueza.html#section-4",
     "title": "Patrones geográficos de riqueza de especies",
     "section": "",
-    "text": "¿Qué tiene el objeto que se graficó?\n\nprimates.pam$Richness_Raster\n\nclass       : SpatRaster \ndimensions  : 77, 241, 1  (nrow, ncol, nlyr)\nresolution  : 1, 1  (x, y)\nextent      : -100, 141, -35, 42  (xmin, xmax, ymin, ymax)\ncoord. ref. : +proj=longlat +datum=WGS84 +no_defs \nsource(s)   : memory\nname        : lyr.1 \nmin value   :     0 \nmax value   :    33"
+    "text": "¿Qué tiene el objeto que se graficó?\n\nprimates.pam$Richness_Raster\n\nclass       : SpatRaster\nsize        : 77, 241, 1  (nrow, ncol, nlyr)\nresolution  : 1, 1  (x, y)\nextent      : -100, 141, -35, 42  (xmin, xmax, ymin, ymax)\ncoord. ref. : +proj=longlat +datum=WGS84 +no_defs\nsource(s)   : memory\nname        : lyr.1\nmin value   :     0\nmax value   :    33"
   },
   {
     "objectID": "presentaciones/5-gradiente_riqueza.html#section-5",
     "href": "presentaciones/5-gradiente_riqueza.html#section-5",
     "title": "Patrones geográficos de riqueza de especies",
     "section": "",
-    "text": "Vamos a verlo en ggplot\n. . .\nPrimero, convertimos el raster en un data.frame\n\nrdf &lt;- as.data.frame(primates.pam$Richness_Raster, xy=TRUE) #Convert raster to data.frame\nnames(rdf)[3] &lt;- 'richness' #Name value column\nhead(rdf)\n\n      x    y richness\n1 -99.5 41.5        0\n2 -98.5 41.5        0\n3 -97.5 41.5        0\n4 -96.5 41.5        0\n5 -95.5 41.5        0\n6 -94.5 41.5        0"
+    "text": "Vamos a verlo en ggplot\n\nPrimero, convertimos el raster en un data.frame\n\nrdf &lt;- as.data.frame(primates.pam$Richness_Raster, xy=TRUE) #Convert raster to data.frame\nnames(rdf)[3] &lt;- 'richness' #Name value column\nhead(rdf)\n\n      x    y richness\n1 -99.5 41.5        0\n2 -98.5 41.5        0\n3 -97.5 41.5        0\n4 -96.5 41.5        0\n5 -95.5 41.5        0\n6 -94.5 41.5        0"
   },
   {
     "objectID": "presentaciones/5-gradiente_riqueza.html#section-6",
@@ -158,7 +158,7 @@
     "href": "presentaciones/5-gradiente_riqueza.html#section-8",
     "title": "Patrones geográficos de riqueza de especies",
     "section": "",
-    "text": "¿Qué más podemos hacer con esto?\n. . .\nPor ejemplo, relacionar el patrón de riqueza con alguna variable ambiental\n. . .\nCarguemos una variable ambiental (temperatura máxima, que viene de WorldClim)\n\ntemp &lt;- rast(here(\"dados\",\"bio1.bil\"))\n\nplot(temp)"
+    "text": "¿Qué más podemos hacer con esto?\n\nPor ejemplo, relacionar el patrón de riqueza con alguna variable ambiental\n\n\nCarguemos una variable ambiental (temperatura máxima, que viene de WorldClim)\n\ntemp &lt;- rast(here(\"dados\",\"bio1.bil\"))\n\nplot(temp)"
   },
   {
     "objectID": "presentaciones/5-gradiente_riqueza.html#section-9",
@@ -3335,22 +3335,22 @@
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#área-de-distribución-geográfica",
     "href": "presentaciones/5.0-distribuciones_geograficas.html#área-de-distribución-geográfica",
     "title": "Distribuciones geográficas",
-    "section": "",
-    "text": "“…el espacio donde las condiciones ecológicas favorecen, real o potencialmente y en varios niveles, las interacciones no efímeras de los individuos de una especie” Mota-Vargas & Rojas-Soto 2012"
+    "section": "Área de distribución geográfica",
+    "text": "Área de distribución geográfica\n“…el espacio donde las condiciones ecológicas favorecen, real o potencialmente y en varios niveles, las interacciones no efímeras de los individuos de una especie” Mota-Vargas & Rojas-Soto 2012"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#puntos-polígonos-y-mapas-de-distribución",
     "href": "presentaciones/5.0-distribuciones_geograficas.html#puntos-polígonos-y-mapas-de-distribución",
     "title": "Distribuciones geográficas",
     "section": "Puntos, polígonos y mapas de distribución",
-    "text": "Puntos, polígonos y mapas de distribución\nLos registros (colectas georreferenciadas) de las especies son los datos primarios de biodiversidad, a partir de los cuales podemos estimar las áreas de distribución de estas y describir/evaluar los patrones de diversidad que emergen de su agregación (traslape; e.g., gradiente geográfico de riqueza)\n. . ."
+    "text": "Puntos, polígonos y mapas de distribución\nLos registros (colectas georreferenciadas) de las especies son los datos primarios de biodiversidad, a partir de los cuales podemos estimar las áreas de distribución de estas y describir/evaluar los patrones de diversidad que emergen de su agregación (traslape; e.g., gradiente geográfico de riqueza)"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section",
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "En este ejemplo/ejercicio veremos cómo obtener dichos registros directamente desde R\n\n. . .\n\nTambién, veremos cómo generar áreas de distribución (extensiones de presencia) a partir de estos registros, creando polígonos de diferentes tipos (mínimo, alpha y alpha dinámico)\n\n. . .\n\nLos datos de registros serán obtenidos de la plataforma en línea Global Biodiversity Information Facility - GBIF\n\n. . ."
+    "text": "En este ejemplo/ejercicio veremos cómo obtener dichos registros directamente desde R\n\n\n\nTambién, veremos cómo generar áreas de distribución (extensiones de presencia) a partir de estos registros, creando polígonos de diferentes tipos (mínimo, alpha y alpha dinámico)\n\n\n\n\nLos datos de registros serán obtenidos de la plataforma en línea Global Biodiversity Information Facility - GBIF"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#paquetes-necesarios",
@@ -3371,14 +3371,14 @@
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-2",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "Checar el nombre de las columnas (para después buscar únicamente las de posición geográfica: lat/long)\n\nnames(sp_data)[1:30]\n\n [1] \"key\"                    \"scientificName\"         \"decimalLatitude\"       \n [4] \"decimalLongitude\"       \"issues\"                 \"datasetKey\"            \n [7] \"publishingOrgKey\"       \"installationKey\"        \"hostingOrganizationKey\"\n[10] \"publishingCountry\"      \"protocol\"               \"lastCrawled\"           \n[13] \"lastParsed\"             \"crawlId\"                \"projectId\"             \n[16] \"basisOfRecord\"          \"individualCount\"        \"occurrenceStatus\"      \n[19] \"sex\"                    \"taxonKey\"               \"kingdomKey\"            \n[22] \"phylumKey\"              \"classKey\"               \"orderKey\"              \n[25] \"familyKey\"              \"genusKey\"               \"speciesKey\"            \n[28] \"acceptedTaxonKey\"       \"acceptedScientificName\" \"kingdom\""
+    "text": "Checar el nombre de las columnas (para después buscar únicamente las de posición geográfica: lat/long)\n\nnames(sp_data)[1:30]\n\n [1] \"key\"                    \"scientificName\"         \"decimalLatitude\"       \n [4] \"decimalLongitude\"       \"issues\"                 \"datasetKey\"            \n [7] \"publishingOrgKey\"       \"installationKey\"        \"hostingOrganizationKey\"\n[10] \"publishingCountry\"      \"protocol\"               \"lastCrawled\"           \n[13] \"lastParsed\"             \"crawlId\"                \"projectId\"             \n[16] \"basisOfRecord\"          \"individualCount\"        \"occurrenceStatus\"      \n[19] \"sex\"                    \"lifeStage\"              \"taxonKey\"              \n[22] \"kingdomKey\"             \"phylumKey\"              \"classKey\"              \n[25] \"orderKey\"               \"familyKey\"              \"genusKey\"              \n[28] \"speciesKey\"             \"acceptedTaxonKey\"       \"acceptedScientificName\""
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-3",
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-3",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "Crear otro objeto a partir de sp_data únicamente con long/lat\n\n. . .\n\nQuedarse únicamente con los puntos/registros individuales (i.e., excluir duplicados)\n\n. . .\n\nTransformarlo en un objeto espacial"
+    "text": "Crear otro objeto a partir de sp_data únicamente con long/lat\n\n\n\nQuedarse únicamente con los puntos/registros individuales (i.e., excluir duplicados)\n\n\n\n\nTransformarlo en un objeto espacial"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-4",
@@ -3406,7 +3406,7 @@
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-7",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": ". . .\nHay algo claramente equivocado, ¿cierto? Los puntos/registros necesitan ser “curados” (limpiados)"
+    "text": "Hay algo claramente equivocado, ¿cierto? Los puntos/registros necesitan ser “curados” (limpiados)"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-8",
@@ -3420,7 +3420,7 @@
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-9",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "Ahora sí, mapeamos de nuevo pero sólamente en la región de interés (México)\n\nmex_map &lt;- filter(wrld,name==\"Mexico\")\n\n. . .\n\nggplot()+geom_sf(data=mex_map)+\n  geom_sf(data=sp_p1,col=\"blue\",pch=19,size=1)+coord_sf(expand = F)"
+    "text": "Ahora sí, mapeamos de nuevo pero sólamente en la región de interés (México)\n\nmex_map &lt;- filter(wrld,name==\"Mexico\")\n\n\n\nggplot()+geom_sf(data=mex_map)+\n  geom_sf(data=sp_p1,col=\"blue\",pch=19,size=1)+coord_sf(expand = F)"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-10",
@@ -3441,7 +3441,7 @@
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-12",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "Una vez tenemos los datos curados, podemos crear nuestro poligono mínimo convexo\n\nsp1_mcp &lt;- st_convex_hull(st_union(sp_p1))\n\n. . .\n¿Cómo se ve?"
+    "text": "Una vez tenemos los datos curados, podemos crear nuestro poligono mínimo convexo\n\nsp1_mcp &lt;- st_convex_hull(st_union(sp_p1))\n\n\n¿Cómo se ve?"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-13",
@@ -3455,21 +3455,21 @@
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-14",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "Usamos el paquete alphahull\nNOTA: Esta función solo acepta tablas como entrada\n\nsp_p2 &lt;- as.data.frame(st_coordinates(sp_p1))\n\n\nsp1_alphahull &lt;- ahull(sp_p2, alpha = 6)\n\nError: shull: duplicate points found\n\n\n. . .\nError: shull: duplicate points found\n. . .\nFalla porque encuentra puntos duplicados o, como en este caso, puntos en una línea recta (i.e., mismo X y/o mismo Y).\n. . ."
+    "text": "Usamos el paquete alphahull\nNOTA: Esta función solo acepta tablas como entrada\n\nsp_p2 &lt;- as.data.frame(st_coordinates(sp_p1))\n\n\nsp1_alphahull &lt;- ahull(sp_p2, alpha = 6)\n\nError:\n! shull: duplicate points found\n\n\n\nError: shull: duplicate points found\n\n\nFalla porque encuentra puntos duplicados o, como en este caso, puntos en una línea recta (i.e., mismo X y/o mismo Y)."
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-15",
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-15",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "¿Cómo podemos identificar y solucionar este error?\n\nsp_p3&lt;-sp_p2 %&gt;% dplyr::select(X, Y)%&gt;% \nmutate(X = ifelse(duplicated(sp_p2$X), X + rnorm(1, mean = 0, sd = 0.0001), X))%&gt;% \nmutate(Y = ifelse(duplicated(sp_p2$Y), Y + rnorm(1, mean = 0, sd = 0.0001), Y))\n\n. . ."
+    "text": "¿Cómo podemos identificar y solucionar este error?\n\nsp_p3&lt;-sp_p2 %&gt;% dplyr::select(X, Y)%&gt;% \nmutate(X = ifelse(duplicated(sp_p2$X), X + rnorm(1, mean = 0, sd = 0.0001), X))%&gt;% \nmutate(Y = ifelse(duplicated(sp_p2$Y), Y + rnorm(1, mean = 0, sd = 0.0001), Y))"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-16",
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-16",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "Ahora si, podemos crear el Alpha Hull con un valor de alpha escogido (por la razón que crean relevante)\n\nsp1_alphahull &lt;- ahull(sp_p3, alpha = 1) \n\n. . ."
+    "text": "Ahora si, podemos crear el Alpha Hull con un valor de alpha escogido (por la razón que crean relevante)\n\nsp1_alphahull &lt;- ahull(sp_p3, alpha = 1)"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-17",
@@ -3483,28 +3483,28 @@
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-18",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "¿Cómo se ve?\n. . .\n\nggplot()+\n  geom_sf(data=mex_map)+\n  geom_sf(data=sp1_alphahull.poly,fill=\"blue\")"
+    "text": "¿Cómo se ve?\n\n\nggplot()+\n  geom_sf(data=mex_map)+\n  geom_sf(data=sp1_alphahull.poly,fill=\"blue\")"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-19",
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-19",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "Usamos el paquete rangeBuilder, el cual crea un polígono alpha hull con un valor de alpha “óptimo” basado en la distribución espacial de los puntos\n\nsp_range &lt;- getDynamicAlphaHull(\n  sp_p3, #Tabla de puntos/registros de la especie\n  coordHeaders = c(\"decimalLongitude\", \"decimalLatitude\"),# x y y\n  fraction = 0.95,   # la fracción mínima de registros que debe incluir el polígono\n  partCount = 2,  # el máximo de polígonos disyuntos permitidos\n  initialAlpha = 1, # Alpha inicial\n  alphaIncrement = 0.5,\n  alphaCap = 1000,\n  clipToCoast = \"terrestrial\"  # solo la parte terrestre del polígono se mantendrá (se cortan las partes no-terrestres/acuáticas con base en un mapa descargado de naturalearth).\n)\n\n. . .\n\nalpha &lt;- sp_range[[2]]\nalpha\n\n[1] \"alpha1.5\""
+    "text": "Usamos el paquete rangeBuilder, el cual crea un polígono alpha hull con un valor de alpha “óptimo” basado en la distribución espacial de los puntos\n\nsp_range &lt;- getDynamicAlphaHull(\n  sp_p3, #Tabla de puntos/registros de la especie\n  coordHeaders = c(\"decimalLongitude\", \"decimalLatitude\"),# x y y\n  fraction = 0.95,   # la fracción mínima de registros que debe incluir el polígono\n  partCount = 2,  # el máximo de polígonos disyuntos permitidos\n  initialAlpha = 1, # Alpha inicial\n  alphaIncrement = 0.5,\n  alphaCap = 1000,\n  clipToCoast = \"terrestrial\"  # solo la parte terrestre del polígono se mantendrá (se cortan las partes no-terrestres/acuáticas con base en un mapa descargado de naturalearth).\n)\n\n\n\nalpha &lt;- sp_range[[2]]\nalpha\n\n[1] \"alpha1.5\""
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-20",
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-20",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "Convertir el polígono alpha a un objeto sf\n\nsp1_dynalpha &lt;- st_make_valid(st_as_sf(sp_range[[1]]))\n\n. . .\n¿Cómo podemos visualizarlo?\n\nggplot()+ geom_sf(data=mex_map)+ \n  geom_sf(data=sp1_dynalpha, fill=\"blue\")"
+    "text": "Convertir el polígono alpha a un objeto sf\n\nsp1_dynalpha &lt;- st_make_valid(st_as_sf(sp_range[[1]]))\n\n\n¿Cómo podemos visualizarlo?\n\nggplot()+ geom_sf(data=mex_map)+ \n  geom_sf(data=sp1_dynalpha, fill=\"blue\")"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-21",
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-21",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "¿Y ….Cómo se ven todos los polígonos?\n. . .\n\nggplot()+\n  geom_sf(data=mex_map)+ geom_sf(data=sp1_mcp,fill=\"red\",alpha=0.1) +\n  geom_sf(data=sp_range[[1]], fill=\"blue\",alpha=0.5)+ \n  geom_sf(data=sp1_alphahull.poly,fill=\"yellow\",alpha=0.5)"
+    "text": "¿Y ….Cómo se ven todos los polígonos?\n\n\nggplot()+\n  geom_sf(data=mex_map)+ geom_sf(data=sp1_mcp,fill=\"red\",alpha=0.1) +\n  geom_sf(data=sp_range[[1]], fill=\"blue\",alpha=0.5)+ \n  geom_sf(data=sp1_alphahull.poly,fill=\"yellow\",alpha=0.5)"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-22",
@@ -3518,7 +3518,7 @@
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-23",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "Por ejemplo, para especies restringidas o dependientes de aguas continentales podemos implementar algunos ajustes luego de determinar su extensión de presencia\n. . ."
+    "text": "Por ejemplo, para especies restringidas o dependientes de aguas continentales podemos implementar algunos ajustes luego de determinar su extensión de presencia"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-24",
@@ -3539,63 +3539,63 @@
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-26",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "Y carguemos un shape de referencia para la cuenca del alto Paraná (https://www.hydrosheds.org/)\n\nM &lt;- st_read( here(\"data/polygons\", \"Cyphocharax_naegelii.shp\")) %&gt;% \n  st_transform(4326) %&gt;% st_make_valid()\n\nReading layer `Cyphocharax_naegelii' from data source \n  `/home/luisd/Dropbox/darcyDB/PDRF/R-biodiversidad-2025/data/polygons/Cyphocharax_naegelii.shp' \n  using driver `ESRI Shapefile'\nSimple feature collection with 1 feature and 13 fields\nGeometry type: POLYGON\nDimension:     XY\nBounding box:  xmin: -58.64583 ymin: -27.81307 xmax: -43.58333 ymax: -15.45417\nGeodetic CRS:  WGS 84"
+    "text": "Y carguemos un shape de referencia para la cuenca del alto Paraná (https://www.hydrosheds.org/)\n\nM &lt;- st_read( here(\"data/polygons\", \"Cyphocharax_naegelii.shp\")) %&gt;% \n  st_transform(4326) %&gt;% st_make_valid()\n\nReading layer `Cyphocharax_naegelii' from data source \n  `/home/luisd/Dropbox/darcyDB/PDRF/curso2026/data/polygons/Cyphocharax_naegelii.shp' \n  using driver `ESRI Shapefile'\nSimple feature collection with 1 feature and 13 fields\nGeometry type: POLYGON\nDimension:     XY\nBounding box:  xmin: -58.64583 ymin: -27.81307 xmax: -43.58333 ymax: -15.45417\nGeodetic CRS:  WGS 84"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-27",
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-27",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "Grafiquemos los registros y la cuenca\n. . .\nNOTA: Debemos convertir los registros del objeto datos a un objeto de tipo sf para poder graficar en ggplot\n\ndatos_sf &lt;- st_as_sf(datos, coords = c(\"longitude\", \"latitude\"), crs = 4326)\n\n. . ."
+    "text": "Grafiquemos los registros y la cuenca\n\nNOTA: Debemos convertir los registros del objeto datos a un objeto de tipo sf para poder graficar en ggplot\n\ndatos_sf &lt;- st_as_sf(datos, coords = c(\"longitude\", \"latitude\"), crs = 4326)"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-28",
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-28",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "Veamos los registros distribuidos en la cuenca\n\nggplot()+\n  geom_sf(data=M, fill=\"white\", linewidth= 0.5, colour=\"black\")+\n  geom_sf(data=datos_sf, colour=\"blue\", size=1)+\n  coord_sf(crs=st_crs(4326), xlim=c(-58.2, -43.9), ylim=c(-28,-15), expand=TRUE)+\n  labs(x=\"Longitud decimal\", y=\"Latitud decimal\",\n       title=expression(paste(\"Registros reportados \", italic(\"Cyphocharax naegelli\"))))+\n  theme(plot.title=element_text(hjust=0.5))\n\n\n\n\n\n\n\n\n. . ."
+    "text": "Veamos los registros distribuidos en la cuenca\n\nggplot()+\n  geom_sf(data=M, fill=\"white\", linewidth= 0.5, colour=\"black\")+\n  geom_sf(data=datos_sf, colour=\"blue\", size=1)+\n  coord_sf(crs=st_crs(4326), xlim=c(-58.2, -43.9), ylim=c(-28,-15), expand=TRUE)+\n  labs(x=\"Longitud decimal\", y=\"Latitud decimal\",\n       title=expression(paste(\"Registros reportados \", italic(\"Cyphocharax naegelli\"))))+\n  theme(plot.title=element_text(hjust=0.5))"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-29",
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-29",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "Como vamos a hacer dos tipos de ajustes, necesitamos algunos insumos complementarios:\n. . .\n\nOtros shapes de cuencas, pero de menor orden (i.e., cuencas más pequeñas); en este caso, subcuencas nivel 8 (HydroSHEDS)\n\n\n# Subcuencas nivel 8 (Hydrobasin)\ncuencas &lt;- st_read(here(\"data/polygons\", \"Basins_8.shp\")) %&gt;% \n  st_transform(4326) %&gt;% st_make_valid()\n\nReading layer `Basins_8' from data source \n  `/home/luisd/Dropbox/darcyDB/PDRF/R-biodiversidad-2025/data/polygons/Basins_8.shp' \n  using driver `ESRI Shapefile'\nSimple feature collection with 1286 features and 31 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -58.64583 ymin: -27.81307 xmax: -43.58333 ymax: -15.45417\nGeodetic CRS:  WGS 84\n\n\n. . ."
+    "text": "Como vamos a hacer dos tipos de ajustes, necesitamos algunos insumos complementarios:\n\n\nOtros shapes de cuencas, pero de menor orden (i.e., cuencas más pequeñas); en este caso, subcuencas nivel 8 (HydroSHEDS)\n\n\n# Subcuencas nivel 8 (Hydrobasin)\ncuencas &lt;- st_read(here(\"data/polygons\", \"Basins_8.shp\")) %&gt;% \n  st_transform(4326) %&gt;% st_make_valid()\n\nReading layer `Basins_8' from data source \n  `/home/luisd/Dropbox/darcyDB/PDRF/curso2026/data/polygons/Basins_8.shp' \n  using driver `ESRI Shapefile'\nSimple feature collection with 1286 features and 31 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -58.64583 ymin: -27.81307 xmax: -43.58333 ymax: -15.45417\nGeodetic CRS:  WGS 84"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-30",
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-30",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "Grafiquemos las subcuencas para tener una referencia visual\n\nggplot()+\n  geom_sf(data=cuencas, fill=\"white\", linewidth= 0.1, colour=\"black\")+\n  coord_sf(crs=st_crs(4326),xlim=c(-58.2, -43.9),ylim=c(-28,-15),expand=TRUE)\n\n\n\n\n\n\n\n\n. . ."
+    "text": "Grafiquemos las subcuencas para tener una referencia visual\n\nggplot()+\n  geom_sf(data=cuencas, fill=\"white\", linewidth= 0.1, colour=\"black\")+\n  coord_sf(crs=st_crs(4326),xlim=c(-58.2, -43.9),ylim=c(-28,-15),expand=TRUE)"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-31",
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-31",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "Ráster de referencia que represente los cuerpos de agua (e.g., ríos, embalse)\n\n. . .\nDado que solo necesitamos el ráster como una referencia, asignaremos un valor único para todos los píxeles diferentes de NA\n\nmask &lt;- rast(here(\"data/polygons\", \"rivers.tif\"))\nmask[!is.na(mask)]&lt;-1\n\n. . .\nNOTA: Para graficar el ráster, primero hay que convertirlo en un data.frame\n\nmask.2 &lt;- as.data.frame(mask, xy = TRUE)\n\n. . ."
+    "text": "Ráster de referencia que represente los cuerpos de agua (e.g., ríos, embalse)\n\n\nDado que solo necesitamos el ráster como una referencia, asignaremos un valor único para todos los píxeles diferentes de NA\n\nmask &lt;- rast(here(\"data/polygons\", \"rivers.tif\"))\nmask[!is.na(mask)]&lt;-1\n\n\n\nNOTA: Para graficar el ráster, primero hay que convertirlo en un data.frame\n\nmask.2 &lt;- as.data.frame(mask, xy = TRUE)"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-32",
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-32",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "¿Cómo se ve?\n\nggplot()+\n  geom_sf(data=M, fill=\"white\", linewidth=0.5, colour=\"black\")+\n  geom_raster(data = mask.2, aes(x=x, y=y), fill=\"red\")+\n  coord_sf(crs=st_crs(4326),xlim=c(-58.2, -43.9),ylim=c(-28,-15),expand=TRUE)\n\n\n\n\n\n\n\n\n. . ."
+    "text": "¿Cómo se ve?\n\nggplot()+\n  geom_sf(data=M, fill=\"white\", linewidth=0.5, colour=\"black\")+\n  geom_raster(data = mask.2, aes(x=x, y=y), fill=\"red\")+\n  coord_sf(crs=st_crs(4326),xlim=c(-58.2, -43.9),ylim=c(-28,-15),expand=TRUE)"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-33",
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-33",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "Teniendo los registros, capas de cuencas, y ráster de ríos, calculemos la extensión de presencia de la especie y luego ajustémoslo a las subcuencas, y a los cuerpos de agua\n. . .\n\nTrazar el polígono (igual que en el primer ejercicio utilizando la función ahull)\n\n. . .\n\nInterceptar el polígono trazado con la capa de subcuencas (nivel 8; objeto cuencas)\n\n. . .\n\nRasterizar el polígono interceptado y cortarlo a los cuerpos de agua utilizando la capa ráster de los ríos del objeto mask\n\n. . ."
+    "text": "Teniendo los registros, capas de cuencas, y ráster de ríos, calculemos la extensión de presencia de la especie y luego ajustémoslo a las subcuencas, y a los cuerpos de agua\n\n\nTrazar el polígono (igual que en el primer ejercicio utilizando la función ahull)\n\n\n\n\nInterceptar el polígono trazado con la capa de subcuencas (nivel 8; objeto cuencas)\n\n\n\n\nRasterizar el polígono interceptado y cortarlo a los cuerpos de agua utilizando la capa ráster de los ríos del objeto mask"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-34",
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-34",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "Construir el polígono alfa\n\nnaegelli_poly &lt;- ahull(datos, alpha = 1.5) %&gt;% ah2sf()\n\n\nggplot()+\n  geom_sf(data=M, fill=\"white\", linewidth= 0.5, colour=\"black\")+\n  geom_sf(data=naegelli_poly,fill=\"green\",linewidth=0.2,colour=\"black\",alpha=0.3)+\n  coord_sf(crs=st_crs(4326), xlim=c(-58.2, -43.9), ylim=c(-28,-15), expand=TRUE)\n\n\n\n\n\n\n\n\n. . ."
+    "text": "Construir el polígono alfa\n\nnaegelli_poly &lt;- ahull(datos, alpha = 1.5) %&gt;% ah2sf()\n\n\nggplot()+\n  geom_sf(data=M, fill=\"white\", linewidth= 0.5, colour=\"black\")+\n  geom_sf(data=naegelli_poly,fill=\"green\",linewidth=0.2,colour=\"black\",alpha=0.3)+\n  coord_sf(crs=st_crs(4326), xlim=c(-58.2, -43.9), ylim=c(-28,-15), expand=TRUE)"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-35",
@@ -3609,28 +3609,28 @@
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-36",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "Seleccionar del objeto cuencas los ID interceptados para unir las subcuencas seleccionadas\n\nrange_union &lt;- cuencas[(intersect_poly),] %&gt;% st_union()\n\n\nggplot()+\n  geom_sf(data=M, fill=\"white\", linewidth= 0.5, colour=\"black\")+\n  geom_sf(data=range_union,fill=\"green\",linewidth=0.2,colour=\"black\",alpha=0.3)+\n  coord_sf(crs=st_crs(4326), xlim=c(-58.2, -43.9), ylim=c(-28,-15), expand=TRUE)\n\n\n\n\n\n\n\n\n. . ."
+    "text": "Seleccionar del objeto cuencas los ID interceptados para unir las subcuencas seleccionadas\n\nrange_union &lt;- cuencas[(intersect_poly),] %&gt;% st_union()\n\n\nggplot()+\n  geom_sf(data=M, fill=\"white\", linewidth= 0.5, colour=\"black\")+\n  geom_sf(data=range_union,fill=\"green\",linewidth=0.2,colour=\"black\",alpha=0.3)+\n  coord_sf(crs=st_crs(4326), xlim=c(-58.2, -43.9), ylim=c(-28,-15), expand=TRUE)"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-37",
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-37",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "Por último, utilizamos el polígono ajustado a las subcuencas (objeto range_union) y lo rasterizamos. Luego, lo cortamos a los ríos usando el ráster del objeto mask\n. . .\nNOTA: Dado que el objeto final es una capa ráster, necesitamos transformarla en un data.frame para poder graficarla en ggplot\n\nwater_restric&lt;-rasterize(st_as_sf(vect(range_union)),mask,getCover=TRUE)%&gt;% \n  crop(mask, mask = TRUE, snap = \"near\") %&gt;%\n  as.data.frame(xy = TRUE)\n\n. . ."
+    "text": "Por último, utilizamos el polígono ajustado a las subcuencas (objeto range_union) y lo rasterizamos. Luego, lo cortamos a los ríos usando el ráster del objeto mask\n\nNOTA: Dado que el objeto final es una capa ráster, necesitamos transformarla en un data.frame para poder graficarla en ggplot\n\nwater_restric&lt;-rasterize(st_as_sf(vect(range_union)),mask,getCover=TRUE)%&gt;% \n  crop(mask, mask = TRUE, snap = \"near\") %&gt;%\n  as.data.frame(xy = TRUE)"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-38",
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-38",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "Veamos la extensión de presencia ajustada a los ríos\n\nggplot()+\n  geom_sf(data=M, fill=\"white\", linewidth=0.5, colour=\"black\")+\n  geom_raster(data = water_restric, aes(x=x, y=y), fill=\"red\")+\n  coord_sf(crs=st_crs(4326),xlim=c(-58.2, -43.9),ylim=c(-28,-15),expand=TRUE)\n\n\n\n\n\n\n\n\n. . ."
+    "text": "Veamos la extensión de presencia ajustada a los ríos\n\nggplot()+\n  geom_sf(data=M, fill=\"white\", linewidth=0.5, colour=\"black\")+\n  geom_raster(data = water_restric, aes(x=x, y=y), fill=\"red\")+\n  coord_sf(crs=st_crs(4326),xlim=c(-58.2, -43.9),ylim=c(-28,-15),expand=TRUE)"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-39",
     "href": "presentaciones/5.0-distribuciones_geograficas.html#section-39",
     "title": "Distribuciones geográficas",
     "section": "",
-    "text": "Grafiquemos ambos resultados para tener una aproximación visual\n\nunrestrict_range &lt;-\n  ggplot()+\n  geom_sf(data=M, fill=\"white\", linewidth= 0.5, colour=\"black\")+\n  geom_sf(data=range_union,fill=\"green\",linewidth=0.2,colour=\"black\",alpha=0.3)+\n  coord_sf(crs=st_crs(4326), xlim=c(-58.2, -43.9), ylim=c(-28,-15), expand=TRUE)+\n  labs(x=\"Longitud decimal\", y=\"Latitud decimal\",\n       title=expression(paste(\"Sin restricciones a cuerpos de agua\")))+\n  theme(plot.title=element_text(hjust=0.5))\n\n\nrestrict_range &lt;-\nggplot()+\n  geom_sf(data=M, fill=\"white\", linewidth=0.5, colour=\"black\")+\n  geom_raster(data = water_restric, aes(x=x, y=y), fill=\"red\") +\n  coord_sf(crs=st_crs(4326), xlim=c(-58.2, -43.9), ylim=c(-28,-15), expand=TRUE)+\n  labs(x=\"Longitud decimal\", y=\"\",\n       title=expression(paste(\"Restringido a cuerpos de agua\")))+\n  theme(plot.title=element_text(hjust=0.5))\n\n. . ."
+    "text": "Grafiquemos ambos resultados para tener una aproximación visual\n\nunrestrict_range &lt;-\n  ggplot()+\n  geom_sf(data=M, fill=\"white\", linewidth= 0.5, colour=\"black\")+\n  geom_sf(data=range_union,fill=\"green\",linewidth=0.2,colour=\"black\",alpha=0.3)+\n  coord_sf(crs=st_crs(4326), xlim=c(-58.2, -43.9), ylim=c(-28,-15), expand=TRUE)+\n  labs(x=\"Longitud decimal\", y=\"Latitud decimal\",\n       title=expression(paste(\"Sin restricciones a cuerpos de agua\")))+\n  theme(plot.title=element_text(hjust=0.5))\n\n\nrestrict_range &lt;-\nggplot()+\n  geom_sf(data=M, fill=\"white\", linewidth=0.5, colour=\"black\")+\n  geom_raster(data = water_restric, aes(x=x, y=y), fill=\"red\") +\n  coord_sf(crs=st_crs(4326), xlim=c(-58.2, -43.9), ylim=c(-28,-15), expand=TRUE)+\n  labs(x=\"Longitud decimal\", y=\"\",\n       title=expression(paste(\"Restringido a cuerpos de agua\")))+\n  theme(plot.title=element_text(hjust=0.5))"
   },
   {
     "objectID": "presentaciones/5.0-distribuciones_geograficas.html#section-40",
@@ -3665,14 +3665,14 @@
     "href": "presentaciones/5-gradiente_riqueza.html#section-11",
     "title": "Patrones geográficos de riqueza de especies",
     "section": "",
-    "text": "Ahora ya podemos evaluar la relación entre riqueza y temperatura\n\nplot(primates.richness$richness~temp2$bio1)\n\n\n\n\n\n\n\n\n. . .\n\ncor.test(temp2$bio1, primates.richness$richness, method=\"spearman\")\n\n\n    Spearman's rank correlation rho\n\ndata:  temp2$bio1 and primates.richness$richness\nS = 1.0509e+10, p-value &lt; 2.2e-16\nalternative hypothesis: true rho is not equal to 0\nsample estimates:\n     rho \n0.188953"
+    "text": "Ahora ya podemos evaluar la relación entre riqueza y temperatura\n\nplot(primates.richness$richness~temp2$bio1)\n\n\n\n\ncor.test(temp2$bio1, primates.richness$richness, method=\"spearman\")\n\n\n    Spearman's rank correlation rho\n\ndata:  temp2$bio1 and primates.richness$richness\nS = 1.0509e+10, p-value &lt; 2.2e-16\nalternative hypothesis: true rho is not equal to 0\nsample estimates:\n     rho \n0.188953"
   },
   {
     "objectID": "presentaciones/5.1-mapas_bivariados.html#paquetes",
     "href": "presentaciones/5.1-mapas_bivariados.html#paquetes",
     "title": "Mapas bivariados",
-    "section": "",
-    "text": "Vamos a utilizar los siguientes paquetes:\n\nbiscale\nggplot2"
+    "section": "Paquetes",
+    "text": "Paquetes\nVamos a utilizar los siguientes paquetes:\n\nbiscale\nggplot2"
   },
   {
     "objectID": "presentaciones/5.1-mapas_bivariados.html#biscale",
@@ -3826,7 +3826,7 @@
     "href": "presentaciones/5.1-mapas_bivariados.html#manos-a-la-obra",
     "title": "Mapas bivariados",
     "section": "Manos a la obra!",
-    "text": "Manos a la obra!\n\n\n\nDeterminamos el geom como geom_sf y fill=bi_class\nbi_class debe ser la categorización que hemos visto anteriormente con bi_class()\n\n\n\nlibrary(ggplot2)\nlibrary(sf)\n\ndata &lt;- bi_class(stl_race_income, x = pctWhite, y = medInc, style = \"quantile\", dim = 3)\n\nmap &lt;- ggplot() +\n  geom_sf(data = data, mapping = aes(fill = bi_class), color = \"white\", size = 0.1, show.legend = FALSE) +\n  bi_scale_fill(pal = \"GrPink\", dim = 3)\n\n\n\n\nbi_scale_fill, tiene el argumento pal para la paleta de colores y dim para el numero de categorías utilizadas"
+    "text": "Manos a la obra!\n\n\n\nDeterminamos el geom como geom_sf y fill=bi_class\nbi_class debe ser la categorización que hemos visto anteriormente con bi_class()\n\n\n\nlibrary(ggplot2)\nlibrary(sf)\n\ndata &lt;- bi_class(stl_race_income, x = pctWhite, y = medInc, style = \"quantile\", dim = 3)\n\nmap &lt;- ggplot() +\n  geom_sf(data = data, mapping = aes(fill = bi_class), color = \"white\", size = 0.1, show.legend = FALSE) +\n  bi_scale_fill(pal = \"GrPink\", dim = 3)\n\n\n\nbi_scale_fill, tiene el argumento pal para la paleta de colores y dim para el numero de categorías utilizadas"
   },
   {
     "objectID": "presentaciones/5.1-mapas_bivariados.html#section-5",
@@ -4028,8 +4028,8 @@
     "objectID": "presentaciones/5.2-filogenias.html#filogenias-en-r",
     "href": "presentaciones/5.2-filogenias.html#filogenias-en-r",
     "title": "Filogenias en R",
-    "section": "",
-    "text": "Primero, ¿Qué es un árbol Filogenético?\n. . .\n\nUn árbol filogenético es un diagrama que muestra la relación de parentesco entre especies (o taxones)\nUno de los formatos más utilizados para representar filogenias es el Newick(.tree)\nEl formato Newick es una notación para representar parentescos utilizando paréntesis y comas."
+    "section": "Filogenias en R",
+    "text": "Filogenias en R\nPrimero, ¿Qué es un árbol Filogenético?\n\n\nDiagrama que muestra la relación de parentesco entre especies (o taxones)\nUno de los formatos más utilizados para representar filogenias es el Newick(.tree)\nNewick: notación para representar parentescos con paréntesis y comas."
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section",
@@ -4050,7 +4050,7 @@
     "href": "presentaciones/5.2-filogenias.html#section-2",
     "title": "Filogenias en R",
     "section": "",
-    "text": "El formato Newick es anidado, por lo que podemos explorar la relación entre diferentes grupos. Por ejemplo:\nSabemos que los lobos, los coyotes y los zorros pertenecen a Canidae, pero que los lobos y los coyotes son del mismo género\n\nCanidae &lt;-\"(Vulpes_vulpes,(Canis_lupus,Canis_latrans));\"\nread.tree(text=Canidae) %&gt;% plot()"
+    "text": "El formato Newick es anidado\n\nlos lobos, los coyotes y los zorros pertenecen a Canidae, pero los lobos y los coyotes son del mismo género\n\n\nCanidae &lt;-\"(Vulpes_vulpes,(Canis_lupus,Canis_latrans));\"\nread.tree(text=Canidae) %&gt;% plot()"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-3",
@@ -4064,7 +4064,7 @@
     "href": "presentaciones/5.2-filogenias.html#section-4",
     "title": "Filogenias en R",
     "section": "",
-    "text": "También podríamos anexar otros grupos pj: cuervos y zanates. ¿Estos dónde irían?\n\ntetrapoda&lt;-\"((Quiscalus_mexicanus,Corvus_corax),(Desmodus_rotundus,(Vulpes_vulpes,(Canis_lupus,Canis_latrans))));\"\n\nread.tree(text=tetrapoda) %&gt;% plot()"
+    "text": "También podríamos anexar otros grupos ej: cuervos y zanates. ¿Estos dónde irían?\n\ntetrapoda&lt;-\"((Quiscalus_mexicanus,Corvus_corax),(Desmodus_rotundus,(Vulpes_vulpes,(Canis_lupus,Canis_latrans))));\"\n\nread.tree(text=tetrapoda) %&gt;% plot()"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-5",
@@ -4078,7 +4078,7 @@
     "href": "presentaciones/5.2-filogenias.html#section-6",
     "title": "Filogenias en R",
     "section": "",
-    "text": "En esta práctica haremos uso del paquete ggtree para graficar, personalizar y anotar árboles filogenéticos\n\ninstall.packages(\"BiocManager\")\nBiocManager::install(\"ggtree\")"
+    "text": "Podemos visualizar la información rápidamente usando ape,\n\nplot(fishtree, show.tip.label=F)"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#paquetes-necesarios",
@@ -4099,35 +4099,35 @@
     "href": "presentaciones/5.2-filogenias.html#section-7",
     "title": "Filogenias en R",
     "section": "",
-    "text": "Podemos visualizar la información rápidamente usando ape,\n\nplot(fishtree, show.tip.label=F)"
+    "text": "Mismo árbol utilizando ggtree, el cual sigue la gramática de ggplot. Nuestro árbol base se llamará p1:\n\np1&lt;-ggtree(fishtree,color=\"black\",size=0.5)\nplot(p1)"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-8",
     "href": "presentaciones/5.2-filogenias.html#section-8",
     "title": "Filogenias en R",
     "section": "",
-    "text": "Ahora graficaremos el mismo árbol utilizando ggtree, el cual sigue una formula idéntica a la de ggplot. Nuestro árbol base se llamará p1:\n\np1&lt;-ggtree(fishtree,color=\"black\",size=0.5)\nplot(p1)"
+    "text": "podemos agregar parámetros gráficos para personalizar o agregar anotaciones\nPor ejemplo, podemos cambiar la disposición de la filogenia utilizando el parámetro layout_:"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-9",
     "href": "presentaciones/5.2-filogenias.html#section-9",
     "title": "Filogenias en R",
     "section": "",
-    "text": "Con p1, al igual que con cualquier otro gráfico de ggplot, podemos agregar parámetros gráficos para personalizar o agregar anotaciones a nuestra filogenia.\nPor ejemplo, podemos cambiar la disposición de la filogenia utilizando el parámetro layout_:"
+    "text": "p1+layout_dendrogram()+\np1+layout_fan()+\np1+layout_circular()"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-10",
     "href": "presentaciones/5.2-filogenias.html#section-10",
     "title": "Filogenias en R",
     "section": "",
-    "text": "p1+layout_dendrogram()+\np1+layout_fan()+\np1+layout_circular()"
+    "text": "O cambiar el color del fondo del gráfico\n\np1 +  theme_tree(bgcolor=\"skyblue\")"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-11",
     "href": "presentaciones/5.2-filogenias.html#section-11",
     "title": "Filogenias en R",
     "section": "",
-    "text": "También podemos cambiar el color del fondo del gráfico\n\np1+  theme_tree(bgcolor=\"skyblue\")"
+    "text": "O modificar las puntas:\n\np1+geom_tippoint(size=2,color=\"red\",fill=\"black\",shape=21)"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#adicionar-información-a-los-tips",
@@ -4141,7 +4141,7 @@
     "href": "presentaciones/5.2-filogenias.html#section-12",
     "title": "Filogenias en R",
     "section": "",
-    "text": "O modificar las puntas:\n\np1+geom_tippoint(size=2,color=\"red\",fill=\"black\",shape=21)"
+    "text": "o formas a los nodos:\n\np1+geom_nodelab(aes(label=node),size=2,color=\"black\", hjust=-0.8)+ geom_nodelab(aes(subset = (node == 109), label = \"*\"),color = \"red\",size=10,hjust=1)+\n  geom_nodepoint(size=2,color=\"red\",fill=\"black\",shape=21)"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#adicionar-información-a-los-nodos",
@@ -4162,14 +4162,14 @@
     "href": "presentaciones/5.2-filogenias.html#escalas-temporales",
     "title": "Filogenias en R",
     "section": "Escalas temporales",
-    "text": "Escalas temporales\nPodemos agregar escalas de tiempo con el paquete deeptime\n\npy&lt;-revts(p1)\n\npy+ geom_tiplab(size=1,color=\"black\",angle=0)+xlim(-100,30)+ylim(-2,70)+coord_geo(abbrv = T,neg=T,skip=NULL,dat=list(\"epochs\"),size=2)"
+    "text": "Escalas temporales\nPodemos agregar escalas de tiempo con el paquete deeptime\n\npy &lt;- revts(p1)\n\npy + geom_tiplab(size = 1, color = \"black\", angle=0) + xlim(-100,30) +\n  ylim(-2,70) + coord_geo(abbrv = T, neg=T, skip=NULL, dat=list(\"epochs\"),size=2)"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-15",
     "href": "presentaciones/5.2-filogenias.html#section-15",
     "title": "Filogenias en R",
     "section": "",
-    "text": "py+theme_tree2()"
+    "text": "Recordemos que los parámetros son aditivos (con + podemos ir agregando uno por uno)\n\np1+ layout_fan(angle = 180)+xlim(NA,150)+geom_tiplab(hjust= -0.2,size=2,color=\"black\")+\n  geom_tippoint(size=1,color=\"black\",shape=10)+\n  geom_nodelab(size=1,color=\"black\")+\n  geom_nodepoint(size=2,color=\"red\",alpha=0.3,shape=16)"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-16",
@@ -4183,210 +4183,210 @@
     "href": "presentaciones/5.2-filogenias.html#anotaciones-en-árboles",
     "title": "Filogenias en R",
     "section": "Anotaciones en Árboles",
-    "text": "Anotaciones en Árboles\nPodemos incluir texto adicional en los gráficos,Por ejemplo: quiero seleccionar la parte de la filogenia donde se encuentra las especies de la Familia Pimelodidae"
+    "text": "Anotaciones en Árboles\nPodemos incluir texto adicional en los gráficos, Por ejemplo: seleccionar la parte de la filogenia donde se encuentra las especies de la Familia Pimelodidae"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#obtener-nodos",
     "href": "presentaciones/5.2-filogenias.html#obtener-nodos",
     "title": "Filogenias en R",
     "section": "Obtener nodos",
-    "text": "Obtener nodos\nPara esto primero debemos encontrar el nodo del ancestro común más reciente para este grupo (Usando un tibble y la estructura de dplyr es muy fácil).\nDespués usando la función getMRCA() podemos encontrar el ancestro en común de estas especies\n\nfishdata$sciname&lt;-row.names(fishdata)\nfishdata$sciname &lt;- gsub(\"_\", \" \", fishdata$sciname)\npimelo&lt;-fishdata %&gt;% filter(Family==\"Pimelodidae\")\n\nnodepimelo&lt;-getMRCA(fishtree,pimelo$sciname)\nnodepimelo\n\n[1] 80\n\n\n. . ."
+    "text": "Obtener nodos\nPara esto primero debemos encontrar el nodo del ancestro común más reciente para este grupo (con un tibble y dplyr es muy fácil).\nDespués usando la función getMRCA() podemos encontrar el ancestro en común de estas especies\n\nfishdata$sciname&lt;-row.names(fishdata)\nfishdata$sciname &lt;- gsub(\"_\", \" \", fishdata$sciname)\npimelo&lt;-fishdata %&gt;% filter(Family==\"Pimelodidae\")\n\nnodepimelo&lt;-getMRCA(fishtree,pimelo$sciname)\nnodepimelo\n\n[1] 80"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-18",
     "href": "presentaciones/5.2-filogenias.html#section-18",
     "title": "Filogenias en R",
     "section": "",
-    "text": "Ahora conociendo que el ancestro en común de la familia Pimelodidae se encuentra en el nodo 80, puedo utilizar esta información para anotar la filogenia utilizando el parámetro geom_cladelab:\n\np1+xlim(NA, 110)+ geom_cladelab(node=nodepimelo,label = \"Pimelodidae\",offset=0,barcolor=\"red\",textcolor=\"red\",angle=0, offset.text=0.1)"
+    "text": "Si queremos resaltar varias familias:\n\nSiluridae&lt;-fishdata %&gt;% filter(Family==\"Siluridae\") %&gt;% dplyr::select(sciname)\nnodesiluri&lt;-getMRCA (fishtree,Siluridae$sciname)\nLoricariidae&lt;-fishdata %&gt;% filter(Family==\"Loricariidae\") %&gt;% dplyr::select(sciname)\nnodelori&lt;-getMRCA (fishtree,Loricariidae$sciname)\nBagriidae&lt;-fishdata %&gt;% filter(Family==\"Bagridae\") %&gt;% dplyr::select(sciname)\nnodeBagri&lt;-getMRCA (fishtree,Bagriidae$sciname)\n\nnodesiluri\n\n[1] 119\n\nnodelori\n\n[1] 128\n\nnodeBagri\n\n[1] 113"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-19",
     "href": "presentaciones/5.2-filogenias.html#section-19",
     "title": "Filogenias en R",
     "section": "",
-    "text": "Si queremos resaltar varias familias:\n\nSiluridae&lt;-fishdata %&gt;% filter(Family==\"Siluridae\") %&gt;% dplyr::select(sciname)\nnodesiluri&lt;-getMRCA (fishtree,Siluridae$sciname)\nLoricariidae&lt;-fishdata %&gt;% filter(Family==\"Loricariidae\") %&gt;% dplyr::select(sciname)\nnodelori&lt;-getMRCA (fishtree,Loricariidae$sciname)\nBagriidae&lt;-fishdata %&gt;% filter(Family==\"Bagridae\") %&gt;% dplyr::select(sciname)\nnodeBagri&lt;-getMRCA (fishtree,Bagriidae$sciname)\n\nnodesiluri\n\n[1] 119\n\nnodelori\n\n[1] 128\n\nnodeBagri\n\n[1] 113"
+    "text": "Ahora podemos jugar con varios parámetros gráficos\n\np1+xlim(NA, 110)+\n  geom_cladelab(node=nodepimelo,label =\"Pimelodidae\",offset=0,barcolor=\"#93C83E\",textcolor=\"#93C83E\",angle=0,offset.text=0.1,fontsize=4)+\n  geom_cladelab(node=nodesiluri,label=\"Siluridae\",offset=0,barcolor=\"#007BA7\",textcolor=\"#007BA7\",angle=0,offset.text=0.1,fontsize=4)+\n  geom_cladelab(node=nodelori,label=\"Loricariidae\",offset=0,barcolor=\"#AD5691\",textcolor=\"#AD5691\",angle=0,offset.text=0.1,fontsize=4)+\n  geom_cladelab(node=nodeBagri,label = \"Bagridae\",offset=0,barcolor=\"#EE3224\",textcolor=\"#EE3224\",angle=0, offset.text=0.1,fontsize=4)"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-20",
     "href": "presentaciones/5.2-filogenias.html#section-20",
     "title": "Filogenias en R",
     "section": "",
-    "text": "Ahora podemos jugar con varios parámetros gráficos\n\np1+xlim(NA, 110)+\n  geom_cladelab(node=nodepimelo,label =\"Pimelodidae\",offset=0,barcolor=\"#93C83E\",textcolor=\"#93C83E\",angle=0,offset.text=0.1,fontsize=4)+\n  geom_cladelab(node=nodesiluri,label=\"Siluridae\",offset=0,barcolor=\"#007BA7\",textcolor=\"#007BA7\",angle=0,offset.text=0.1,fontsize=4)+\n  geom_cladelab(node=nodelori,label=\"Loricariidae\",offset=0,barcolor=\"#AD5691\",textcolor=\"#AD5691\",angle=0,offset.text=0.1,fontsize=4)+\n  geom_cladelab(node=nodeBagri,label = \"Bagridae\",offset=0,barcolor=\"#EE3224\",textcolor=\"#EE3224\",angle=0, offset.text=0.1,fontsize=4)"
+    "text": "O anotar grupos sin ancestro común utilizando el parámetro geom_strip():\n\np1+xlim(0,120)+\n  geom_strip(\"Neoarius graeffei\",\"Gogo arcuatus\", label=\" Un clado polifilético\", barsize = 2, offset.text = 0.2)"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-21",
     "href": "presentaciones/5.2-filogenias.html#section-21",
     "title": "Filogenias en R",
     "section": "",
-    "text": "O incluso anotar grupos sin ancestro común utilizando el parámetro geom_strip():\n\np1+xlim(0,120)+\n  geom_strip(\"Neoarius graeffei\",\"Gogo arcuatus\", label=\" Un clado polifilético\", barsize = 2, offset.text = 0.2)"
+    "text": "p1+\n  geom_highlight(node=80,alpha=0.5,fill=\"#93C83E\",type = \"rect\")+\n  geom_cladelab(node=80,label = \"Pimelodiade\",offset=0,barcolor=\"#93C83E\",textcolor=\"#93C83E\", offset.text=0)+\n  xlim(0,110)"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#resaltar",
     "href": "presentaciones/5.2-filogenias.html#resaltar",
     "title": "Filogenias en R",
     "section": "Resaltar",
-    "text": "Resaltar\nOtro parámetro de anotación muy interesante es geom_highlight, el cual nos permite destacar clados, utilizando los nodos de ancestro en común:\n\np1+ geom_highlight(node=80,alpha=0.5,fill=\"#93C83E\",type = \"rect\")\n\n\n\n\n\n\n\n\n¿Qué clado es este? …"
+    "text": "Resaltar\nOtro parámetro de anotación muy interesante es geom_highlight, para destacar clados, utilizando los nodos de ancestro en común:\n\np1+ geom_highlight(node=80,alpha=0.5,fill=\"#93C83E\",type = \"rect\")\n\n\n¿Qué clado es este? …"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-22",
     "href": "presentaciones/5.2-filogenias.html#section-22",
     "title": "Filogenias en R",
     "section": "",
-    "text": "p1+\n  geom_highlight(node=80,alpha=0.5,fill=\"#93C83E\",type = \"rect\")+\n  geom_cladelab(node=80,label = \"Pimelodiade\",offset=0,barcolor=\"#93C83E\",textcolor=\"#93C83E\", offset.text=0)+\n  xlim(0,110)"
+    "text": "Probemos con una especie de nuestro interes:\n\nimg &lt;- pick_phylopic(name = \"Ambystoma mexicanum\", n = 1, view = 1)\n\n[1] \"575eaa51-6c9b-4d36-9881-b8463c68ebbc\"\n\n\n\nPueden explorar esta info: rphylopic viñeta"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#phylopic",
     "href": "presentaciones/5.2-filogenias.html#phylopic",
     "title": "Filogenias en R",
     "section": "Phylopic",
-    "text": "Phylopic\nEn ggtree como en ggplot podemos incluir imagenes de recursos en línea como phylopic o enriquecerlas con imágenes propias.\nPara poder hacer uso de esta función, primero debemos cargar 2 paquetes extra:\n\nlibrary(\"rsvg\")\nlibrary(\"rphylopic\")"
+    "text": "Phylopic\nEn ggtree como en ggplot podemos incluir imagenes de recursos en línea como phylopic o enriquecerlas con imágenes propias.\nPara poder hacer uso de esta función, primero debemos cargar:\n\nlibrary(\"rsvg\")\nlibrary(\"rphylopic\")"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-23",
     "href": "presentaciones/5.2-filogenias.html#section-23",
     "title": "Filogenias en R",
     "section": "",
-    "text": "Probemos con una especie de nuestro interes:\n\nimg &lt;- pick_phylopic(name = \"Ambystoma mexicanum\", n = 1, view = 1)\n\n[1] \"575eaa51-6c9b-4d36-9881-b8463c68ebbc\"\n\n\n\n\n\n\n\n\n\nPueden explorar esta info: rphylopic viñeta"
+    "text": "Para hacer uso de las imagenes en nuestra filogenia, primero debemos hacer una tabla con los nodos, el nombre de la especie o clado y el phylopic_id.\nEn este ejemplo utilizaré los clados Pimelodidae, Siluridae, Loricariidae.\nEncontrar los phylopic_id es fácil usando la función phylopic_uid()\n\nids&lt;-phylopic_uid(c(\"Phractocephalus hemioliopterus\",\"Siluridae\",\"Ameiurus\",\"Chaetostoma microps\"))"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#guardar-siluetas",
     "href": "presentaciones/5.2-filogenias.html#guardar-siluetas",
     "title": "Filogenias en R",
     "section": "Guardar siluetas",
-    "text": "Guardar siluetas\n\nuuid &lt;- get_uuid(name = \"Erythromma najas\")# obtener el identificador unico de la imagen\nimg &lt;- get_phylopic(uuid = uuid,format =\"vector\" ) #obtener imagen\nimg&lt;-recolor_phylopic(img,0.7, \"blue\",fill=\"black\")\nplot(img)\n\n\n\n\n\n\n\nsave_phylopic(img = img, path = \"Cetops.png\",\n              width = 500, height = 500)"
+    "text": "Guardar siluetas\n\nuuid &lt;- get_uuid(name = \"Erythromma najas\")# obtener el identificador unico de la imagen\nimg &lt;- get_phylopic(uuid = uuid,format =\"vector\" ) #obtener imagen\nimg&lt;-recolor_phylopic(img,0.7, \"blue\",fill=\"black\")\nplot(img)\n\nsave_phylopic(img = img, path = \"Cetops.png\",\n              width = 500, height = 500)"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-24",
     "href": "presentaciones/5.2-filogenias.html#section-24",
     "title": "Filogenias en R",
     "section": "",
-    "text": "Para hacer uso de las imagenes en nuestra filogenia, primero debemos hacer una tabla con los nodos, el nombre de la especie o clado y el phylopic_id.\nEn este ejemplo utilizaré los clados Pimelodidae, Siluridae, Loricariidae.\nEncontrar los phylopic_id es fácil usando la función phylopic_uid()\n\nids&lt;-phylopic_uid(c(\"Phractocephalus hemioliopterus\",\"Siluridae\",\"Ameiurus\",\"Chaetostoma microps\"))"
+    "text": "Con estos ids, podemos crear nuestra tabla con los datos necesarios y gráficarlos:\n\ndt&lt;-data.frame(node=c(nodepimelo,nodesiluri,nodeBagri,nodelori),\n               image=ids$uid,Family=c(\"Pimelodidae\",\"Siluridae\",\"Bagridae\",\"Loricariidae\"),\n               colorss=c(\"#93C83E\",\"#007BA7\",\"#EE3224\",\"#AD5691\"),\n               size=c(0.1,0.1,0.1,0.05))\ndt\n\n  node                                image       Family colorss size\n1   80 6cb85c3d-c455-4e9f-bfa3-fa1f8bc5c0cd  Pimelodidae #93C83E 0.10\n2  119 7cb387d7-9b23-4e5c-a007-2d938339cb8a    Siluridae #007BA7 0.10\n3  113 7a6448e5-09c4-40c8-8378-599d7f974bfe     Bagridae #EE3224 0.10\n4  128 e557aeed-4adf-4953-ad1b-45490d3d7f3d Loricariidae #AD5691 0.05"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-25",
     "href": "presentaciones/5.2-filogenias.html#section-25",
     "title": "Filogenias en R",
     "section": "",
-    "text": "Con estos ids, ya podemos crear nuestra tabla con los datos necesarios y después gráficarlos:\n\ndt&lt;-data.frame(node=c(nodepimelo,nodesiluri,nodeBagri,nodelori),\n               image=ids$uid,Family=c(\"Pimelodidae\",\"Siluridae\",\"Bagridae\",\"Loricariidae\"),\n               colorss=c(\"#93C83E\",\"#007BA7\",\"#EE3224\",\"#AD5691\"),\n               size=c(0.1,0.1,0.1,0.05))\ndt\n\n  node                                image       Family colorss size\n1   80 6cb85c3d-c455-4e9f-bfa3-fa1f8bc5c0cd  Pimelodidae #93C83E 0.10\n2  119 7cb387d7-9b23-4e5c-a007-2d938339cb8a    Siluridae #007BA7 0.10\n3  113 7a6448e5-09c4-40c8-8378-599d7f974bfe     Bagridae #EE3224 0.10\n4  128 e557aeed-4adf-4953-ad1b-45490d3d7f3d Loricariidae #AD5691 0.05"
+    "text": "my_colors &lt;- setNames(dt$colorss, dt$Family)\n\np1+ylim(-10,80)+geom_cladelab(data = dt,mapping = aes(node = node, label = Family,image = image, color = Family ),geom = \"phylopic\",offset.text=4,  imagesize=dt$size,)+scale_color_manual(values = my_colors)"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-26",
     "href": "presentaciones/5.2-filogenias.html#section-26",
     "title": "Filogenias en R",
     "section": "",
-    "text": "Por ejemplo:\n\nmy_colors &lt;- setNames(dt$colorss, dt$Family)\n\np1+ylim(-10,80)+geom_cladelab(data = dt,mapping = aes(node = node, label = Family,image = image, color = Family ),geom = \"phylopic\",offset.text=4,  imagesize=dt$size,)+scale_color_manual(values = my_colors)"
+    "text": "Combinar con otros parametros que ya conociamos:\n\np1 + ylim(-10, 80) +geom_cladelab(data = dt,mapping = aes(node = node,label = Family, image = image,color = Family,size = size),\n    geom = \"phylopic\",offset.text = 4 ) +\n  scale_size_identity() +\n  geom_highlight( data = dt,\n    mapping = aes(node = node,\n      fill = Family,colour = Family),type = \"rect\")+scale_color_manual(values = my_colors) +scale_fill_manual(values = my_colors)"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-27",
     "href": "presentaciones/5.2-filogenias.html#section-27",
     "title": "Filogenias en R",
     "section": "",
-    "text": "También podemos combinar otros parametros que ya conociamos:\n\np1 + ylim(-10, 80) +geom_cladelab(data = dt,mapping = aes(node = node,label = Family, image = image,color = Family,size = size),\n    geom = \"phylopic\",offset.text = 4 ) +\n  scale_size_identity() +\n  geom_highlight( data = dt,\n    mapping = aes(node = node,\n      fill = Family,colour = Family),type = \"rect\")+scale_color_manual(values = my_colors) +scale_fill_manual(values = my_colors)"
+    "text": "p2&lt;-ggtree(fishtree,layout=\"circular\",color=\"black\")\n\np2 + ylim(-10, 80) +geom_cladelab(data = dt,mapping = aes(node = node,label = Family, image = image,color = Family,size = size),\n    geom = \"phylopic\",offset.text =  6) +\n  scale_size_identity() +\n  geom_highlight( data = dt, mapping = aes(node = node,fill = Family,colour = Family),type = \"rect\")+\n  scale_color_manual(values = my_colors) +scale_fill_manual(values = my_colors)"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-28",
     "href": "presentaciones/5.2-filogenias.html#section-28",
     "title": "Filogenias en R",
     "section": "",
-    "text": "p2&lt;-ggtree(fishtree,layout=\"circular\",color=\"black\")\n\np2 + ylim(-10, 80) +geom_cladelab(data = dt,mapping = aes(node = node,label = Family, image = image,color = Family,size = size),\n    geom = \"phylopic\",offset.text =  6) +\n  scale_size_identity() +\n  geom_highlight( data = dt, mapping = aes(node = node,fill = Family,colour = Family),type = \"rect\")+\n  scale_color_manual(values = my_colors) +scale_fill_manual(values = my_colors)"
+    "text": "Unimos los datos a la filogenia usando la función full_join, es importante que las especies estén etiquetadas como label, para que la función las reconozca:\n\ndatatree&lt;-left_join(fishtree,fishdata,by=\"label\")"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#atributos-de-las-especies",
     "href": "presentaciones/5.2-filogenias.html#atributos-de-las-especies",
     "title": "Filogenias en R",
     "section": "Atributos de las especies",
-    "text": "Atributos de las especies\nTambién se puede usar ggtree, para graficar atributos de las especies en la filogenia.\nPara hacer esto, primero debemos cargar los atributos, en este caso usaremos la longitud estándar máxima y el hábito migratorio:\n\nfishdata&lt;-read.table(here(\"data\",\"DataFish.txt\"))\nfishdata$label&lt;-gsub(\"_\",\" \",fishdata$label)\n\nhead(fishdata)\n\n                                   Genus.x      Family        Order       Class\nSynodontis_contractus           Synodontis  Mochokidae Siluriformes Actinopteri\nMochokiella_paynei             Mochokiella  Mochokidae Siluriformes Actinopteri\nChiloglanis_asymetricaudalis   Chiloglanis  Mochokidae Siluriformes Actinopteri\nAtopochilus_savorgnani         Atopochilus  Mochokidae Siluriformes Actinopteri\nAmphilius_atesuensis             Amphilius Amphiliidae Siluriformes Actinopteri\nAuchenoglanis_biscutatus     Auchenoglanis Claroteidae Siluriformes Actinopteri\n                                      salinity Length        AnaCat\nSynodontis_contractus               Freshwater    9.7 Non-migratory\nMochokiella_paynei                  Freshwater    3.6 Non-migratory\nChiloglanis_asymetricaudalis        Freshwater    7.6 Non-migratory\nAtopochilus_savorgnani              Freshwater   10.5 Non-migratory\nAmphilius_atesuensis         Freshwater-Marine    9.3 Non-migratory\nAuchenoglanis_biscutatus            Freshwater   54.0 Potamodromous\n                                                    label\nSynodontis_contractus               Synodontis contractus\nMochokiella_paynei                     Mochokiella paynei\nChiloglanis_asymetricaudalis Chiloglanis asymetricaudalis\nAtopochilus_savorgnani             Atopochilus savorgnani\nAmphilius_atesuensis                 Amphilius atesuensis\nAuchenoglanis_biscutatus         Auchenoglanis biscutatus"
+    "text": "Atributos de las especies\nggtree puede graficar atributos de las especies en la filogenia.\nPrimero debemos cargar los atributos, en este caso la longitud estándar máxima y el hábito migratorio:\n\nfishdata&lt;-read.table(here(\"data\",\"DataFish.txt\"))\nfishdata$label&lt;-gsub(\"_\",\" \",fishdata$label)\n\nhead(fishdata)\n\n                                   Genus.x      Family        Order       Class\nSynodontis_contractus           Synodontis  Mochokidae Siluriformes Actinopteri\nMochokiella_paynei             Mochokiella  Mochokidae Siluriformes Actinopteri\nChiloglanis_asymetricaudalis   Chiloglanis  Mochokidae Siluriformes Actinopteri\nAtopochilus_savorgnani         Atopochilus  Mochokidae Siluriformes Actinopteri\nAmphilius_atesuensis             Amphilius Amphiliidae Siluriformes Actinopteri\nAuchenoglanis_biscutatus     Auchenoglanis Claroteidae Siluriformes Actinopteri\n                                      salinity Length        AnaCat\nSynodontis_contractus               Freshwater    9.7 Non-migratory\nMochokiella_paynei                  Freshwater    3.6 Non-migratory\nChiloglanis_asymetricaudalis        Freshwater    7.6 Non-migratory\nAtopochilus_savorgnani              Freshwater   10.5 Non-migratory\nAmphilius_atesuensis         Freshwater-Marine    9.3 Non-migratory\nAuchenoglanis_biscutatus            Freshwater   54.0 Potamodromous\n                                                    label\nSynodontis_contractus               Synodontis contractus\nMochokiella_paynei                     Mochokiella paynei\nChiloglanis_asymetricaudalis Chiloglanis asymetricaudalis\nAtopochilus_savorgnani             Atopochilus savorgnani\nAmphilius_atesuensis                 Amphilius atesuensis\nAuchenoglanis_biscutatus         Auchenoglanis biscutatus"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-29",
     "href": "presentaciones/5.2-filogenias.html#section-29",
     "title": "Filogenias en R",
     "section": "",
-    "text": "Una vez cargados los datos, la manera más fácil de utilizarlos es uniendolos a la filogenia usando la función full_join, es importante que las especies estén etiquetadas como label, para que la función las reconozca:\n\ndatatree&lt;-left_join(fishtree,fishdata,by=\"label\")"
+    "text": "¡Listo! Ahora tenemos una filogenia con atributos y podemos graficarlos juntos\nPrimero los valores continuos de la longitud sobre las puntas del árbol en una escala de colores:\n\np4&lt;-ggtree(datatree)\n  p4+geom_tippoint(aes(color= Length),size=3)"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-30",
     "href": "presentaciones/5.2-filogenias.html#section-30",
     "title": "Filogenias en R",
     "section": "",
-    "text": "¡Listo! Ahora tenemos una filogenia con atributos y podemos graficarlos juntos\nPrimero graficaremos los valores continuos de la longitud sobre las puntas del árbol en una escala de colores:\n\np4&lt;-ggtree(datatree)\n  p4+geom_tippoint(aes(color= Length),size=3)"
+    "text": "personalizar la escala:\n\np4+\n  geom_tippoint(aes(color= Length),shape=19,size=3)+scale_colour_gradient(low='yellow', high='red',breaks= c(15,50,100,150,200,300))"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-31",
     "href": "presentaciones/5.2-filogenias.html#section-31",
     "title": "Filogenias en R",
     "section": "",
-    "text": "podemos también personalizar esta escala:\n\np4+\n  geom_tippoint(aes(color= Length),shape=19,size=3)+scale_colour_gradient(low='yellow', high='red',breaks= c(15,50,100,150,200,300))"
+    "text": "Datos discretos\n\np4+geom_tippoint(aes(color=salinity),shape=15,size=4)+ scale_colour_manual(values = c(\"blue\",\"gray\",\"skyblue\"))"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-32",
     "href": "presentaciones/5.2-filogenias.html#section-32",
     "title": "Filogenias en R",
     "section": "",
-    "text": "¿Cómo se verían los datos discretos?\n\np4+geom_tippoint(aes(color=salinity),shape=15,size=4)+ scale_colour_manual(values = c(\"blue\",\"gray\",\"skyblue\"))"
+    "text": "¿Podemos incluir mas de un dato?\n\npx&lt;- p4+\n  scale_color_manual(values = c(\"blue\",\"gray\",\"skyblue\"))+\n  scale_fill_manual(values = c(\"blue\",\"gray\",\"skyblue\"))\n\ndd&lt;-data.frame(id=p4$data$label,value=p4$data$Length)  \n  \npx+ geom_facet(panel=\"Length\",data =dd[1:65,],geom=geom_col, \n               mapping=aes(x=Length,color=salinity,fill=salinity),orientation='y')+\n    theme_tree2()"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-33",
     "href": "presentaciones/5.2-filogenias.html#section-33",
     "title": "Filogenias en R",
     "section": "",
-    "text": "¿Podemos incluir mas de un dato?\n\npx&lt;- p4+\n  scale_color_manual(values = c(\"blue\",\"gray\",\"skyblue\"))+\n  scale_fill_manual(values = c(\"blue\",\"gray\",\"skyblue\"))\n\ndd&lt;-data.frame(id=p4$data$label,value=p4$data$Length)  \n  \npx+ geom_facet(panel=\"Length\",data =dd[1:65,],geom=geom_col, \n               mapping=aes(x=Length,color=salinity,fill=salinity),orientation='y')+\n    theme_tree2()"
+    "text": "ggtreeExtra\n\nlibrary(ggtreeExtra)\n\np5&lt;-p4+geom_tippoint(aes(colour=AnaCat))+scale_color_manual(values = c(\"#3d5a80\",\"#98c1d9\",\"#e0fbfc\",\"#293241\",\"#ee6c4d\"))\n\np5+geom_fruit(data=dd[1:65,],\n         geom=geom_bar,\n         mapping = aes(\n                     y=id,\n                     x=value,\n                     group=salinity,\n                     fill=salinity),pwidth=0.38, \n                    orientation=\"y\", \n                    stat=\"identity\",axis.params=list(\n                         axis       = \"x\",\n                         text.size  = 1.8,\n                         hjust      = 1,\n                         vjust      = 0.5,\n                         nbreak     = 3))+ scale_fill_manual(values = c(\"blue\",\"gray\",\"skyblue\"))"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-34",
     "href": "presentaciones/5.2-filogenias.html#section-34",
     "title": "Filogenias en R",
     "section": "",
-    "text": "ggtreeExtra\n\nlibrary(ggtreeExtra)\n\np5&lt;-p4+geom_tippoint(aes(colour=AnaCat))+scale_color_manual(values = c(\"#3d5a80\",\"#98c1d9\",\"#e0fbfc\",\"#293241\",\"#ee6c4d\"))\n\np5+geom_fruit(data=dd[1:65,],\n         geom=geom_bar,\n         mapping = aes(\n                     y=id,\n                     x=value,\n                     group=salinity,\n                     fill=salinity),pwidth=0.38, \n                    orientation=\"y\", \n                    stat=\"identity\",axis.params=list(\n                         axis       = \"x\",\n                         text.size  = 1.8,\n                         hjust      = 1,\n                         vjust      = 0.5,\n                         nbreak     = 3))+ scale_fill_manual(values = c(\"blue\",\"gray\",\"skyblue\"))"
+    "text": "ggtreeExtra v1.22.0 Learn more at https://yulab-smu.top/contribution-tree-data/\n\nPlease cite:\n\nS Xu, Z Dai, P Guo, X Fu, S Liu, L Zhou, W Tang, T Feng, M Chen, L\nZhan, T Wu, E Hu, Y Jiang, X Bo, G Yu. ggtreeExtra: Compact\nvisualization of richly annotated phylogenetic data. Molecular Biology\nand Evolution. 2021, 38(9):4039-4042. doi: 10.1093/molbev/msab166"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-36",
     "href": "presentaciones/5.2-filogenias.html#section-36",
     "title": "Filogenias en R",
     "section": "",
-    "text": "Imágenes propias\nEn este ejemplo usaremos las familias Pimelodidae,Doradidae y Loricariidae\nPrimero recuperamos un representante de cada grupo, ape tiene una función que nos puede ser útil: keep.tip():\n\ngrouptree&lt;-fishtree %&gt;%\nkeep.tip(c(\"Pimelodus maculatus\", \"Lithodoras dorsalis\",\"Loricariichthys anus\"))\n\ngrouptree$tip.label&lt;-c(\"Pimelodidae\", \"Doraridae\",\"Loricariidae\")\n\np6&lt;-ggtree(grouptree,size=1)+xlim(0,120)+ geom_tiplab(color=\"navyblue\",offset = 0.5,size=5)\np6"
+    "text": "Hasta ahora hemos usado filogenias conocidas. Pero, ¿Qué pasa si no tengo información de la filogenia del grupo que estoy estudiando?"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-37",
     "href": "presentaciones/5.2-filogenias.html#section-37",
     "title": "Filogenias en R",
     "section": "",
-    "text": "Para visualizar las imágenes como tips, el archivo, debe tener el nombre exacto del grupo o especie y todas las imaágenes el mismo formato (i.e JPG) :\nLas fotos aqui presentadas provienen del Proyecto cavfish\n\np6+ \n  xlim(NA, 150) +\n  geom_tiplab(aes(image=paste0(\"imgs/imagenes/\", label, '.png')),geom=\"image\", offset=3, align=1, size=0.6)+\n  geom_tiplab(geom=\"label\",color=\"black\",offset = 30)"
+    "text": "¿Se acuerdan de esta filogenia?"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-38",
     "href": "presentaciones/5.2-filogenias.html#section-38",
     "title": "Filogenias en R",
     "section": "",
-    "text": "Hasta ahora hemos usado filogenias conocidas. Pero, ¿Qué pasa si no tengo información de la filogenia del grupo que estoy estudiando?"
+    "text": "Desde Open tree of Life(OTL), podemos obtener una filogenia utilizando las especies de nuestro interes"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-39",
     "href": "presentaciones/5.2-filogenias.html#section-39",
     "title": "Filogenias en R",
     "section": "",
-    "text": "¿Se acuerdan de esta filogenia?"
+    "text": "OTL tiene un apquete para R (rotl) que podemos usar para obtener filogenias\n\nlibrary(\"rotl\")\notl_tree&lt;-rotl::tnrs_match_names(c(\"Quiscalus mexicanus\",\"Canis lupus\",\"Corvus corax\",\"Canis latrans\",\"Vulpes vulpes\",\"Desmodus rotundus\",\"Sideroxylon celastrinum\")) %&gt;% \n  pull(ott_id) %&gt;% \n  tol_induced_subtree(label_format=\"name\")"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-40",
     "href": "presentaciones/5.2-filogenias.html#section-40",
     "title": "Filogenias en R",
     "section": "",
-    "text": "Desde Open tree of Life(OTL), podemos obtener una filogenia utilizando las especies de nuestro interes"
+    "text": "p_ott&lt;-ggtree(otl_tree)+\n  xlim(0,9)+\n  geom_tiplab(color=\"blue\")\np_ott"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-41",
     "href": "presentaciones/5.2-filogenias.html#section-41",
     "title": "Filogenias en R",
     "section": "",
-    "text": "OTL tiene un apquete para R (rotl) que podemos usar para obtener filogenias\n\nlibrary(\"rotl\")\notl_tree&lt;-rotl::tnrs_match_names(c(\"Quiscalus mexicanus\",\"Canis lupus\",\"Corvus corax\",\"Canis latrans\",\"Vulpes vulpes\",\"Desmodus rotundus\",\"Sideroxylon celastrinum\")) %&gt;% \n  pull(ott_id) %&gt;% \n  tol_induced_subtree(label_format=\"name\")\n\n\nProgress [---------------------------------] 0/210 (  0%) ?s\nProgress [==============================] 210/210 (100%)  0s"
+    "text": "Para la función de rtol, NO es necesario introducir las especies en orden, ya que ésta recuperará la taxonomia válida y nos arrojará una filogenia.\nEn este caso, OTL nos regresó exactamente la misma filogenia que creamos al principio:\n\np_nk&lt;-ggtree(Nktree)+\n  xlim(0,9)+\n  geom_tiplab(color=\"red\")\n\np_ott/p_nk"
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-42",
     "href": "presentaciones/5.2-filogenias.html#section-42",
     "title": "Filogenias en R",
     "section": "",
-    "text": "p_ott&lt;-ggtree(otl_tree)+\n  xlim(0,9)+\n  geom_tiplab(color=\"blue\")\np_ott"
+    "text": "Ahora podemos crear nuestras propias figuras usando estos recursos."
   },
   {
     "objectID": "presentaciones/5.2-filogenias.html#section-43",
@@ -4743,7 +4743,7 @@
     "href": "presentaciones/5.2-filogenias.html",
     "title": "Filogenias en R",
     "section": "",
-    "text": "Primero, ¿Qué es un árbol Filogenético?\n. . .\n\nUn árbol filogenético es un diagrama que muestra la relación de parentesco entre especies (o taxones)\nUno de los formatos más utilizados para representar filogenias es el Newick(.tree)\nEl formato Newick es una notación para representar parentescos utilizando paréntesis y comas."
+    "text": "Attaching package: 'dplyr'\n\n\nThe following object is masked from 'package:ape':\n\n    where\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\n\nPrimero, ¿Qué es un árbol Filogenético?\n. . .\n\nDiagrama que muestra la relación de parentesco entre especies (o taxones)\nUno de los formatos más utilizados para representar filogenias es el Newick(.tree)\nNewick: notación para representar parentescos con paréntesis y comas."
   },
   {
     "objectID": "presentaciones/4.1-practica-funciones.html",
@@ -5183,8 +5183,8 @@
     "objectID": "presentaciones/4.2-tablas-gt.html#por-qué-tablas-y-gt",
     "href": "presentaciones/4.2-tablas-gt.html#por-qué-tablas-y-gt",
     "title": "Tablas con gt",
-    "section": "¿Por qué tablas y gt?",
-    "text": "¿Por qué tablas y gt?\n\n\nEl paquete gt permite crear tablas de alta calidad para publicaciones, informes y presentaciones.\nSigue una filosofía similar a ggplot2: construir la tabla por capas y siguiendo una gramática\nMúltiples formatos de salida (HTML, PDF, RTF, Word, Imagen)"
+    "section": "",
+    "text": "El paquete gt permite crear tablas de alta calidad para publicaciones, informes y presentaciones.\nSigue una filosofía similar a ggplot2: construir la tabla por capas y siguiendo una gramática\nMúltiples formatos de salida (HTML, PDF, RTF, Word, Imagen)"
   },
   {
     "objectID": "presentaciones/4.2-tablas-gt.html#anatomía-de-una-tabla-gt",
@@ -5205,28 +5205,28 @@
     "href": "presentaciones/4.2-tablas-gt.html#tabla-básica",
     "title": "Tablas con gt",
     "section": "Tabla básica",
-    "text": "Tabla básica\nDe data frame a gt().\n\nmuestra |&gt; \n  gt()"
+    "text": "Tabla básica\nDe data frame a gt().\n\nmuestra |&gt; \n  gt()\n\n\n\n\n\n\n\nName\nCity\nPrice\nAmbience\nAlcohol\n\n\n\n\nPollo_Frito_Buenos_Aires\nVictoria\nlow\nquiet\nNo_Alcohol_Served\n\n\ncarnitas_mata\nVictoria\nmedium\nfamiliar\nNo_Alcohol_Served\n\n\npalomo tec\nVictoria\nlow\nfamiliar\nNo_Alcohol_Served\n\n\nlittle pizza Emilio Portes Gil\nVictoria\nlow\nfamiliar\nNo_Alcohol_Served\n\n\nTaqueria EL amigo\nCiudad Victoria\nlow\nfamiliar\nNo_Alcohol_Served\n\n\nLa Estrella de Dimas\nSan Luis Potosi\nmedium\nfamiliar\nNo_Alcohol_Served\n\n\nMikasa\nCuernavaca\nmedium\nfamiliar\nWine-Beer\n\n\nRestaurant Familiar El Chino\nJiutepec\nmedium\nfamiliar\nWine-Beer"
   },
   {
     "objectID": "presentaciones/4.2-tablas-gt.html#encabezados-y-etiquetas",
     "href": "presentaciones/4.2-tablas-gt.html#encabezados-y-etiquetas",
     "title": "Tablas con gt",
     "section": "Encabezados y etiquetas",
-    "text": "Encabezados y etiquetas\nMayor claridad con títulos y mejores nombres de columna\n\nmuestra |&gt; \n  gt() |&gt; \n  tab_header(\n    title = \"Restaurantes en México\",\n    subtitle = \"Muestra de datos de precios y ambiente\"\n  ) |&gt; \n  cols_label(\n    Name = \"Nombre\",\n    City = \"Ciudad\",\n    Price = \"Precio\",\n    Ambience = \"Ambiente\"\n  )"
+    "text": "Encabezados y etiquetas\nMayor claridad con títulos y mejores nombres de columna\n\nmuestra |&gt; \n  gt() |&gt; \n  tab_header(\n    title = \"Restaurantes en México\",\n    subtitle = \"Muestra de datos de precios y ambiente\"\n  ) |&gt; \n  cols_label(\n    Name = \"Nombre\",\n    City = \"Ciudad\",\n    Price = \"Precio\",\n    Ambience = \"Ambiente\"\n  )\n\n\n\n\n\n\n\nRestaurantes en México\n\n\nMuestra de datos de precios y ambiente\n\n\nNombre\nCiudad\nPrecio\nAmbiente\nAlcohol\n\n\n\n\nPollo_Frito_Buenos_Aires\nVictoria\nlow\nquiet\nNo_Alcohol_Served\n\n\ncarnitas_mata\nVictoria\nmedium\nfamiliar\nNo_Alcohol_Served\n\n\npalomo tec\nVictoria\nlow\nfamiliar\nNo_Alcohol_Served\n\n\nlittle pizza Emilio Portes Gil\nVictoria\nlow\nfamiliar\nNo_Alcohol_Served\n\n\nTaqueria EL amigo\nCiudad Victoria\nlow\nfamiliar\nNo_Alcohol_Served\n\n\nLa Estrella de Dimas\nSan Luis Potosi\nmedium\nfamiliar\nNo_Alcohol_Served\n\n\nMikasa\nCuernavaca\nmedium\nfamiliar\nWine-Beer\n\n\nRestaurant Familiar El Chino\nJiutepec\nmedium\nfamiliar\nWine-Beer"
   },
   {
     "objectID": "presentaciones/4.2-tablas-gt.html#colores-asociados-a-valores",
     "href": "presentaciones/4.2-tablas-gt.html#colores-asociados-a-valores",
     "title": "Tablas con gt",
     "section": "Colores asociados a valores",
-    "text": "Colores asociados a valores\ndata_color() para resaltar categorías (ej. niveles de precio).\n\nmuestra |&gt; \n  gt() |&gt; \n  data_color(\n    columns = Price,\n    target_columns = Price,\n    method = \"factor\",\n    palette = c(\"low\" = \"lightgreen\", \"medium\" = \"orange\", \"high\" = \"tomato\")\n  )"
+    "text": "Colores asociados a valores\ndata_color() para resaltar categorías (ej. niveles de precio).\n\nmuestra |&gt; \n  gt() |&gt; \n  data_color(\n    columns = Price,\n    palette = c(\"tomato\",\"lightgreen\",\"orange\")\n  )\n\n\n\n\n\n\n\nName\nCity\nPrice\nAmbience\nAlcohol\n\n\n\n\nEl Oceano Dorado\nCuernavaca\nmedium\nfamiliar\nFull_Bar\n\n\nMikasa\nCuernavaca\nmedium\nfamiliar\nWine-Beer\n\n\nRestaurant Familiar El Chino\nJiutepec\nmedium\nfamiliar\nWine-Beer\n\n\npuesto de tacos\nSan Luis Potosi\nlow\nfamiliar\nNo_Alcohol_Served\n\n\nEl Rinc=n de San Francisco\nSan Luis Potosi\nmedium\nfamiliar\nWine-Beer\n\n\nTaqueria EL amigo\nCiudad Victoria\nlow\nfamiliar\nNo_Alcohol_Served\n\n\nHamburguesas saul\nSan Luis Potosi\nlow\nfamiliar\nNo_Alcohol_Served\n\n\nEl Rincon de San Francisco\nSan Luis Potosi\nmedium\nfamiliar\nNo_Alcohol_Served\n\n\nRestaurant Oriental Express\nSan Luis Potosi\nmedium\nfamiliar\nNo_Alcohol_Served\n\n\nSirlone\nSan Luis Potosi\nmedium\nfamiliar\nWine-Beer\n\n\nla Cantina\nSan Luis Potosi\nhigh\nfamiliar\nFull_Bar\n\n\nLa Estrella de Dimas\nSan Luis Potosi\nmedium\nfamiliar\nNo_Alcohol_Served\n\n\nRestaurante El Reyecito\nSan Luis Potosi\nmedium\nfamiliar\nNo_Alcohol_Served"
   },
   {
     "objectID": "presentaciones/4.2-tablas-gt.html#resúmenes",
     "href": "presentaciones/4.2-tablas-gt.html#resúmenes",
     "title": "Tablas con gt",
     "section": "Resúmenes",
-    "text": "Resúmenes\nPodemos calcular estadísticas antes de pasarlas a gt.\n\nrestaurantes |&gt; \n  group_by(City, Price) |&gt; \n  summarise(n = n(), .groups = 'drop') |&gt; \n  gt() |&gt; \n  tab_header(title = \"Conteo de restaurantes por ciudad y precio\") |&gt; \n  cols_align(align = \"center\", columns = n)"
+    "text": "Resúmenes\nPodemos calcular estadísticas antes de pasarlas a gt.\n\nrestaurantes |&gt; \n  group_by(City, Price) |&gt; \n  summarise(n = n(), .groups = 'drop') |&gt; \n  gt() |&gt; \n  tab_header(title = \"Conteo de restaurantes por ciudad y precio\") |&gt; \n  cols_align(align = \"center\", columns = n)\n\n\n\n\n\n\n\nConteo de restaurantes por ciudad y precio\n\n\nCity\nPrice\nn\n\n\n\n\nCiudad Victoria\nlow\n1\n\n\nCuernavaca\nhigh\n2\n\n\nCuernavaca\nlow\n2\n\n\nCuernavaca\nmedium\n3\n\n\nJiutepec\nmedium\n1\n\n\nSan Luis Potosi\nhigh\n7\n\n\nSan Luis Potosi\nlow\n7\n\n\nSan Luis Potosi\nmedium\n19\n\n\nSoledad\nmedium\n1\n\n\nVictoria\nlow\n3\n\n\nVictoria\nmedium\n1\n\n\ncuernavaca\nmedium\n1\n\n\nsan luis potosi\nlow\n1\n\n\nsan luis potosi\nmedium\n1"
   },
   {
     "objectID": "presentaciones/4.2-tablas-gt.html#tips-de-formato-general",
@@ -5254,7 +5254,7 @@
     "href": "presentaciones/4.2-tablas-gt.html#colores-asociados-a-valores-output",
     "title": "Tablas con gt",
     "section": "Colores asociados a valores",
-    "text": "Colores asociados a valores\n\n\n\n\n\n\n\nName\nCity\nPrice\nAmbience\nAlcohol\n\n\n\n\nPollo_Frito_Buenos_Aires\nVictoria\nlow\nquiet\nNo_Alcohol_Served\n\n\ncarnitas_mata\nVictoria\nmedium\nfamiliar\nNo_Alcohol_Served\n\n\npalomo tec\nVictoria\nlow\nfamiliar\nNo_Alcohol_Served\n\n\nlittle pizza Emilio Portes Gil\nVictoria\nlow\nfamiliar\nNo_Alcohol_Served\n\n\nTaqueria EL amigo\nCiudad Victoria\nlow\nfamiliar\nNo_Alcohol_Served\n\n\nLa Estrella de Dimas\nSan Luis Potosi\nmedium\nfamiliar\nNo_Alcohol_Served\n\n\nMikasa\nCuernavaca\nmedium\nfamiliar\nWine-Beer\n\n\nRestaurant Familiar El Chino\nJiutepec\nmedium\nfamiliar\nWine-Beer"
+    "text": "Colores asociados a valores\n\n\n\n\n\n\n\nName\nCity\nPrice\nAmbience\nAlcohol\n\n\n\n\nEl Oceano Dorado\nCuernavaca\nmedium\nfamiliar\nFull_Bar\n\n\nMikasa\nCuernavaca\nmedium\nfamiliar\nWine-Beer\n\n\nRestaurant Familiar El Chino\nJiutepec\nmedium\nfamiliar\nWine-Beer\n\n\npuesto de tacos\nSan Luis Potosi\nlow\nfamiliar\nNo_Alcohol_Served\n\n\nEl Rinc=n de San Francisco\nSan Luis Potosi\nmedium\nfamiliar\nWine-Beer\n\n\nTaqueria EL amigo\nCiudad Victoria\nlow\nfamiliar\nNo_Alcohol_Served\n\n\nHamburguesas saul\nSan Luis Potosi\nlow\nfamiliar\nNo_Alcohol_Served\n\n\nEl Rincon de San Francisco\nSan Luis Potosi\nmedium\nfamiliar\nNo_Alcohol_Served\n\n\nRestaurant Oriental Express\nSan Luis Potosi\nmedium\nfamiliar\nNo_Alcohol_Served\n\n\nSirlone\nSan Luis Potosi\nmedium\nfamiliar\nWine-Beer\n\n\nla Cantina\nSan Luis Potosi\nhigh\nfamiliar\nFull_Bar\n\n\nLa Estrella de Dimas\nSan Luis Potosi\nmedium\nfamiliar\nNo_Alcohol_Served\n\n\nRestaurante El Reyecito\nSan Luis Potosi\nmedium\nfamiliar\nNo_Alcohol_Served"
   },
   {
     "objectID": "presentaciones/4.2-tablas-gt.html#resúmenes-output",
@@ -5310,7 +5310,7 @@
     "href": "presentaciones/4.2-tablas-gt.html#alinear-o-justificar-contenidos",
     "title": "Tablas con gt",
     "section": "Alinear o justificar contenidos",
-    "text": "Alinear o justificar contenidos\nPodemos alinear texto a la izquierda, números a la derecha, etc.\n\nmuestra |&gt; \n  mutate(\n    Rating = sample(seq(3, 5, by = 0.1), n(), replace = TRUE),\n    Reviews = sample(50:1000, n(), replace = TRUE)\n  ) |&gt; \n  gt() |&gt; \n  cols_align(align = \"left\", columns = Name) |&gt; \n  cols_align(align = \"center\", columns = c(Price, Ambience)) |&gt; \n  cols_align(align = \"right\", columns = c(Rating, Reviews)) |&gt; \n  tab_footnote(\n    footnote = \"Niveles de precio estimados por comensales.\",\n    locations = cells_column_labels(columns = Price)\n  )"
+    "text": "Alinear o justificar contenidos\nPodemos alinear texto a la izquierda, números a la derecha, etc.\n\nmuestra |&gt; \n  mutate(\n    Rating = sample(seq(3, 5, by = 0.1), n(), replace = TRUE),\n    Reviews = sample(50:1000, n(), replace = TRUE)\n  ) |&gt; \n  gt() |&gt; \n  cols_align(align = \"left\", columns = Name) |&gt; \n  cols_align(align = \"center\", columns = c(Price, Ambience)) |&gt; \n  cols_align(align = \"right\", columns = c(Rating, Reviews)) |&gt; \n  tab_footnote(\n    footnote = \"Niveles de precio estimados por comensales.\",\n    locations = cells_column_labels(columns = Price)\n  )\n\n\n\n\n\n\n\nName\nCity\nPrice1\nAmbience\nAlcohol\nRating\nReviews\n\n\n\n\nEl Oceano Dorado\nCuernavaca\nmedium\nfamiliar\nFull_Bar\n4.4\n434\n\n\nMikasa\nCuernavaca\nmedium\nfamiliar\nWine-Beer\n4.8\n428\n\n\nRestaurant Familiar El Chino\nJiutepec\nmedium\nfamiliar\nWine-Beer\n4.0\n599\n\n\npuesto de tacos\nSan Luis Potosi\nlow\nfamiliar\nNo_Alcohol_Served\n3.5\n151\n\n\nEl Rinc=n de San Francisco\nSan Luis Potosi\nmedium\nfamiliar\nWine-Beer\n3.6\n821\n\n\nTaqueria EL amigo\nCiudad Victoria\nlow\nfamiliar\nNo_Alcohol_Served\n4.8\n142\n\n\nHamburguesas saul\nSan Luis Potosi\nlow\nfamiliar\nNo_Alcohol_Served\n4.5\n232\n\n\nEl Rincon de San Francisco\nSan Luis Potosi\nmedium\nfamiliar\nNo_Alcohol_Served\n4.2\n200\n\n\nRestaurant Oriental Express\nSan Luis Potosi\nmedium\nfamiliar\nNo_Alcohol_Served\n3.6\n766\n\n\nSirlone\nSan Luis Potosi\nmedium\nfamiliar\nWine-Beer\n5.0\n729\n\n\nla Cantina\nSan Luis Potosi\nhigh\nfamiliar\nFull_Bar\n4.0\n219\n\n\nLa Estrella de Dimas\nSan Luis Potosi\nmedium\nfamiliar\nNo_Alcohol_Served\n3.6\n109\n\n\nRestaurante El Reyecito\nSan Luis Potosi\nmedium\nfamiliar\nNo_Alcohol_Served\n4.4\n159\n\n\n\n1 Niveles de precio estimados por comensales."
   },
   {
     "objectID": "presentaciones/4.2-tablas-gt.html#alinear-o-justificar-contenidos-output",
@@ -5324,7 +5324,7 @@
     "href": "presentaciones/4.2-tablas-gt.html#color-y-estilo",
     "title": "Tablas con gt",
     "section": "Color y estilo",
-    "text": "Color y estilo\nPodemos usar data_color y funciones de transformación para inyectar estilo.\n\nmuestra |&gt; \n  gt() |&gt; \n  tab_header(title = \"Restaurantes Top 🌮\") |&gt; \n  tab_style(\n    style = cell_text(weight = \"bold\", style = \"italic\"),\n    locations = cells_body(columns = Name)\n  ) |&gt; \n  tab_style(\n    style = cell_text(size = px(12)),\n    locations = cells_body(columns = City)\n  ) |&gt; \n  data_color(\n    columns = Ambience,\n    palette = \"Pastel1\"\n  ) |&gt; \n  text_transform(\n    locations = cells_body(columns = Alcohol),\n    fn = function(x) ifelse(x == \"Full Bar\", \"🍺✅\", \"🚫\")\n  ) |&gt; \n  tab_options(\n    table.background.color = \"#fdf6e3\",\n    column_labels.background.color = \"#268bd2\"\n  )"
+    "text": "Color y estilo\nPodemos usar data_color y funciones de transformación para inyectar estilo.\n\nmuestra |&gt; \n  gt() |&gt; \n  tab_header(title = \"Restaurantes Top 🌮\") |&gt; \n  tab_style(\n    style = cell_text(weight = \"bold\", style = \"italic\"),\n    locations = cells_body(columns = Name)\n  ) |&gt; \n  tab_style(\n    style = cell_text(size = px(12)),\n    locations = cells_body(columns = City)\n  ) |&gt; \n  data_color(\n    columns = Ambience,\n    palette = \"Pastel1\"\n  ) |&gt; \n  text_transform(\n    locations = cells_body(columns = Alcohol),\n    fn = function(x) ifelse(x == \"Full Bar\", \"🍺✅\", \"🚫\")\n  ) |&gt; \n  tab_options(\n    table.background.color = \"#fdf6e3\",\n    column_labels.background.color = \"#268bd2\"\n  )\n\n\n\n\n\n\n\nRestaurantes Top 🌮\n\n\nName\nCity\nPrice\nAmbience\nAlcohol\n\n\n\n\nEl Oceano Dorado\nCuernavaca\nmedium\nfamiliar\n🚫\n\n\nMikasa\nCuernavaca\nmedium\nfamiliar\n🚫\n\n\nRestaurant Familiar El Chino\nJiutepec\nmedium\nfamiliar\n🚫\n\n\npuesto de tacos\nSan Luis Potosi\nlow\nfamiliar\n🚫\n\n\nEl Rinc=n de San Francisco\nSan Luis Potosi\nmedium\nfamiliar\n🚫\n\n\nTaqueria EL amigo\nCiudad Victoria\nlow\nfamiliar\n🚫\n\n\nHamburguesas saul\nSan Luis Potosi\nlow\nfamiliar\n🚫\n\n\nEl Rincon de San Francisco\nSan Luis Potosi\nmedium\nfamiliar\n🚫\n\n\nRestaurant Oriental Express\nSan Luis Potosi\nmedium\nfamiliar\n🚫\n\n\nSirlone\nSan Luis Potosi\nmedium\nfamiliar\n🚫\n\n\nla Cantina\nSan Luis Potosi\nhigh\nfamiliar\n🚫\n\n\nLa Estrella de Dimas\nSan Luis Potosi\nmedium\nfamiliar\n🚫\n\n\nRestaurante El Reyecito\nSan Luis Potosi\nmedium\nfamiliar\n🚫"
   },
   {
     "objectID": "presentaciones/4.2-tablas-gt.html#color-y-estilo-output",
@@ -5339,5 +5339,82 @@
     "title": "Tablas con gt",
     "section": "",
     "text": "El paquete gt permite crear tablas de alta calidad para publicaciones, informes y presentaciones.\nSigue una filosofía similar a ggplot2: construir la tabla por capas y siguiendo una gramática\nMúltiples formatos de salida (HTML, PDF, RTF, Word, Imagen)"
+  },
+  {
+    "objectID": "presentaciones/5.2-filogenias.html#ggtree",
+    "href": "presentaciones/5.2-filogenias.html#ggtree",
+    "title": "Filogenias en R",
+    "section": "ggtree",
+    "text": "ggtree\npaquete para graficar, personalizar y anotar árboles filogenéticos\n\ninstall.packages(\"BiocManager\")\nBiocManager::install(\"ggtree\")"
+  },
+  {
+    "objectID": "presentaciones/5.2-filogenias.html#insumos",
+    "href": "presentaciones/5.2-filogenias.html#insumos",
+    "title": "Filogenias en R",
+    "section": "Insumos",
+    "text": "Insumos\n\nFilogenia con las especies del Orden Siluriformes (peces) a las cuales se le conoce su tipo de migración. De la Megafilogenia para peces propuesta por Rabosky (2018)\n\n\nfishdata&lt;-read.table(here(\"data\",\"DataFish.txt\"))\n\nfishtree &lt;-read.tree(here(\"data\",\"treefish.txt\"))\nfishtree$tip.label&lt;-gsub(\"_\", \" \", fishtree$tip.label)"
+  },
+  {
+    "objectID": "presentaciones/5.2-filogenias.html#section-14",
+    "href": "presentaciones/5.2-filogenias.html#section-14",
+    "title": "Filogenias en R",
+    "section": "",
+    "text": "py+theme_tree2()"
+  },
+  {
+    "objectID": "presentaciones/5.2-filogenias.html#section-17",
+    "href": "presentaciones/5.2-filogenias.html#section-17",
+    "title": "Filogenias en R",
+    "section": "",
+    "text": "Conociendo que el ancestro en común de la familia Pimelodidae se encuentra en el nodo 80, puedo utilizar esta información para anotar la filogenia utilizando el parámetro geom_cladelab:\n\np1 + xlim(NA, 110)+ geom_cladelab(node=nodepimelo,label = \"Pimelodidae\",offset=0,barcolor=\"red\",textcolor=\"red\",angle=0, offset.text=0.1)"
+  },
+  {
+    "objectID": "presentaciones/5.2-filogenias.html#imágenes-propias",
+    "href": "presentaciones/5.2-filogenias.html#imágenes-propias",
+    "title": "Filogenias en R",
+    "section": "Imágenes propias",
+    "text": "Imágenes propias\nEn este ejemplo usaremos las familias Pimelodidae,Doradidae y Loricariidae\nPrimero recuperamos un representante de cada grupo, ape tiene una función que nos puede ser útil: keep.tip():\n\ngrouptree&lt;-fishtree %&gt;%\nkeep.tip(c(\"Pimelodus maculatus\", \"Lithodoras dorsalis\",\"Loricariichthys anus\"))\n\ngrouptree$tip.label&lt;-c(\"Pimelodidae\", \"Doraridae\",\"Loricariidae\")\n\np6&lt;-ggtree(grouptree,size=1)+xlim(0,120)+ geom_tiplab(color=\"navyblue\",offset = 0.5,size=5)\np6"
+  },
+  {
+    "objectID": "presentaciones/5.2-filogenias.html#section-35",
+    "href": "presentaciones/5.2-filogenias.html#section-35",
+    "title": "Filogenias en R",
+    "section": "",
+    "text": "Para visualizar las imágenes como tips, el archivo, debe tener el nombre exacto del grupo o especie y todas las imaágenes el mismo formato (i.e JPG) :\nLas fotos aqui presentadas provienen del Proyecto cavfish\n\np6+ \n  xlim(NA, 150) +\n  geom_tiplab(aes(image=paste0(\"imgs/imagenes/\", label, '.png')),geom=\"image\", offset=3, align=1, size=0.6)+\n  geom_tiplab(geom=\"label\",color=\"black\",offset = 30)"
+  },
+  {
+    "objectID": "presentaciones/4-LQNNESR.html#con-r-base",
+    "href": "presentaciones/4-LQNNESR.html#con-r-base",
+    "title": "Lo que nadie nos enseñó sobre R",
+    "section": "Con R base",
+    "text": "Con R base\nR base tiene herramientas para iterar desde sus inicios: la familia apply\n\n\n\npurrr\nR Base\n\n\n\n\nmap()\nlapply()\n\n\nmap_dbl(), etc.\nvapply() (o sapply())\n\n\nmap2(), pmap()\nmapply()"
+  },
+  {
+    "objectID": "presentaciones/4-LQNNESR.html#familia-apply",
+    "href": "presentaciones/4-LQNNESR.html#familia-apply",
+    "title": "Lo que nadie nos enseñó sobre R",
+    "section": "Familia apply",
+    "text": "Familia apply\n\nlapply(): (List apply) Aplica una función a cada elemento de una lista o vector y siempre devuelve una lista.\nsapply(): (Simplified apply) Intenta simplificar el resultado de lapply(). Si puede, devuelve un vector o matriz; si no, una lista.\ntapply(): (Table apply) Aplica una función a subconjuntos de un vector definidos por uno o más factores (agrupamientos)."
+  },
+  {
+    "objectID": "presentaciones/4-LQNNESR.html#por-qué-purrr",
+    "href": "presentaciones/4-LQNNESR.html#por-qué-purrr",
+    "title": "Lo que nadie nos enseñó sobre R",
+    "section": "¿Por qué purrr?",
+    "text": "¿Por qué purrr?\n\nConsistencia en argumentos: En purrr, el objeto a iterar (.x) siempre es el primer argumento. En R base varía.\nType-safety: sapply() puede devolver una lista, un vector o una matriz según el resultado.\nSintaxis: Soporte para funciones anónimas\nIntegración: Funciona con el pipe (|&gt;) y otras herramientas del tidyverse."
+  },
+  {
+    "objectID": "presentaciones/4-LQNNESR.html#ejemplo-map-vs-lapply",
+    "href": "presentaciones/4-LQNNESR.html#ejemplo-map-vs-lapply",
+    "title": "Lo que nadie nos enseñó sobre R",
+    "section": "Ejemplo: map() vs lapply()",
+    "text": "Ejemplo: map() vs lapply()\n\n\npurrr\n\nmap(rasgos, mean, na.rm = TRUE)\n\n[[1]]\n[1] 4201.754\n\n[[2]]\n[1] 43.92193\n\n[[3]]\n[1] 200.9152\n\n\n\nR base\n\nlapply(rasgos, mean, na.rm = TRUE)\n\n[[1]]\n[1] 4201.754\n\n[[2]]\n[1] 43.92193\n\n[[3]]\n[1] 200.9152"
+  },
+  {
+    "objectID": "presentaciones/4-LQNNESR.html#ejemplo-map_dbl-vs-vapply",
+    "href": "presentaciones/4-LQNNESR.html#ejemplo-map_dbl-vs-vapply",
+    "title": "Lo que nadie nos enseñó sobre R",
+    "section": "Ejemplo: map_dbl() vs vapply()",
+    "text": "Ejemplo: map_dbl() vs vapply()\n\n\npurrr\n\nmap_dbl(rasgos, mean, na.rm = TRUE)\n\n[1] 4201.75439   43.92193  200.91520\n\n\n\nR base\n\nvapply(rasgos, mean, \n       FUN.VALUE = numeric(1), \n       na.rm = TRUE)\n\n[1] 4201.75439   43.92193  200.91520\n\n\n\n\nAmbas devuelven un vector numérico"
   }
 ]

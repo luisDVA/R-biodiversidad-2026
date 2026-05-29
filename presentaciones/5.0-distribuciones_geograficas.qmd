@@ -13,7 +13,7 @@ format:
     highlight-style: printing
     pause: true
 
-editor: visual
+editor: source
 ---
 
 ## Área de distribución geográfica
@@ -28,15 +28,15 @@ Los registros (colectas georreferenciadas) de las especies son los datos primari
 
 ## 
 
--   En este ejemplo/ejercicio veremos cómo obtener dichos registros directamente desde R
+- En este ejemplo/ejercicio veremos cómo obtener dichos registros directamente desde R
 
 . . .
 
--   También, veremos cómo generar áreas de distribución (extensiones de presencia) a partir de estos registros, creando polígonos de diferentes tipos (mínimo, alpha y alpha dinámico)
+- También, veremos cómo generar áreas de distribución (extensiones de presencia) a partir de estos registros, creando polígonos de diferentes tipos (mínimo, alpha y alpha dinámico)
 
 . . .
 
--   Los datos de registros serán obtenidos de la plataforma en línea [Global Biodiversity Information Facility - GBIF](https://www.gbif.org/)
+- Los datos de registros serán obtenidos de la plataforma en línea [Global Biodiversity Information Facility - GBIF](https://www.gbif.org/)
 
 . . .
 

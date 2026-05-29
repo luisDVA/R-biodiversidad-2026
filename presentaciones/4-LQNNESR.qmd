@@ -1017,6 +1017,75 @@ Altman et al. (2021)\
 :::
 :::
 
+## Con R base
+
+R base tiene herramientas para iterar desde sus inicios: **la familia `apply`**
+
+| `purrr` | R Base |
+|:---|:---|
+| `map()` | `lapply()` |
+| `map_dbl()`, etc. | `vapply()` (o `sapply()`) |
+| `map2()`, `pmap()` | `mapply()` |
+
+## Familia `apply`
+
+- **`lapply()`**: (**L**ist apply) Aplica una función a cada elemento de una lista o vector y siempre devuelve una **lista**.
+- **`sapply()`**: (**S**implified apply) Intenta simplificar el resultado de `lapply()`. Si puede, devuelve un vector o matriz; si no, una lista.
+- **`tapply()`**: (**T**able apply) Aplica una función a subconjuntos de un vector definidos por uno o más factores (agrupamientos).
+
+## ¿Por qué `purrr`?
+
+1. **Consistencia en argumentos**: En `purrr`, el objeto a iterar (`.x`) siempre es el primer argumento. En R base varía.
+2. **Type-safety**: `sapply()` puede devolver una lista, un vector o una matriz según el resultado.
+3. **Sintaxis**: Soporte para funciones anónimas 
+4. **Integración**: Funciona con el pipe (`|>`) y otras herramientas del `tidyverse`.
+
+## Ejemplo: `map()` vs `lapply()`
+
+::: columns
+::: {.column width="50%"}
+**purrr**
+```{r}
+#| eval: true
+map(rasgos, mean, na.rm = TRUE)
+```
+:::
+
+::: {.column width="50%"}
+**R base**
+```{r}
+#| eval: true
+lapply(rasgos, mean, na.rm = TRUE)
+```
+:::
+:::
+
+
+## Ejemplo: `map_dbl()` vs `vapply()`
+
+::: columns
+::: {.column width="50%"}
+**purrr**
+```{r}
+#| eval: true
+map_dbl(rasgos, mean, na.rm = TRUE)
+```
+:::
+
+::: {.column width="50%"}
+**R base**
+```{r}
+#| eval: true
+vapply(rasgos, mean, 
+       FUN.VALUE = numeric(1), 
+       na.rm = TRUE)
+```
+:::
+:::
+
+</br>
+
+Ambas devuelven un **vector numérico** 
 
 # Atajos y herramientas para mayor eficiencia  
 
