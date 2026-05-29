@@ -3903,21 +3903,21 @@
     "href": "presentaciones/5.1-mapas_bivariados.html#crar-un-objeto-para-el-alpha-y-otro-para-el-fill",
     "title": "Mapas bivariados",
     "section": "Crar un objeto para el alpha y otro para el fill",
-    "text": "Crar un objeto para el alpha y otro para el fill\n\nstl_race_income$alpha = as.character(stl_race_income$x + stl_race_income$y)\nstl_race_income$color = as.character(atan(stl_race_income$y/stl_race_income$x))"
+    "text": "Crar un objeto para el alpha y otro para el fill\n\nstl_race_income$alpha = stl_race_income$x + stl_race_income$y\nstl_race_income$color = atan(stl_race_income$y/stl_race_income$x)"
   },
   {
     "objectID": "presentaciones/5.1-mapas_bivariados.html#graficar-el-mapa",
     "href": "presentaciones/5.1-mapas_bivariados.html#graficar-el-mapa",
     "title": "Mapas bivariados",
     "section": "Graficar el mapa",
-    "text": "Graficar el mapa\n\nmap = ggplot()+\n  #geom_sf(data=wrld)+\n  geom_sf(data = stl_race_income,aes(fill=color,alpha=alpha),shape=15, size=11,show.legend = FALSE)+\n  scale_fill_viridis_d()+\n  theme_bw()\nmap"
+    "text": "Graficar el mapa\n\nmap = ggplot()+\n  #geom_sf(data=wrld)+\n  geom_sf(data = stl_race_income, aes(fill = color, alpha = alpha), show.legend = FALSE)+\n  scale_fill_viridis_c()+\n  scale_alpha_continuous(range = c(0.2, 1))+\n  theme_bw()\nmap"
   },
   {
     "objectID": "presentaciones/5.1-mapas_bivariados.html#graficar-la-leyenda",
     "href": "presentaciones/5.1-mapas_bivariados.html#graficar-la-leyenda",
     "title": "Mapas bivariados",
     "section": "Graficar la leyenda",
-    "text": "Graficar la leyenda\n\nleg = ggplot(d, aes(x,y))+\n  geom_tile(aes(fill=atan(y/x),alpha=x+y))+\n  scale_fill_viridis_c()+\n  theme(legend.position=\"none\",\n        axis.text.y = element_blank(),\n        axis.text.x = element_blank(),\n        axis.ticks = element_blank(),\n        panel.grid.minor = element_blank(),\n        panel.grid.major = element_blank())+\n  coord_equal()\nleg"
+    "text": "Graficar la leyenda\n\nleg = ggplot(d, aes(x,y))+\n  geom_tile(aes(fill=atan(y/x),alpha=x+y))+\n  scale_fill_viridis_c()+\n  scale_alpha_continuous(range = c(0.2, 1))+\n  theme(legend.position=\"none\",\n        axis.text.y = element_blank(),\n        axis.text.x = element_blank(),\n        axis.ticks = element_blank(),\n        panel.grid.minor = element_blank(),\n        panel.grid.major = element_blank())+\n  coord_equal()\nleg"
   },
   {
     "objectID": "presentaciones/5.1-mapas_bivariados.html#juntar-los-dos",

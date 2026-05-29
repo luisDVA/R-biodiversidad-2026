@@ -412,8 +412,8 @@ head(stl_race_income)
 #| eval: true
 #| echo: true
 #| 
-stl_race_income$alpha = as.character(stl_race_income$x + stl_race_income$y)
-stl_race_income$color = as.character(atan(stl_race_income$y/stl_race_income$x))
+stl_race_income$alpha = stl_race_income$x + stl_race_income$y
+stl_race_income$color = atan(stl_race_income$y/stl_race_income$x)
 
 ```
 
@@ -425,8 +425,9 @@ stl_race_income$color = as.character(atan(stl_race_income$y/stl_race_income$x))
 
 map = ggplot()+
   #geom_sf(data=wrld)+
-  geom_sf(data = stl_race_income,aes(fill=color,alpha=alpha),shape=15, size=11,show.legend = FALSE)+
-  scale_fill_viridis_d()+
+  geom_sf(data = stl_race_income, aes(fill = color, alpha = alpha), show.legend = FALSE)+
+  scale_fill_viridis_c()+
+  scale_alpha_continuous(range = c(0.2, 1))+
   theme_bw()
 map
 
@@ -440,6 +441,7 @@ map
 leg = ggplot(d, aes(x,y))+
   geom_tile(aes(fill=atan(y/x),alpha=x+y))+
   scale_fill_viridis_c()+
+  scale_alpha_continuous(range = c(0.2, 1))+
   theme(legend.position="none",
         axis.text.y = element_blank(),
         axis.text.x = element_blank(),
